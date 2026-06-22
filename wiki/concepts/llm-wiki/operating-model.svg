@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="680" viewBox="0 0 1260 680" role="img" aria-labelledby="title desc">
+  <title id="title">LLM-Wiki operating model</title>
+  <desc id="desc">User request flows through index, intake, source of truth, phase-specific docs, knowledge lookup, work, validation, and checkpoint.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#374151"/>
+    </marker>
+    <style>
+      .box { rx: 10; ry: 10; stroke-width: 2; }
+      .text { font: 16px Arial, sans-serif; fill: #111827; }
+      .small { font: 13px Arial, sans-serif; fill: #374151; }
+      .arrow { stroke: #374151; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .note { font: 14px Arial, sans-serif; fill: #4b5563; }
+    </style>
+  </defs>
+
+  <rect x="30" y="35" width="1200" height="610" fill="#ffffff" stroke="#d1d5db" stroke-width="1"/>
+  <text x="55" y="72" class="text" font-weight="700">Canonical LLM-Wiki Read Workflow</text>
+  <text x="55" y="96" class="note">Active repo wins for implementation state; LLM-Wiki provides reusable knowledge and history.</text>
+
+  <rect class="box" x="55" y="145" width="150" height="74" fill="#f7f7f2" stroke="#4b5563"/>
+  <text class="text" x="82" y="176">User request</text>
+  <text class="small" x="78" y="198">current intent wins</text>
+
+  <rect class="box" x="245" y="145" width="150" height="74" fill="#f7f7f2" stroke="#4b5563"/>
+  <text class="text" x="285" y="176">index.md</text>
+  <text class="small" x="267" y="198">compact rules</text>
+
+  <rect class="box" x="435" y="145" width="170" height="74" fill="#f7f7f2" stroke="#4b5563"/>
+  <text class="text" x="473" y="176">intake</text>
+  <text class="small" x="459" y="198">classify request</text>
+
+  <polygon points="700,128 805,182 700,236 595,182" fill="#fff4cc" stroke="#8a6d1d" stroke-width="2"/>
+  <text class="text" x="650" y="176">Source of</text>
+  <text class="text" x="666" y="198">truth?</text>
+
+  <rect class="box" x="875" y="95" width="185" height="70" fill="#e8f3ff" stroke="#2463a6"/>
+  <text class="text" x="910" y="124">Concept</text>
+  <text class="small" x="899" y="147">wiki/concepts or bootstrap</text>
+
+  <rect class="box" x="875" y="194" width="185" height="70" fill="#e8f3ff" stroke="#2463a6"/>
+  <text class="text" x="908" y="223">Pre-repo</text>
+  <text class="small" x="899" y="246">wiki/projects/&lt;project&gt;</text>
+
+  <rect class="box" x="875" y="293" width="185" height="70" fill="#e8f3ff" stroke="#2463a6"/>
+  <text class="text" x="912" y="322">Real repo</text>
+  <text class="small" x="899" y="345">repo docs and code</text>
+
+  <polygon points="960,410 1075,468 960,526 845,468" fill="#fff4cc" stroke="#8a6d1d" stroke-width="2"/>
+  <text class="text" x="904" y="462">Knowledge</text>
+  <text class="text" x="903" y="484">Lookup Metric</text>
+
+  <rect class="box" x="545" y="412" width="210" height="70" fill="#e9f7ef" stroke="#2f7d4a"/>
+  <text class="text" x="575" y="441">Harness/templates</text>
+  <text class="small" x="579" y="464">task, validation, report</text>
+
+  <rect class="box" x="545" y="520" width="210" height="70" fill="#e9f7ef" stroke="#2f7d4a"/>
+  <text class="text" x="591" y="549">Knowledge</text>
+  <text class="small" x="582" y="572">coding/project-docs</text>
+
+  <rect class="box" x="275" y="468" width="170" height="70" fill="#f3e8ff" stroke="#7e3fb2"/>
+  <text class="text" x="333" y="497">Work</text>
+  <text class="small" x="304" y="520">task, output, answer</text>
+
+  <rect class="box" x="55" y="468" width="170" height="70" fill="#f3e8ff" stroke="#7e3fb2"/>
+  <text class="text" x="103" y="497">Evidence</text>
+  <text class="small" x="78" y="520">validation/report</text>
+
+  <rect class="box" x="55" y="565" width="170" height="54" fill="#f3e8ff" stroke="#7e3fb2"/>
+  <text class="text" x="93" y="598">Checkpoint</text>
+
+  <path class="arrow" d="M205 182 H245"/>
+  <path class="arrow" d="M395 182 H435"/>
+  <path class="arrow" d="M605 182 H595"/>
+  <path class="arrow" d="M805 154 C835 140 845 130 875 130"/>
+  <path class="arrow" d="M805 198 C835 210 845 229 875 229"/>
+  <path class="arrow" d="M784 218 C825 270 835 328 875 328"/>
+  <path class="arrow" d="M967 363 V408"/>
+  <path class="arrow" d="M875 130 C735 210 690 330 660 412"/>
+  <path class="arrow" d="M875 229 C742 281 695 360 660 412"/>
+  <path class="arrow" d="M845 468 H755"/>
+  <path class="arrow" d="M960 526 C905 566 835 575 755 555"/>
+  <path class="arrow" d="M545 447 C500 452 475 470 445 503"/>
+  <path class="arrow" d="M545 555 C494 550 465 535 445 503"/>
+  <path class="arrow" d="M275 503 H225"/>
+  <path class="arrow" d="M140 538 V565"/>
+
+  <text class="small" x="1085" y="448">0-2 skip</text>
+  <text class="small" x="1085" y="470">3 optional</text>
+  <text class="small" x="1085" y="492">4-6 consult</text>
+  <text class="small" x="1085" y="514">7-10 consult + ask Codex</text>
+</svg>

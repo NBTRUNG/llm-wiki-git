@@ -1,0 +1,9 @@
+.DS_Store
+.obsidian/
+.codex/
+.agents/
+.claude/
+*.tmp
+*.bak
+*.swp
+logs/test-output/*.log

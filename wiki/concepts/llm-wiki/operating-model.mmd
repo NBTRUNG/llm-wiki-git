@@ -1,0 +1,41 @@
+flowchart LR
+  request[User request]
+  index[index.md compact rules]
+  intake[harness/intake.md]
+  source{Source of truth?}
+  concept[Concept phase\nwiki/concepts/ or wiki/projects/]
+  prerepo[Pre-repo project\nwiki/projects/<project>/]
+  repo[Real repo work\nactive repo docs and code]
+  lookup{Knowledge Lookup Metric}
+  harness[Harness + templates]
+  knowledge[Knowledge guides]
+  work[Task, output, or answer]
+  proof[Validation report or result report]
+  checkpoint[Checkpoint in the correct place]
+
+  request --> index --> intake --> source
+  source --> concept
+  source --> prerepo
+  source --> repo
+  repo --> lookup
+  lookup -->|0-2 skip| work
+  lookup -->|3 optional| knowledge
+  lookup -->|4-6 consult| knowledge
+  lookup -->|7-10 consult + ask Codex| knowledge
+  concept --> harness
+  prerepo --> harness
+  harness --> work
+  knowledge --> work
+  work --> proof --> checkpoint
+
+  classDef start fill:#f7f7f2,stroke:#4b5563,color:#111827
+  classDef decision fill:#fff4cc,stroke:#8a6d1d,color:#111827
+  classDef repo fill:#e8f3ff,stroke:#2463a6,color:#111827
+  classDef knowledge fill:#e9f7ef,stroke:#2f7d4a,color:#111827
+  classDef proof fill:#f3e8ff,stroke:#7e3fb2,color:#111827
+
+  class request,index,intake start
+  class source,lookup decision
+  class repo,concept,prerepo repo
+  class harness,knowledge knowledge
+  class work,proof,checkpoint proof

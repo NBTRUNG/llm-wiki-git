@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: "<PROJECT_NAME> API"
+  version: "0.1.0"
+  description: "Starter API contract. Replace placeholders before implementation."
+
+servers:
+  - url: http://localhost:<PORT>/api
+    description: Local development
+
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - code
+        - request_id
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        request_id:
+          type: string
+        details:
+          type: object
+
+paths:
+  /health:
+    get:
+      tags:
+        - System
+      summary: Health check
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                properties:
+                  status:
+                    type: string
+                    example: ok
+
+  # Add project endpoints only after they are accepted in docs/contracts.md.

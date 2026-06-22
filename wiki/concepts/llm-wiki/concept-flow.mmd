@@ -1,0 +1,33 @@
+flowchart LR
+  human[Human concept]
+  unknowns{Unknowns clear?}
+  questions[AI asks targeted questions]
+  brief[docs/project_brief.md]
+  architecture[Architecture]
+  decisions[docs/decisions.md]
+  contracts[docs/contracts.md]
+  tasks[docs/tasks.md]
+  matrix[docs/test_matrix.md]
+  implementation[Implementation]
+  migration[Repo migration or project link note]
+
+  human --> unknowns
+  unknowns -->|No| questions --> human
+  unknowns -->|Yes| brief
+  brief --> architecture
+  architecture --> decisions
+  decisions --> contracts
+  contracts --> tasks
+  tasks --> matrix
+  matrix --> implementation
+  implementation --> migration
+
+  classDef start fill:#f7f7f2,stroke:#4b5563,color:#111827
+  classDef decision fill:#fff4cc,stroke:#8a6d1d,color:#111827
+  classDef docs fill:#e8f3ff,stroke:#2463a6,color:#111827
+  classDef build fill:#e9f7ef,stroke:#2f7d4a,color:#111827
+
+  class human,questions start
+  class unknowns decision
+  class brief,architecture,decisions,contracts,tasks,matrix docs
+  class implementation,migration build
