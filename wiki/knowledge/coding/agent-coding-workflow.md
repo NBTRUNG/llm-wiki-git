@@ -32,8 +32,9 @@ Full Coding Pack:
 3. `wiki/knowledge/coding/repo-code-rules.md`
 4. `wiki/knowledge/coding/code-quality.md`
 5. `wiki/knowledge/coding/output-quality.md`
-6. `wiki/knowledge/coding/security-baseline.md`
-7. `wiki/knowledge/coding/testing-strategy.md`
+6. `wiki/knowledge/coding/implementation-quality-matrix.md`
+7. `wiki/knowledge/coding/security-baseline.md`
+8. `wiki/knowledge/coding/testing-strategy.md`
 
 Read the pack once per coding session. Do not re-read it per task unless:
 

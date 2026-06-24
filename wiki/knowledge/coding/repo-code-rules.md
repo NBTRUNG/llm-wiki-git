@@ -33,6 +33,7 @@ Related guides:
 - `karpathy-guidelines.md`
 - `code-quality.md`
 - `output-quality.md`
+- `implementation-quality-matrix.md`
 - `security-baseline.md`
 - `testing-strategy.md`
 
@@ -54,7 +55,8 @@ Typical repo read order:
 4. Full LLM-Wiki Coding Pack once when the session is code/review/refactor/test/validation work:
    `wiki/knowledge/coding/agent-coding-workflow.md`,
    `karpathy-guidelines.md`, `repo-code-rules.md`, `code-quality.md`,
-   `output-quality.md`, `security-baseline.md`, and `testing-strategy.md`
+   `output-quality.md`, `implementation-quality-matrix.md`,
+   `security-baseline.md`, and `testing-strategy.md`
 5. Neu la delegated agent: `agents/<agent>/AGENT.md`
 6. Files trong task `Required read files`
 
@@ -75,6 +77,7 @@ wiki/knowledge/coding/karpathy-guidelines.md
 wiki/knowledge/coding/repo-code-rules.md
 wiki/knowledge/coding/code-quality.md
 wiki/knowledge/coding/output-quality.md
+wiki/knowledge/coding/implementation-quality-matrix.md
 wiki/knowledge/coding/security-baseline.md
 wiki/knowledge/coding/testing-strategy.md
 ```
