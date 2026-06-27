@@ -1,10 +1,10 @@
 # project status
 
-Last updated: 2026-06-22
+Last updated: 2026-06-27
 
 ## overall status
 
-stable/manual-complete; Hermes optional read-planning standard, single subagent control-card standard, source-backed architecture/design-system guidance, workload-based architecture approach selection, human-orchestrated multi-agent mode, current LLM-Wiki architecture snapshot, active Markdown link/entrypoint lint, and full Coding Pack bootstrap for coding agents implemented
+stable/manual-complete; Hermes optional read-planning standard, single subagent control-card standard, source-backed architecture/design-system guidance, workload-based architecture approach selection, human-orchestrated multi-agent mode, current LLM-Wiki architecture snapshot, active Markdown link/entrypoint lint, full Coding Pack bootstrap, agent session packs with frontend/UI/contracts/operations taxonomy, local agent skill hygiene refactor, post-task/project closeout distillation, human-controlled research-on-request, and official-source knowledge pack refresh implemented
 
 ## summary
 
@@ -69,6 +69,44 @@ not read full repo history or unrelated LLM-Wiki docs by default. Updated
 canonical guidance, repo/agent/session templates, result-report evidence, and
 lint coverage.
 
+The 2026-06-27 agent session pack pass added `agent_session_packs.md` as the
+canonical packing-list guide for real-repo sessions. It defines Repo Base,
+Coding, Security Baseline, Security Deep, Web/UI, Software/Backend,
+Architecture, Contracts, and Operations packs. Security Baseline is now explicit
+as always-on inside Coding Pack; Security Deep Pack is trigger-based for auth,
+permissions, sensitive data, secrets, uploads, callbacks, deployment,
+dependencies, raw SQL/HTML, external services, and performance/security
+trade-offs. New reusable knowledge folders were added for frontend engineering,
+UI/UX implementation, contracts, and operations. Repo/agent/result-report
+templates now require agents to report loaded packs and security impact.
+
+The 2026-06-27 agent skill hygiene pass backed up and refactored local
+`architecture-skill` and `vercel-react-best-practices` skill folders.
+`architecture-skill` now contains workflow/procedure and pointers to LLM-Wiki
+knowledge; its legacy reference files are pointer stubs; `scaffold.sh` refuses
+to run before `ARCH_DECISION_CONFIRMED=yes` and generated ADRs default to
+`Proposed`. `vercel-react-best-practices` now routes React/Next.js work to
+LLM-Wiki frontend/UI knowledge and no longer carries the active local Vercel
+rule catalog. Original folders were backed up under
+`archive/agent-skill-backups/2026-06-27/`.
+
+The 2026-06-27 distillation/research pass added a post-task distillation gate:
+after human/Lead/integration-owner review passes, agents must decide whether to
+file reusable troubleshooting, pattern, decision, concept, runbook, contract
+note, anti-pattern, or validation knowledge before Done. It also added project
+closeout distillation: real repos keep project state and exact decisions, while
+LLM-Wiki receives generalized reusable knowledge only. Internet/current-source
+research is now documented as human-controlled research-on-request; watchlist
+cadence is advisory and does not authorize autonomous browsing.
+
+The 2026-06-27 knowledge pack internet refresh used the human-controlled
+research-on-request path to update frontend, UI accessibility, contracts,
+operations, and security packs from official sources only. Promoted content was
+kept concise and behavior-oriented: React memo/compiler caveats, Next.js
+16/image/lazy-loading and bundle analysis notes, Web Vitals thresholds, WCAG
+2.2 watchpoints, OpenAPI 3.2.0 contract framing, CloudEvents envelope fields,
+OpenTelemetry backend distinction, and ASVS/SSDF security routing.
+
 Constitution §18 was amended 2026-05-23 (DEC-0001 accepted) to link amendment procedure to `harness/feedback-loop.md`; AI is now formally barred from self-applying constitutional amendments.
 
 
@@ -88,6 +126,83 @@ Constitution §18 was amended 2026-05-23 (DEC-0001 accepted) to link amendment p
 3. Optional: add a generated-index compile script for `wiki/index.md` and related summaries.
 
 ## latest validation
+
+- Date: 2026-06-27
+- Prior checkpoint: 2026-06-27 Post-task/project closeout distillation and
+  human-controlled research-on-request.
+- Scope: Internet-backed refresh of frontend, UI accessibility, contracts,
+  operations, and security knowledge packs.
+- What was checked: official-source research brief, promoted pack updates,
+  research/validation indexes, project docs rollup, and feedback-loop lint.
+- Result: implemented locally; `harness/feedback-loop-lint.sh` passes with 0
+  failures and 0 warnings.
+- Evidence:
+  - `reports/research/2026-06-27-knowledge-pack-refresh.md`
+  - `wiki/knowledge/frontend/react-performance.md`
+  - `wiki/knowledge/frontend/nextjs-performance.md`
+  - `wiki/knowledge/frontend/web-vitals.md`
+  - `wiki/knowledge/ui/accessibility.md`
+  - `wiki/knowledge/contracts/api-design.md`
+  - `wiki/knowledge/contracts/event-contracts.md`
+  - `wiki/knowledge/operations/observability.md`
+  - `wiki/knowledge/coding/security-baseline.md`
+  - `reports/validation/2026-06-27-knowledge-pack-internet-refresh.md`
+
+### prior validation (LLMWIKI-037)
+
+- Date: 2026-06-27
+- Prior checkpoint: 2026-06-27 Agent skill hygiene refactor.
+- Scope: Post-task distillation, project closeout distillation, and
+  human-controlled research-on-request.
+- What was checked: new knowledge/harness files, watchlist, research reports
+  README, research template, agent-local guide, repo/agent/result-report
+  templates, indexes, project docs rollup, and feedback-loop lint.
+- Result: implemented locally; `harness/feedback-loop-lint.sh` passes with 0 failures and 0 warnings.
+- Evidence:
+  - `wiki/knowledge/project-docs/post_task_distillation.md`
+  - `wiki/knowledge/project-docs/project_closeout_distillation.md`
+  - `harness/auto-research.md`
+  - `research/watchlist.md`
+  - `reports/research/README.md`
+  - `reports/validation/2026-06-27-distillation-closeout-research-on-request.md`
+
+### prior validation (LLMWIKI-036)
+
+- Date: 2026-06-27
+- Prior checkpoint: 2026-06-27 Agent session packs and frontend/UI taxonomy.
+- Scope: Local agent skill hygiene refactor for `architecture-skill` and
+  `vercel-react-best-practices`.
+- What was checked: backup folder, live skill metadata validation, scaffold
+  shell syntax, scaffold pre-decision guard, and feedback-loop lint.
+- Result: implemented locally; skill validators passed; `harness/feedback-loop-lint.sh` passes with 0 failures and 0 warnings.
+- Evidence:
+  - `archive/agent-skill-backups/2026-06-27/`
+  - `/home/admindebian/.agents/skills/architecture-skill/SKILL.md`
+  - `/home/admindebian/.agents/skills/vercel-react-best-practices/SKILL.md`
+  - `reports/validation/2026-06-27-agent-skill-hygiene-refactor.md`
+
+### prior validation (LLMWIKI-035)
+
+- Date: 2026-06-27
+- Prior checkpoint: 2026-06-22 Agent Coding Pack bootstrap.
+- Scope: Agent session packs, always-on Security Baseline, trigger-based
+  Security Deep Pack, frontend/UI/contracts/operations taxonomy, and
+  repo/agent/result-report template updates.
+- What was checked: new knowledge folders, session pack guide, catalog/index
+  links, coding workflow, repo code rules, read workflow, agent operating guide,
+  repo/agent/result-report templates, project docs rollup, and feedback-loop
+  lint.
+- Result: implemented locally; `harness/feedback-loop-lint.sh` passes with 0 failures and 0 warnings.
+- Evidence:
+  - `wiki/knowledge/project-docs/agent_session_packs.md`
+  - `wiki/knowledge/frontend/README.md`
+  - `wiki/knowledge/ui/README.md`
+  - `wiki/knowledge/contracts/README.md`
+  - `wiki/knowledge/operations/README.md`
+  - `templates/agent_result_report.template.md`
+  - `reports/validation/2026-06-27-agent-session-packs-frontend-ui-security.md`
+
+### prior validation (LLMWIKI-034)
 
 - Date: 2026-06-22
 - Prior checkpoint: 2026-06-20 graph hygiene and 2026-06-14 wiki link/compile lint expansion.

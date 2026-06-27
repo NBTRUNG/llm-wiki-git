@@ -30,9 +30,11 @@ Task packets may require one or more capsules by name.
 
 For coding sessions, capsules are reminders, not the full rule load. Agents
 assigned to write, review, refactor, test, validate, or accept repo code must
-read the full LLM-Wiki Coding Pack once at session/assignment start:
+classify the session pack and read the full LLM-Wiki Coding Pack once at
+session/assignment start:
 
 ```text
+${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/project-docs/agent_session_packs.md
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/agent-coding-workflow.md
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/karpathy-guidelines.md
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/repo-code-rules.md
@@ -44,6 +46,12 @@ ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/testing-strat
 
 Do not re-read the pack per micro-task unless the session was interrupted,
 handed to a new agent, the pack changed, or exact wording is needed.
+
+Every coding result must report security impact. The Security Baseline is
+always part of the Coding Pack. Use the Security Deep Pack from
+`agent_session_packs.md` when the task touches auth, permissions, sensitive
+data, secrets, uploads, callbacks, deployment, dependencies, raw SQL/HTML,
+external services, or performance/security trade-offs.
 
 ### Code Capsule
 
@@ -141,9 +149,10 @@ API routes, DTOs, visual design, copy, and user-visible behavior unchanged.
 
 1. `AGENTS.md`
 2. `REPO_RULES.md`
-3. Full Coding Pack once when the session is code/review/refactor/test/validation work
-4. `agents/<agent>/AGENT.md`
-5. Files listed in the assigned task `Required read files`
+3. `agent_session_packs.md` to classify required packs
+4. Full Coding Pack once when the session is code/review/refactor/test/validation work
+5. `agents/<agent>/AGENT.md`
+6. Files listed in the assigned task `Required read files`
 
 Delegated agents do not read Lead state, repo-wide rollups, or per-agent
 task/status/archive files by default.
@@ -203,6 +212,9 @@ docs/agent_status.md
 - Update the agent-owned checkpoint sections of `agents/<agent>/AGENT.md` after meaningful work.
 - Create `reports/agent/<agent>/<task-id>-result.md` before asking for review.
 - Codex/main reviews, validates, and rolls accepted state into repo-wide docs.
+- After review passes and before Done, run the Post-Task Distillation Gate:
+  record skipped/required, file reusable knowledge or queue deferred candidates,
+  and update wikilinks/indexes when distillation is required.
 
 ## Coding Pack Rule
 
@@ -222,5 +234,6 @@ before continuing.
 Reference:
 
 ```text
+/home/admindebian/LLM-Wiki/wiki/knowledge/project-docs/agent_session_packs.md
 /home/admindebian/LLM-Wiki/wiki/knowledge/coding/agent-coding-workflow.md
 ```

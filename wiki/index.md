@@ -56,7 +56,15 @@ When a gap is filled, move its bullet to "Recently filled" with the filling-date
 - System entry: `../index.md`
 - LLM-Wiki rules: `../global-rules.md`
 - Agent coding workflow: `knowledge/coding/agent-coding-workflow.md`
+- Agent session packs: `knowledge/project-docs/agent_session_packs.md`
+- Post-task distillation: `knowledge/project-docs/post_task_distillation.md`
+- Project closeout distillation: `knowledge/project-docs/project_closeout_distillation.md`
 - Repo code rules: `knowledge/coding/repo-code-rules.md`
+- Frontend engineering: `knowledge/frontend/README.md`
+- UI/UX implementation: `knowledge/ui/README.md`
+- Contracts knowledge: `knowledge/contracts/README.md`
+- Operations knowledge: `knowledge/operations/README.md`
 - Constitution: `../llm-wiki-constitution.md`
 - Program: `../program.md`
 - Harness: `../harness/README.md`
+- Research-on-request: `../harness/auto-research.md`

@@ -10,10 +10,11 @@ This is the daily loop for ai/dev work.
 4. Read only relevant files.
 5. Identify source of truth.
 6. Choose risk lane.
-7. Read relevant LLM-Wiki knowledge/playbooks for the work type.
-8. For repo code work, read repo `AGENTS.md` and `REPO_RULES.md` first when present.
-9. For any coding session, read the full `../wiki/knowledge/coding/` Coding Pack once at session/assignment start.
-10. For delegated repo work, read `agents/<agent>/AGENT.md`, then task `Required read files`.
+7. Classify the session pack using `../wiki/knowledge/project-docs/agent_session_packs.md`.
+8. Read relevant LLM-Wiki knowledge/playbooks for the work type.
+9. For repo code work, read repo `AGENTS.md` and `REPO_RULES.md` first when present.
+10. For any coding session, read the full `../wiki/knowledge/coding/` Coding Pack once at session/assignment start.
+11. For delegated repo work, read `agents/<agent>/AGENT.md`, then task `Required read files`.
 
 ## execute
 
@@ -51,8 +52,11 @@ For LLM-Wiki work, update `active.md` and validation evidence when durable state
 | Situation | Read |
 | --- | --- |
 | Source-of-truth or migration question | `../llm-wiki-constitution.md` |
+| Agent session packing | `../wiki/knowledge/project-docs/agent_session_packs.md` |
 | Repo code work | repo `AGENTS.md`, `REPO_RULES.md`, Lead state for Lead work, assigned `agents/<agent>/AGENT.md` for delegated work, plus full `../wiki/knowledge/coding/` Coding Pack |
 | Coding Pack | `../wiki/knowledge/coding/agent-coding-workflow.md`, `karpathy-guidelines.md`, `repo-code-rules.md`, `code-quality.md`, `output-quality.md`, `security-baseline.md`, `testing-strategy.md` |
+| Web/UI work | `../wiki/knowledge/project-docs/agent_session_packs.md`, `../wiki/knowledge/frontend/README.md`, `../wiki/knowledge/ui/README.md`, repo design-system/UI map files |
+| Security-sensitive work | Coding Pack Security Baseline plus Security Deep Pack from `../wiki/knowledge/project-docs/agent_session_packs.md` when triggers apply |
 | Repo docs creation/review | `../wiki/knowledge/project-docs/`, repo docs |
 | Ingest/query/lint/compile | `../program.md` |
 | Request classification | `intake.md` |

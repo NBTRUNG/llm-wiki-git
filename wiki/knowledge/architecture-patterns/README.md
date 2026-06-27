@@ -20,19 +20,25 @@ often layered for ingestion paths).
 
 ## index
 
+- [[pattern-selection-matrix.md]] — cross-pattern decision, validation, security, observability, and architecture-test matrix
 - [[layered.md]] — N-tier separation by responsibility (presentation, business, data)
+- [[modular-monolith.md]] — one deployable with explicit internal modules and dependency rules
 - [[hexagonal.md]] — ports and adapters; domain isolated from infrastructure
 - [[microservices.md]] — independently deployable services per bounded context
 - [[event-driven.md]] — async event production, detection, consumption
+- [[zero-trust-security.md]] — no implicit trust; identity, policy, authorization, segmentation, and audit controls
 
 ## decision table
 
 | If your project... | Start with |
 |---|---|
 | Small CRUD app, single team, low scale | layered |
+| Small/medium product, unclear boundaries, needs module discipline | modular monolith |
 | Domain logic complex, infra likely to change | hexagonal |
 | Multiple teams, independent deploy needed | microservices (only after bounded contexts) |
 | High throughput, async workflows, integrations | event-driven |
+| Sensitive data, multi-tenant access, service-to-service calls, admin paths, or production deployment | zero-trust security + defense in depth |
+| Legacy replacement where big-bang rewrite is risky | strangler fig migration toward modular monolith or services |
 | Mixed: complex domain + multiple teams | hexagonal + microservices |
 | Mixed: async ingestion + clean domain | layered or hexagonal + event-driven |
 
@@ -42,7 +48,9 @@ often layered for ingestion paths).
 - Picking event-driven without designing compensating transactions → eventual-consistency bugs in production.
 - Picking hexagonal for a CRUD app → over-engineering.
 - Picking layered for a system with diverse infra change rates → tight coupling at the data layer.
+- Calling folders "modules" without dependency rules → tangled monolith.
 - Combining synchronous layered thinking with async events → race conditions and missed messages.
+- Calling VPN, service mesh, or "internal network" zero trust without per-request identity, authorization, policy enforcement, and audit evidence.
 
 ## relationship to LLM-Wiki
 

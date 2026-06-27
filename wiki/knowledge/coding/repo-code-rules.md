@@ -29,6 +29,7 @@ global-rules.md
 
 Related guides:
 
+- `../project-docs/agent_session_packs.md`
 - `agent-coding-workflow.md`
 - `karpathy-guidelines.md`
 - `code-quality.md`
@@ -52,13 +53,14 @@ Typical repo read order:
 1. Repo `AGENTS.md`
 2. Repo short rule file neu co, vi du `REPO_RULES.md`
 3. Repo quick AI/context file neu co, vi du `AI_CODEX.md`
-4. Full LLM-Wiki Coding Pack once when the session is code/review/refactor/test/validation work:
+4. Classify session pack with `wiki/knowledge/project-docs/agent_session_packs.md`
+5. Full LLM-Wiki Coding Pack once when the session is code/review/refactor/test/validation work:
    `wiki/knowledge/coding/agent-coding-workflow.md`,
    `karpathy-guidelines.md`, `repo-code-rules.md`, `code-quality.md`,
    `output-quality.md`, `implementation-quality-matrix.md`,
    `security-baseline.md`, and `testing-strategy.md`
-5. Neu la delegated agent: `agents/<agent>/AGENT.md`
-6. Files trong task `Required read files`
+6. Neu la delegated agent: `agents/<agent>/AGENT.md`
+7. Files trong task `Required read files`
 
 Repo-specific instructions luon thang file rule chung nay.
 
@@ -96,6 +98,13 @@ Narrow exceptions:
 Repo `REPO_RULES.md` should contain mandatory short capsules for quick recall,
 but those capsules do not replace the full Coding Pack for real coding
 sessions.
+
+Security baseline is always part of the Coding Pack. For every coding result,
+report security impact, areas touched, risk found, and whether human review is
+needed. Trigger the Security Deep Pack from
+`wiki/knowledge/project-docs/agent_session_packs.md` when auth, permissions,
+sensitive data, secrets, uploads, callbacks, deployment, dependencies, raw
+SQL/HTML, external services, or performance/security trade-offs are involved.
 
 ## coding style
 

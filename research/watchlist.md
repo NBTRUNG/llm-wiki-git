@@ -5,6 +5,12 @@ This is the standing watchlist for LLM-Wiki research intake.
 Use `harness/research-intake-loop.md` before promoting findings into canonical
 guidance.
 
+Use `harness/auto-research.md` only when the human owner or an explicit task
+packet asks an agent to check current internet sources for a watchlist topic.
+The watchlist cadence is advisory; it does not authorize autonomous browsing.
+Research creates advisory briefs first; canonical promotion still requires
+validation evidence.
+
 ## high-volatility topics
 
 | Topic | Cadence | Why it matters | Canonical targets |
@@ -33,3 +39,13 @@ guidance.
 - Refresh project orientation taxonomy after 3 real project bootstraps.
 - Track AI-agent evaluation methods suitable for code-generation workflows.
 - Track frontend rendering choices for content-heavy public sites.
+
+## research-on-request rules
+
+- Run only when requested by the human owner, Lead, or task packet.
+- Pick one watchlist topic per run.
+- Prefer primary/official sources.
+- Write the brief under `reports/research/`.
+- Promote only through validation report and index updates.
+- Queue credible but not-yet-general findings in
+  `wiki/projects/llm-wiki/docs/feedback_loop_queue.md`.

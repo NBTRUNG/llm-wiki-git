@@ -3,6 +3,12 @@ name: security-baseline
 description: Practical security baseline for code-level controls. Secrets, input validation, auth, credentials, abuse controls, logging, supply chain. Cross-references OWASP Top 10 2025.
 date_ingested: 2026-05-23
 status: active
+source_type: web-research + project-file-back
+source_urls:
+  - https://owasp.org/www-project-application-security-verification-standard/
+  - https://csrc.nist.gov/pubs/sp/800/218/final
+confidence: high
+confidence_reviewed: 2026-06-27
 ---
 
 # security baseline guide
@@ -15,6 +21,16 @@ data protection.
 
 It is a baseline. Project-specific threat models, compliance rules, and repo
 security docs override it.
+
+This file owns code-level security checks. For system-level security shape,
+trust boundaries, identity/policy architecture, service-to-service access, and
+audit posture, use
+[[../architecture-patterns/zero-trust-security.md]] before implementing code.
+
+For higher-risk application work, use OWASP ASVS as the verification checklist
+source and record the ASVS version when citing requirement identifiers. For
+secure-development process questions, use NIST SSDF as the broader SDLC
+reference.
 
 For broader concepts see:
 
@@ -32,7 +48,7 @@ For broader concepts see:
 | A03 Software Supply Chain Failures | `dependency and supply-chain checks` |
 | A04 Cryptographic Failures | `credentials and passwords`, `secret management` |
 | A05 Injection | `input validation` |
-| A06 Insecure Design | (use STRIDE at design time; see linked concept) |
+| A06 Insecure Design | use [[../architecture-patterns/zero-trust-security.md]], STRIDE, and defense in depth at design time |
 | A07 Authentication Failures | `authentication and authorization`, `credentials and passwords` |
 | A08 Software or Data Integrity Failures | `dependency and supply-chain checks` |
 | A09 Security Logging & Alerting Failures | `logging and observability` |
@@ -211,6 +227,20 @@ When adding or upgrading dependencies:
 - prefer maintained packages with active security response;
 - run the repo's dependency audit when available;
 - document new external services or trust boundaries in decisions/contracts.
+- for high-risk or externally exposed software, consider whether the change
+  needs provenance, SBOM, signing, dependency review, or vulnerability response
+  notes according to the repo's supply-chain policy.
+
+## security and performance trade-offs
+
+When performance work touches auth, authorization, validation, logging,
+encryption, rate limits, dependency loading, image/proxy fetches, or caching:
+
+- name the security control being changed;
+- state the performance gain expected;
+- state the security risk introduced or avoided;
+- ask human/Lead review before weakening a control;
+- prefer scoped exceptions over global bypasses.
 
 ## security evidence
 

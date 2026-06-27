@@ -13,6 +13,9 @@ The files here describe what each repo doc is for, what good quality looks like,
 | `project_manifest.md` | [project_manifest.md](project_manifest.md) |
 | `docs/project_brief.md` | [project_brief.md](project_brief.md) |
 | `docs/project_orientation.md` | [project_orientation.md](project_orientation.md) |
+| agent session packing lists by work type | [agent_session_packs.md](agent_session_packs.md) |
+| post-task distillation gate | [post_task_distillation.md](post_task_distillation.md) |
+| project closeout distillation | [project_closeout_distillation.md](project_closeout_distillation.md) |
 | `wiki/architecture.md` | [architecture.md](architecture.md) |
 | architecture skill / architecture review workflow | [architecture_skill.md](architecture_skill.md) |
 | architecture approach selection by workload | [architecture_approach_selection.md](architecture_approach_selection.md) |

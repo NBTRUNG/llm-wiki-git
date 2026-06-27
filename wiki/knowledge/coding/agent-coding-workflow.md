@@ -25,6 +25,11 @@ Coding Pack once at the start.
 When an agent is assigned to write, review, refactor, test, validate, or accept
 repo code, it must read the full Coding Pack at session or assignment start.
 
+Before loading task-specific non-coding knowledge, classify the session with
+[[../project-docs/agent_session_packs.md]]. The Coding Pack is the default
+code-facing pack; Web/UI, Architecture, Contracts, Operations, and Security Deep
+packs are added only when the session intent or risk triggers require them.
+
 Full Coding Pack:
 
 1. `wiki/knowledge/coding/agent-coding-workflow.md`
@@ -35,6 +40,11 @@ Full Coding Pack:
 6. `wiki/knowledge/coding/implementation-quality-matrix.md`
 7. `wiki/knowledge/coding/security-baseline.md`
 8. `wiki/knowledge/coding/testing-strategy.md`
+
+`security-baseline.md` is always-on inside the Coding Pack. Every non-trivial
+coding result must record security impact, areas touched, risk found, and
+whether human review is needed. Use the Security Deep Pack from
+[[../project-docs/agent_session_packs.md]] when triggers apply.
 
 Read the pack once per coding session. Do not re-read it per task unless:
 
@@ -108,6 +118,10 @@ report should state whether the Coding Pack was loaded:
 Coding Pack loaded: yes | no | partial
 Exception used: none | <reason>
 Conflicts with repo rules: none | <summary>
+Security impact: none | low | medium | high
+Security areas touched: auth | authorization | input | secrets | logging | dependencies | data | external service | config | none
+Security risk found: none | <summary>
+Human security review needed: no | yes, because <reason>
 ```
 
 Use `no` or `partial` only for a narrow exception, interruption, or blocker.

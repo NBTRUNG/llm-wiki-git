@@ -48,6 +48,15 @@ Fill for implementation, review, refactor, test, validation, or acceptance work.
 Write `n/a` only for non-code-facing status/report/query work.
 
 - Coding Pack loaded: yes | no | partial | n/a
+- Session packs loaded:
+  - Repo Base: yes | no | n/a
+  - Coding: yes | no | n/a
+  - Security Baseline: yes | no | n/a
+  - Security Deep: yes | no | n/a
+  - Web/UI: yes | no | n/a
+  - Architecture: yes | no | n/a
+  - Contracts: yes | no | n/a
+  - Operations: yes | no | n/a
 - Exception used: none | status-only | docs-only | typo/copy-only | interrupted | blocker | other
 - Pack files read:
   - `agent-coding-workflow.md`
@@ -58,6 +67,18 @@ Write `n/a` only for non-code-facing status/report/query work.
   - `security-baseline.md`
   - `testing-strategy.md`
 - Conflicts with repo rules: none | summary
+
+## Security check
+
+Fill for every coding, review, refactor, test, validation, or acceptance task.
+Write `n/a` only when no repo output is being judged.
+
+- Security impact: none | low | medium | high | n/a
+- Areas touched: auth | authorization | input | secrets | logging | dependencies | data | external service | config | none | n/a
+- Security Deep Pack triggered: yes | no | n/a
+- Risk found: none | summary
+- Human security review needed: no | yes, because <reason> | n/a
+- Performance/security trade-off: none | summary
 
 ## Output quality gate
 
@@ -139,6 +160,17 @@ partial, controller, query service, or client-side module. Otherwise write
 ## Risks / blockers
 
 - 
+
+## Post-task distillation
+
+Fill after human/Lead/integration-owner review passes and before Done.
+
+- Distill: skipped | required | blocked
+- Reason:
+- Type: n/a | troubleshooting | pattern | decision | concept | runbook | contract-note | anti-pattern | validation-note
+- Target:
+- Wikilinks/index updated: yes | no | n/a
+- Queue row if deferred:
 
 ## Audit trail
 

@@ -2,6 +2,7 @@
 name: architecture-skill-guide
 description: Source-backed operating guide for architecture work in LLM-Wiki projects. Covers C4 views, arc42 documentation scope, ADR decision capture, platform engineering, and observability gates.
 date_ingested: 2026-06-11
+date_updated: 2026-06-24
 status: active
 source_type: web-research
 source_urls:
@@ -10,8 +11,10 @@ source_urls:
   - https://adr.github.io/
   - https://tag-app-delivery.cncf.io/whitepapers/platforms/
   - https://opentelemetry.io/docs/what-is-opentelemetry/
+  - https://csrc.nist.gov/pubs/sp/800/207/final
+  - https://owasp.org/www-project-threat-modeling/
 confidence: medium
-confidence_reviewed: 2026-06-11
+confidence_reviewed: 2026-06-24
 ---
 
 # architecture skill guide
@@ -39,10 +42,14 @@ For architecture work, produce these in order:
    - Level 2: containers.
    - Level 3: components.
    - Level 4: code, only when implementation structure is the decision.
-5. Key decisions and trade-offs.
-6. Quality attributes as measurable scenarios.
-7. ADR recommendation when the decision is architecturally significant.
-8. Validation/evidence needed before acceptance.
+5. Pattern selection when the structure is in question (see
+   [[../architecture-patterns/pattern-selection-matrix.md]]).
+6. Security/trust-boundary check when users, services, tenants, secrets,
+   production data, admin paths, or external systems are involved.
+7. Key decisions and trade-offs.
+8. Quality attributes as measurable scenarios.
+9. ADR recommendation when the decision is architecturally significant.
+10. Validation/evidence needed before acceptance.
 
 Do not create a large architecture document when a short decision or one C4 view
 will settle the task.
@@ -122,6 +129,27 @@ up front:
 OpenTelemetry is a framework/toolkit for generating, collecting, and exporting
 telemetry data. It is not the storage or dashboard backend.
 
+### Security architecture is cross-cutting
+
+Do not treat security as only a coding checklist. When architecture touches
+users, services, tenants, secrets, admin actions, external integrations,
+production deployment, uploads, payments, callbacks, or private data, require a
+security architecture pass.
+
+Use:
+
+- [[../architecture-patterns/zero-trust-security.md]] for identity, policy
+  enforcement, authorization, segmentation, service-to-service access, and
+  audit controls;
+- [[../../concepts/security/stride.md]] for trust-boundary threat enumeration;
+- [[../../concepts/security/defense-in-depth.md]] for layered controls;
+- [[../coding/security-baseline.md]] only after the architecture boundary is
+  clear, for code-level implementation checks.
+
+Security architecture output should identify protected resources, trust
+boundaries, policy decision/enforcement points, data classification, service
+identity, audit events, failure mode, and validation evidence.
+
 ## architecture review checklist
 
 - Source of truth identified before design starts.
@@ -132,6 +160,8 @@ telemetry data. It is not the storage or dashboard backend.
 - Major runtime/data/deployment boundaries are visible.
 - Quality attributes are written as scenarios, not adjectives.
 - Security, privacy, observability, and operability are not deferred silently.
+- Trust boundaries, identity model, authorization model, and audit evidence are
+  visible for security-relevant systems.
 - Platform work has a user path and self-service boundary.
 - ADR exists for architecturally significant decisions.
 - Implementation tasks can be derived without inventing names or contracts.
@@ -145,6 +175,10 @@ telemetry data. It is not the storage or dashboard backend.
 - Treating platform engineering as an infrastructure dump instead of a product.
 - Adding OpenTelemetry packages without deciding signal ownership and backend
   flow.
+- Treating security as code-review-only after architecture has already chosen
+  trust boundaries, service boundaries, or data ownership.
+- Calling VPN, private network, or service mesh membership "zero trust" without
+  per-request identity, authorization, policy enforcement, and audit evidence.
 - Letting ADRs become mutable status notes.
 
 ## relationship to LLM-Wiki
@@ -155,4 +189,6 @@ telemetry data. It is not the storage or dashboard backend.
 - ADR concept: [[../../concepts/architecture/adr.md]]
 - Quality attributes: [[../../concepts/architecture/quality-attributes.md]]
 - Architecture approach selection: [[architecture_approach_selection.md]]
+- Architecture pattern selection: [[../architecture-patterns/pattern-selection-matrix.md]]
+- Zero-trust security pattern: [[../architecture-patterns/zero-trust-security.md]]
 - Design-system guide: [[design_system.md]]

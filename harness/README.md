@@ -30,6 +30,7 @@ See [[read-workflow.md]].
 - [read-workflow.md](read-workflow.md): choose source of truth, selective read path, and LLM-Wiki lookup decision (forward pass: wiki → project).
 - [feedback-loop.md](feedback-loop.md): backward pass — flow real-project observations back into wiki/harness/constitution with trigger, classification, evidence gate, and per-class operations.
 - [research-intake-loop.md](research-intake-loop.md): keep volatile guidance current through watchlists, research briefs, review, and validation before canonical promotion.
+- [auto-research.md](auto-research.md): human-controlled research-on-request protocol for checking current internet sources before advisory briefs or canonical promotion.
 - [graph-hygiene.md](graph-hygiene.md): keep Obsidian graph discoverability useful by linking canonical guidance while allowing intentional template/report/archive orphans.
 - [knowledge-lookup-metric.md](knowledge-lookup-metric.md): score when real repo work should consult LLM-Wiki.
 - [hermes-read-planning.md](hermes-read-planning.md): optional workflow for projects that enable Hermes as a read-only context indexer/read planner.
@@ -58,8 +59,10 @@ See [[read-workflow.md]].
 | Choosing what to read | `read-workflow.md` |
 | Filing observation back into wiki/harness/constitution | `feedback-loop.md` |
 | Refreshing volatile guidance such as deployment, frontend, CMS, security, AI agents, or project orientation | `research-intake-loop.md` + `../research/watchlist.md` |
+| Human-requested current-source research | `auto-research.md` + `../research/watchlist.md` |
 | Checking Obsidian graph orphan policy | `graph-hygiene.md` |
 | Deciding whether repo work should consult LLM-Wiki | `knowledge-lookup-metric.md` |
+| Choosing required agent knowledge packs for a session | `../wiki/knowledge/project-docs/agent_session_packs.md` |
 | Optional Hermes read planning in a project | `hermes-read-planning.md` |
 | Harness/process improvement | `intake.md`, `risk-lanes.md`, `task-packet.md` |
 | Broad project planning | `task-decomposition.md` + `../templates/implementation_plan.template.md` |
@@ -73,6 +76,7 @@ See [[read-workflow.md]].
 - Define shared names in repo `docs/contracts.md` before parallel code work.
 - Delegate only tasks that are Atomic, have Clear input/output, are Idempotent, and Decidable (ACID).
 - Use [[knowledge-lookup-metric.md]] before opening LLM-Wiki during real repo work when architecture, scope, contracts, security, production, or reusable-blueprint context may matter.
+- Use [[../wiki/knowledge/project-docs/agent_session_packs.md]] to classify session type and load only the required packs. Coding sessions always include the Security Baseline; use the Security Deep Pack only on trigger.
 - Use [[hermes-read-planning.md]] only for projects that explicitly enable Hermes. Hermes is advisory and never overrides repo or LLM-Wiki source-of-truth rules.
 
 For general working rules see [[../global-rules.md]]. For stable laws see [[../llm-wiki-constitution.md]].

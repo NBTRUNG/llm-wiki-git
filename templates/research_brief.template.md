@@ -43,3 +43,8 @@ Status: draft | reviewed | promoted | rejected
 - Decision: promote | watch | reject
 - Reason:
 - Validation report:
+
+## next review
+
+- Next cadence trigger:
+- Watchlist row:

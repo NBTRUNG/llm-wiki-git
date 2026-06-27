@@ -48,6 +48,10 @@ Current work:
 - [x] Project Orientation and research intake loop added: new projects must answer design-driver questions, select guide packs, record first proof, and check volatile research topics before implementation planning. Evidence: `reports/validation/2026-06-20-project-orientation-research-loop.md`.
 - [x] Obsidian graph hygiene added: canonical guides/workflows must be indexed with real links, while templates/reports/archive/raw can be intentional orphans when parent catalogs explain them. Evidence: `reports/validation/2026-06-20-graph-hygiene.md`.
 - [x] Agent Coding Pack bootstrap added: coding agents now load the full coding rule pack once at session/assignment start, with narrow non-code exceptions and result-report evidence. Evidence: `reports/validation/2026-06-22-agent-coding-pack-bootstrap.md`.
+- [x] Agent session packs + frontend/UI/contracts/operations taxonomy added: agents classify required packs by session type, Coding Pack always carries Security Baseline, Security Deep Pack is trigger-based, and result reports now record packs loaded plus security impact. Evidence: `reports/validation/2026-06-27-agent-session-packs-frontend-ui-security.md`.
+- [x] Agent skill hygiene refactor completed: backed up and refactored local `architecture-skill` and `vercel-react-best-practices` so active skills route to LLM-Wiki knowledge instead of carrying duplicate architecture/frontend rule catalogs; scaffold now requires confirmed architecture decision. Evidence: `reports/validation/2026-06-27-agent-skill-hygiene-refactor.md`.
+- [x] Post-task/project closeout distillation and human-controlled research-on-request added: agents must run a distillation gate after review and before Done, project closeout transfers reusable knowledge only, and internet research is advisory/on-request rather than autonomous. Evidence: `reports/validation/2026-06-27-distillation-closeout-research-on-request.md`.
+- [x] Knowledge pack internet refresh completed on explicit human request: frontend, UI accessibility, contracts, operations, and security packs updated from official sources only. Evidence: `reports/research/2026-06-27-knowledge-pack-refresh.md`, `reports/validation/2026-06-27-knowledge-pack-internet-refresh.md`.
 
 Pause checkpoint - 2026-06-20:
 
@@ -155,6 +159,9 @@ Previous completed organization work:
    Human-orchestrated mode when human directly runs multiple agents,
    integration owner before merge/rollup, shared-file section locks, Markdown
    merge-plan staging, and Hermes advisory overlap detection only.
+4. Skill hygiene baseline is now in place for architecture and Vercel React
+   skills. Future skill updates should preserve the same rule: behavior and
+   pointers in skills, knowledge in LLM-Wiki.
 
 ## Latest Checkpoint
 

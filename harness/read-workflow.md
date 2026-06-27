@@ -127,6 +127,21 @@ unrelated LLM-Wiki knowledge or full repo history. Use the Knowledge Lookup
 Metric for non-coding knowledge lookup and for architecture/scope/history
 questions beyond the Coding Pack.
 
+#### Agent session packs
+
+Use `../wiki/knowledge/project-docs/agent_session_packs.md` to classify the
+current session and load only the packs required by the work type:
+
+- Repo Base Pack for every real-repo session.
+- Coding Pack for code, review, refactor, test, validation, or acceptance work.
+- Security Baseline always inside Coding Pack.
+- Security Deep Pack only when security triggers apply.
+- Web/UI, Architecture, Contracts, and Operations packs only when the session
+  intent requires them.
+
+Packs do not override the active repo. If a required pack conflicts with repo
+rules, follow the repo and record the conflict in the result report.
+
 #### Lead-role bootstrap (token economy)
 
 For projects with a Lead AI role (Codex, Claude, Gemini, DeepSeek, or any AI assigned), apply the Token Economy Law:

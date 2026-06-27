@@ -11,6 +11,11 @@ Evidence and review records for LLM-Wiki work units.
 
 ## index (most recent first)
 
+- [2026-06-27-knowledge-pack-internet-refresh.md](2026-06-27-knowledge-pack-internet-refresh.md)
+- [2026-06-27-distillation-closeout-research-on-request.md](2026-06-27-distillation-closeout-research-on-request.md)
+- [2026-06-27-agent-skill-hygiene-refactor.md](2026-06-27-agent-skill-hygiene-refactor.md)
+- [2026-06-27-agent-session-packs-frontend-ui-security.md](2026-06-27-agent-session-packs-frontend-ui-security.md)
+- [2026-06-24-knowledge-coding-architecture-security.md](2026-06-24-knowledge-coding-architecture-security.md)
 - [2026-06-22-agent-coding-pack-bootstrap.md](2026-06-22-agent-coding-pack-bootstrap.md)
 - [2026-06-20-graph-hygiene.md](2026-06-20-graph-hygiene.md)
 - [2026-06-20-project-orientation-research-loop.md](2026-06-20-project-orientation-research-loop.md)

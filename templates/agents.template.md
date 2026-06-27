@@ -11,6 +11,12 @@ Last updated: `{{YYYY-MM-DD}}`
 - Coding sessions load the full LLM-Wiki Coding Pack once at session/assignment
   start; this is a bounded safety baseline, not permission to read full repo
   history or unrelated wiki docs.
+- Agents classify the session pack before work. Coding sessions always include
+  the Security Baseline; security-sensitive sessions add the Security Deep Pack
+  and report whether human security review is needed.
+- After review passes, agents run the Post-Task Distillation Gate before Done:
+  record skipped/required, file reusable knowledge or queue deferred candidates,
+  and update wikilinks/indexes when distillation is required.
 - Respect task packet Allowed Write Targets and Forbidden Side Effects.
 - Record evidence before marking work complete.
 
@@ -46,9 +52,10 @@ Read only:
 
 1. `AGENTS.md`
 2. `REPO_RULES.md`
-3. Full LLM-Wiki Coding Pack once when the session is code/review/refactor/test/validation work
-4. `agents/<agent>/AGENT.md`
-5. Files listed in the assigned task's Required Read Files
+3. LLM-Wiki `agent_session_packs.md` to classify required packs
+4. Full LLM-Wiki Coding Pack once when the session is code/review/refactor/test/validation work
+5. `agents/<agent>/AGENT.md`
+6. Files listed in the assigned task's Required Read Files
 
 Delegated agents do not read Lead state, project-wide rollups,
 per-agent task/status/archive files, or unrelated LLM-Wiki knowledge unless the
@@ -95,6 +102,9 @@ file defines roles, not which AI fills them.
 
 - `${LLM_WIKI_ROOT}/harness/read-workflow.md`
 - `${LLM_WIKI_ROOT}/harness/task-packet.md`
+- `${LLM_WIKI_ROOT}/wiki/knowledge/project-docs/agent_session_packs.md`
+- `${LLM_WIKI_ROOT}/wiki/knowledge/project-docs/post_task_distillation.md`
+- `${LLM_WIKI_ROOT}/wiki/knowledge/project-docs/project_closeout_distillation.md`
 - `${LLM_WIKI_ROOT}/wiki/knowledge/coding/agent-coding-workflow.md`
 - `${LLM_WIKI_ROOT}/wiki/knowledge/project-docs/session_start.md`
 - `${LLM_WIKI_ROOT}/wiki/knowledge/project-docs/token-economy-bootstrap.md`

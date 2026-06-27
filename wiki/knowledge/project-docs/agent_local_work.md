@@ -159,6 +159,31 @@ work, deviation from exact output, LWOE measurement, or human/Lead request.
 For small read-only lookups or low-risk changes, handoff + diff + validation
 can be enough.
 
+## post-task distillation gate
+
+After human, Lead, or integration-owner review passes, but before the task is
+marked done, the agent must run the distillation gate in
+[[post_task_distillation.md]].
+
+The result handoff or result report must record either:
+
+```text
+Distill: skipped
+Reason: <why no reusable knowledge was produced>
+```
+
+or:
+
+```text
+Distill: required
+Type: troubleshooting | pattern | decision | concept | runbook | contract-note | anti-pattern | validation-note
+Target: <repo path or LLM-Wiki path>
+```
+
+Do not mark done before distillation is recorded and any required page, repo
+decision, contract note, runbook, queue row, or wikilink/index update is
+complete.
+
 ## legacy split-file compatibility
 
 The older LLM-Wiki pattern used:
