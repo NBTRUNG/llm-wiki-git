@@ -13,6 +13,8 @@ This folder owns reusable release and operations knowledge.
 
 - [[deployment-readiness.md]] — release/deployment checks, config, environment,
   smoke tests, and proof.
+- [[deployment-diagnostics.md]] — token-budgeted build, publish, package,
+  runtime-smoke, and deploy-debug triage.
 - [[observability.md]] — logs, metrics, traces, dashboards, alert ownership,
   and sensitive-data handling.
 - [[rollback.md]] — rollback, recovery, migration fallback, and cutover notes.

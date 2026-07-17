@@ -9,9 +9,9 @@ source_urls:
   - file:///home/admindebian/UniversityWeb/reports/validation/2026-05-23-bootstrap-token-audit.md
 local_source: observed in /home/admindebian/UniversityWeb during 2026-05-22 / updated 2026-05-23
 date_ingested: 2026-05-23
-date_updated: 2026-05-25
+date_updated: 2026-07-16
 confidence: high
-confidence_reviewed: 2026-05-25
+confidence_reviewed: 2026-07-10
 applicable_contexts:
   - multi-agent projects with disjoint workstreams
   - phase-based parallel execution
@@ -26,10 +26,18 @@ How to run several AI agents in parallel on one project without conflicts.
 For ACID + complexity + delegation, see [[../../../harness/task-decomposition.md]].
 For task packet shape, see [[../../../harness/task-packet.md]].
 For agent-local file roles, see [[agent_local_work.md]].
+For evidence-based task/autonomy routing, see [[agent_capability_tiers.md]].
 
 This guide adds the **coordination layer** on top of those: how to decompose work
 into independent groups, how to define each agent's role, how to handle
 conflicts, and how to roll completed work back into the project source of truth.
+
+All topologies use the default
+[Human-Agent Hybrid Control](human_agent_hybrid_control.md) baseline. Lead-
+orchestrated and Human-orchestrated describe routing, not separation of human
+and agent responsibility. A human/Lead/integration owner retains intent,
+permission, accountability, and acceptance; agents retain bounded execution,
+verification support, uncertainty disclosure, and evidence.
 
 ## three-tier task board (recap)
 
@@ -53,6 +61,8 @@ only agent-local file the delegated agent reads by default after `AGENTS.md` and
 The card declares:
 
 - **Role summary**: one paragraph on what this agent does and does not do
+- **Capability envelope**: Lead-owned tier, dimension/domain qualification,
+  context projection, autonomy ceiling, evidence, expiry, and handoff route
 - **Read order**: mandatory read files before any work
 - **Coordination mode**: Lead-orchestrated or Human-orchestrated review path,
   plus integration owner
@@ -62,8 +72,16 @@ The card declares:
 - **Current write boundary**: paths the agent is allowed to touch this phase
 - **Forbidden side effects**: behavioral constraints (e.g., "do not change CSS/JS, do not run migrations")
 - **Current checkpoint**: latest progress, blocker, validation, result handoff
+- **Hybrid control grant**: human sponsor, action-risk lane, allowed/forbidden
+  actions, approval events, expiry, interrupt route, rollback route, and
+  acceptance owner
 
 Use [[../../../templates/agent_role_card.template.md]] as the skeleton.
+
+Capability envelope fields are Lead-owned. A delegated agent may self-downgrade
+or report a mismatch, but it must never assign or upgrade its own tier. An
+unrated/expired agent defaults to `C0`, and task assignment requires component-
+wise fit with the task capability contract before coordination begins.
 
 ## coordination topologies
 
@@ -131,6 +149,11 @@ The integration owner decides which outputs are accepted, which are rejected,
 what conflicts exist, and what source-of-truth files are updated. Without an
 integration owner, agents stop at handoff.
 
+Integration ownership is not permission to rubber-stamp. The owner checks the
+actual outcome, policy boundaries, material uncertainty, and evidence. Agents
+must complete routine qualified work and verification rather than forwarding
+unanalysed choices to the integration owner.
+
 When several agents propose changes for the same file section/row, the
 integration owner may create:
 
@@ -140,8 +163,8 @@ reports/integration/<task-id>-merge-plan.md
 
 Use the merge plan to record source proposals, accepted/rejected parts, target
 section/rows, final patch summary, validation, and rollback note. Do not use
-Hermes cache or SQLite as the temporary draft store for content that will be
-merged.
+retired cache/index systems as the temporary draft store for content that will
+be merged.
 
 ### Shared-file write delegation
 
@@ -187,8 +210,36 @@ Staging rule:
 - Same file, same section/row: agents submit proposals only.
 - Same file, same section/row: integration owner chooses/merges and updates the
   canonical source file.
-- Hermes may warn about overlap/staleness, but proposals must live in Markdown
-  (`AGENT.md`, `reports/agent/`, or `reports/integration/`).
+- Proposals must live in Markdown (`AGENT.md`, `reports/agent/`, or
+  `reports/integration/`).
+
+### Claim / release
+
+Before implementation, each agent must claim the task or section it is about to
+work on when the project has `TICK.md`, task-board claim fields, or task-packet
+claim fields.
+
+Required claim fields:
+
+```text
+Claim status: unclaimed | claimed | released | blocked | stale
+Claimed by:
+Claim scope:
+Claimed at:
+Release reason:
+Next eligible owner:
+```
+
+Rules:
+
+- A task with `Claim status: claimed` belongs to the named active session.
+- Another agent must not start that task unless the human, Lead, or integration
+  owner releases, reassigns, or splits the claim.
+- Claim scope must be as narrow as practical: task id, workflow slice, file,
+  section, row, or validation surface.
+- Release the claim when the task is done, blocked, paused, or reassigned.
+- Mark stale claims when the owner is unreachable beyond the project timeout;
+  stale claim resolution belongs to the human, Lead, or integration owner.
 
 ## phase-based parallel execution
 
@@ -248,8 +299,9 @@ Delegated agents read minimal context by default:
 
 1. `AGENTS.md`
 2. `REPO_RULES.md`
-3. `agents/<agent>/AGENT.md`
-4. Files listed in task `Required read files`
+3. `TICK.md` when present
+4. `agents/<agent>/AGENT.md`
+5. Files listed in task `Required read files`
 
 They do **not** read `docs/project_brief.md`, `docs/decisions.md`,
 `AI_CODEX.md`, per-agent task/status/archive files, or LLM-Wiki by default. The
@@ -324,10 +376,12 @@ When the Lead role transfers from AI A → AI B (for any reason — availability
 - Conflict resolved silently by one agent overwriting the other's work.
 - Lead agent treats `reports/agent/<agent>/<id>-result.md` as the status board.
 - Human-orchestrated parallel work has no integration owner before merge/rollup.
+- Human approves agent output without outcome/evidence review, or an agent uses
+  human review as a substitute for bounded verification.
 - Shared-file write delegation does not name section/row locks.
 - Two agents update the same shared row because only file-level ownership was
   checked.
-- Hermes cache is used as the draft store for proposed content.
+- A retired cache/index system is used as the draft store for proposed content.
 - Agents in Human-orchestrated mode assume other agents have read their output.
 - Report files become the review inbox instead of `AGENT.md` result handoff.
 - Daily work log used as a status replacement instead of as audit history.

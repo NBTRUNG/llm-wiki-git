@@ -1,0 +1,65 @@
+{
+  "workflow_id": "real-repo-work",
+  "canonical_markdown": "workflows/real-repo-work.workflow.md",
+  "trigger": [
+    "code, UI, API, database, or test work in a real repo",
+    "repo task, status, or test-matrix update",
+    "checking whether a repo request belongs to the current task plan"
+  ],
+  "start_file": "<repo>/AGENTS.md",
+  "source_of_truth": "The real repo wins for code, docs, tasks, status, decisions, and test matrix.",
+  "required_reads": [
+    "<repo>/AGENTS.md",
+    "workflows/catalog.md",
+    "workflows/real-repo-work.workflow.md",
+    "<repo>/REPO_RULES.md when present",
+    "<repo>/TICK.md or current-state file",
+    "<repo>/docs/tasks.md",
+    "<repo>/docs/test_matrix.md or equivalent"
+  ],
+  "conditional_reads": [
+    "LLM-Wiki knowledge packs only when repo entry files or task packets trigger them",
+    "harness details only when the workflow card is insufficient"
+  ],
+  "allowed_writes": [
+    "repo source code and docs named by the task",
+    "repo task, status, and test-matrix files",
+    "repo validation reports",
+    "Agent Platform raw/evidence namespace when raw proof is captured"
+  ],
+  "forbidden_writes": [
+    "active repo state in LLM-Wiki",
+    "raw snapshots inside the repo",
+    "code changes before checking task ownership and claim rules when present"
+  ],
+  "approval_gates": [
+    "request is not in the current task plan",
+    "architecture, data contract, permissions, deployment, or sensitive data boundary changes",
+    "write to live systems or raw source-of-truth data is proposed"
+  ],
+  "evidence_before_done": [
+    "repo task or status update",
+    "repo test-matrix update or equivalent proof entry",
+    "validation or agent result report",
+    "separate LLM-Wiki file-back proposal if reusable knowledge was discovered"
+  ],
+  "closeout_rules": [
+    "if the user says stop or pause, run workflows/session-closeout.workflow.md for the active work target"
+  ],
+  "drift_checks": [
+    {
+      "id": "read-order-includes-workflow-route",
+      "description": "Subordinate repo operating guides should preserve the real-repo workflow route required by repo entry files.",
+      "must_include": [
+        "AGENTS.md",
+        "workflows/catalog.md",
+        "workflows/real-repo-work.workflow.md",
+        "REPO_RULES.md",
+        "TICK.md",
+        "assigned task packet"
+      ],
+      "remediation": "Update the subordinate guide read order so it includes the workflow catalog and real-repo workflow before repo-specific rules and task packet reads."
+    }
+  ]
+}
+

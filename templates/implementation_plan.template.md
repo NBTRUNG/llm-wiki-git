@@ -34,6 +34,23 @@ Planner:
 | 4 - hardening | | |
 | 5 - release | | |
 
+## business workflow plan
+
+Plan from the business workflow first, then split into technical tasks.
+
+| Workflow ID | User/business outcome | UI map | Code map | Data map | Raw verification | Required contracts | First proof | Affected phase(s) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| WF- |  |  |  |  |  |  |  |  |
+
+## cross-cutting outcomes
+
+Use for platform, security, deployment, migration, upgrade, design-system,
+observability, or other work that supports multiple workflows.
+
+| Cross-cutting ID | Outcome | Affected workflows | Required maps/contracts | First proof |
+| --- | --- | --- | --- | --- |
+| CROSS-CUTTING- |  |  |  |  |
+
 ## workstreams
 
 | Workstream | Scope | Owner/default delegation | Notes |
@@ -63,11 +80,17 @@ Planner:
 | Shared types/models | | | yes / no | proposed / accepted / blocked |
 | Routes/events/permissions | | | yes / no | proposed / accepted / blocked |
 
+## workflow task sequence
+
+| Workflow ID | Sequence | Blocking decision/contract | Parallelizable slices | First validation |
+| --- | --- | --- | --- | --- |
+| WF- | contracts/maps -> data/base -> backend/code -> UI -> integration -> validation |  |  |  |
+
 ## task breakdown summary
 
-| ID | Task | Phase | Workstream | Depends on | Contracts | Owner | Review owner | File group | Parallelizable | Lane | Complexity | Delegation | ACID | Evidence |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| TASK-001 | | | | | none / CONTRACT-001 | | | | yes / no | tiny / normal / high-risk | simple / normal / hard / expert | delegate-ok / delegate-with-review / main-agent / human-decision-required | pass / needs-split / blocked | |
+| ID | Task | Workflow ID | Slice | Phase | Workstream | Depends on | Contracts/maps | Owner/team | Review owner | File group | Parallelizable | Lane | Complexity | Delegation | ACID | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| TASK-001 | | WF- / CROSS-CUTTING- | contracts/maps / data-base / backend-code / UI / integration / validation / release-ops | | | | none / CONTRACT-001 / UI- / CODE- / DATA- / RAW- | | | | yes / no | tiny / normal / high-risk | simple / normal / hard / expert | delegate-ok / delegate-with-review / main-agent / human-decision-required | pass / needs-split / blocked | |
 
 ## current recommended sequence
 

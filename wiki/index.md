@@ -24,6 +24,7 @@ Project docs and raw sources remain source of truth. This wiki summarizes, links
 - LLM-Wiki manifest: `projects/llm-wiki/project_manifest.md`
 - LLM-Wiki brief: `projects/llm-wiki/docs/project_brief.md`
 - LLM-Wiki status: `projects/llm-wiki/docs/project_status.md`
+- LLM-Wiki current direction: `projects/llm-wiki/docs/current_direction.md`
 - LLM-Wiki tasks: `projects/llm-wiki/docs/tasks.md`
 - LLM-Wiki decisions: `projects/llm-wiki/docs/decisions.md`
 - LLM-Wiki test matrix: `projects/llm-wiki/docs/test_matrix.md`
@@ -57,13 +58,27 @@ When a gap is filled, move its bullet to "Recently filled" with the filling-date
 - LLM-Wiki rules: `../global-rules.md`
 - Agent coding workflow: `knowledge/coding/agent-coding-workflow.md`
 - Agent session packs: `knowledge/project-docs/agent_session_packs.md`
+- Default Human-Agent Hybrid Control: `knowledge/project-docs/human_agent_hybrid_control.md`
+- Agent capability tiers/projections: `knowledge/project-docs/agent_capability_tiers.md`
+- Work-unit context budget pilot: `knowledge/project-docs/work_unit_context_budget.md`
+- Codebase navigation and derived indexes: `knowledge/project-docs/codebase_navigation.md`
 - Post-task distillation: `knowledge/project-docs/post_task_distillation.md`
 - Project closeout distillation: `knowledge/project-docs/project_closeout_distillation.md`
 - Repo code rules: `knowledge/coding/repo-code-rules.md`
 - Frontend engineering: `knowledge/frontend/README.md`
 - UI/UX implementation: `knowledge/ui/README.md`
 - Contracts knowledge: `knowledge/contracts/README.md`
+- Data knowledge: `knowledge/data/README.md`
+- Algorithms knowledge: `knowledge/algorithms/README.md`
+- Math / Formal Analysis: `knowledge/math/README.md`
+- AI / Agent / RAG / MCP: `knowledge/ai-agent-rag-mcp/README.md`
+- Agent error cases: `knowledge/agent-errors/README.md`
+- Security / Privacy: `knowledge/security-privacy/README.md`
+- Platform / Infrastructure: `knowledge/platform-infrastructure/README.md`
+- Reliability / SRE: `knowledge/reliability-sre/README.md`
+- Content / CMS / SEO / i18n: `knowledge/content-cms-seo-i18n/README.md`
 - Operations knowledge: `knowledge/operations/README.md`
+- TAO / ILIAS education platform concepts: `concepts/education-platforms/README.md`
 - Constitution: `../llm-wiki-constitution.md`
 - Program: `../program.md`
 - Harness: `../harness/README.md`

@@ -14,6 +14,12 @@ See [[README.md]] for status values and rules.
 | ID | Date | Status | Title | Source project | Link |
 |---|---|---|---|---|---|
 | DEC-0001 | 2026-05-23 | accepted | Link constitution amendments to feedback-loop.md procedure | llm-wiki | [[DEC-0001-constitution-amendment-feedback-loop-linkage.md]] |
+| DEC-0002 | 2026-07-10 | accepted | Make Agent Platform the owner of active raw artifacts | llm-wiki | [[DEC-0002-agent-platform-owns-active-raw.md]] |
+| DEC-0003 | 2026-07-11 | accepted | Adopt the LLM-Wiki Agent Delivery Workflow | llm-wiki | [[DEC-0003-agent-delivery-workflow.md]] |
+| DEC-0004 | 2026-07-11 | accepted | Adopt a human projection and manual recovery path | llm-wiki | [[DEC-0004-human-projection-and-manual-recovery.md]] |
+| DEC-0005 | 2026-07-11 | accepted | Adopt a shared Bounded Change Fast Path | llm-wiki | [[DEC-0005-bounded-change-fast-path.md]] |
+| DEC-0006 | 2026-07-11 | accepted | Adopt one cross-repo P1 bounded coding projection | llm-wiki | [[DEC-0006-p1-bounded-coding-projection.md]] |
+| DEC-0007 | 2026-07-16 | accepted | Make Human-Agent Hybrid Control the default operating model | llm-wiki | [[DEC-0007-human-agent-hybrid-control-default.md]] |
 
 ## pending amendments
 

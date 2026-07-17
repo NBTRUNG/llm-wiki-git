@@ -32,6 +32,13 @@ CONTRACTS
 EVIDENCE
 [ ] Validation evidence exists (commands run, tests passed, manual checks done)
 [ ] Or: missing proof is explicitly documented with a reason
+
+HYBRID CONTROL
+[ ] Human sponsor/acceptance owner and agent responsibility are clear
+[ ] Capability, autonomy, permission, action risk, and reversibility fit the task
+[ ] Required human approval occurred at the consequential action boundary
+[ ] Reviewer inspected outcome/evidence rather than rubber-stamping agent prose
+[ ] Agent completed routine bounded verification rather than outsourcing it to review
 ```
 
 If all quick scan items pass, proceed to detailed review.
@@ -58,6 +65,14 @@ If all quick scan items pass, proceed to detailed review.
 - [ ] Authentication and authorization are enforced where required
 - [ ] No secrets, tokens, keys, or passwords in code or logs
 - [ ] Sensitive data is not logged, returned unnecessarily, or exposed
+
+### human-agent hybrid control
+
+- [ ] Human intent, risk boundary, permission, and acceptance are explicit
+- [ ] Agent stayed within its claim/write/tool grant and disclosed uncertainty
+- [ ] Interrupt/rollback controls are labeled verified, manual, unverified, or unavailable
+- [ ] No self-upgrade, privilege expansion, unapproved delegation, or audit tampering
+- [ ] Human and agent dependence was balanced; neither side abdicated its responsibility
 
 ### test quality
 

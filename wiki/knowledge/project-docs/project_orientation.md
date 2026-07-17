@@ -189,6 +189,11 @@ Use existing project docs before creating new doc types. Prefer:
 - `wiki/architecture.md` for system shape and boundaries;
 - `docs/contracts.md` for shared names, routes, aliases, DTOs, schemas, roles,
   permissions, events, API shapes;
+- `docs/data_map.md` for workflow-first data ownership, environment/database
+  quick card, active table/entity/content-type mappings, field-to-code/raw
+  traceability, and conditional knowledge pointers;
+- `docs/database_inventory.md` for full/raw schema inventories and verification
+  queries opened only by data-map/task anchors;
 - `docs/design_system.md` and `ui_map/*` for UI-heavy work;
 - `docs/implementation_plan.md` for phases and workstreams;
 - `docs/tasks.md` for executable delegated packets;
@@ -213,6 +218,9 @@ Refresh this guide through the research intake loop when:
 - Secondary drivers are explicit when one orientation is not enough.
 - The first proof is concrete and testable.
 - Required docs are limited to what the orientation needs.
+- Data-first, migration/refactor, reporting, CMS/content, and backend-heavy
+  orientations include a data map that lets agents trace workflow -> code ->
+  logical data -> raw storage without broad grep.
 - Rejected orientations explain the trade-off.
 - The orientation can be revised through `docs/decisions.md` when evidence
   shows the original risk model was wrong.
@@ -225,5 +233,7 @@ Refresh this guide through the research intake loop when:
 - Treating feature-first as a product discovery method; it is primarily a code
   organization/delivery strategy.
 - Creating every possible doc for a small project.
+- Dumping a whole database schema into the working map instead of exposing only
+  the active workflow data surface and pointing to raw inventory by anchor.
 - Letting agents start implementation while `Primary design driver` or `First
   proof required` is still unknown.

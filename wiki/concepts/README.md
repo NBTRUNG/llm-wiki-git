@@ -6,9 +6,11 @@ Use concepts for knowledge that applies across projects.
 
 ## current concept maps
 
-- `llm-wiki/`: 4-stage lifecycle and visual model for LLM-Wiki operating flow.
-- `architecture/`: C4 model, arc42 template, quality attributes, ADR format.
-- `security/`: OWASP Top 10 2025, STRIDE, defense in depth, zero trust.
+- [llm-wiki/](llm-wiki/): 4-stage lifecycle and visual model for LLM-Wiki operating flow.
+- [ai-agent-rag-mcp/](ai-agent-rag-mcp/): local AI, RAG, MCP tools, and natural-language data operations.
+- [architecture/](architecture/): C4 model, arc42 template, quality attributes, ADR format.
+- [security/](security/): OWASP Top 10 2025, STRIDE, defense in depth, zero trust.
+- [education-platforms/](education-platforms/): TAO assessment, ILIAS LMS/training management, and their evidence-gated evaluation boundary.
 
 ## rules
 

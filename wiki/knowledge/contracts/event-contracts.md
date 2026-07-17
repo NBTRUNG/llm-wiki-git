@@ -5,9 +5,10 @@ date_ingested: 2026-06-27
 status: active
 source_type: web-research + project-file-back
 source_urls:
+  - https://cloudevents.io/
   - https://github.com/cloudevents/spec
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # event contracts
@@ -32,6 +33,15 @@ pub/sub topics, projections, or cross-service workflows.
   access control or selective disclosure matters.
 - Test or manually prove success, duplicate, malformed, retry, and failure paths
   based on task risk.
+
+## current-source notes checked 2026-07-01
+
+- CloudEvents is a CNCF Graduated project. CloudEvents core spec 1.0.2 remains
+  compatible with v1.0, and CloudEvents SQL v1 is available for standardized
+  filtering/querying.
+- Use CloudEvents SQL only when event filtering semantics need to be shared or
+  portable. Do not add a query/filter layer when simple topic routing or
+  consumer-side filtering is enough.
 
 ## anti-patterns
 

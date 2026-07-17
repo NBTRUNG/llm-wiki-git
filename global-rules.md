@@ -55,6 +55,20 @@ For real repo status, update the repo files:
 - Reports store evidence/history; they do not replace current status files.
 - Mark work done only with proof or documented missing proof.
 - Update indexes/read orders when a path or workflow changes.
+- Every substantive suggestion or recommendation must include its objective,
+  constraints/assumptions, baseline or alternative, mathematical pros and cons,
+  evidence/uncertainty, and the sensitivity or revision trigger. If several
+  dimensions conflict, show the trade-off or Pareto relation; do not hide a
+  hard constraint inside an invented aggregate score. If no disadvantage is
+  known under the stated assumptions, say so explicitly instead of omitting
+  the `Cons` field.
+- Capability-managed agents must follow
+  `wiki/knowledge/project-docs/agent_capability_tiers.md`: use only the assigned
+  capability envelope and context projection, treat unrated/expired profiles as
+  `C0`, and stop or hand off when the task requirement exceeds the envelope.
+  Agents may self-downgrade but must never assign or upgrade their own tier.
+  Provider name, product tier, parameter count, fluent prose, or a single good
+  run is not capability evidence.
 - For agent task files, accepted-history archive writes are owned by the Lead /
   review owner, even when the same AI is both implementer and Lead. The
   executing role may prepare status, result report, and archive-row proposal;
@@ -67,6 +81,11 @@ See [[llm-wiki-constitution.md#15. checkpoint law]] for the law.
 
 Practical reminder: do not wait until the end of a long session. Token, power,
 or session loss must not lose state.
+
+When the user says "dừng tại đây", "dung tai day", "stop here", or asks to
+pause/save, agents must run [[workflows/session-closeout.workflow.md]] before
+ending: update live state, task ledger, evidence matrix, report index, and
+archive completed task history when the active ledger is over budget.
 
 ## wiki-gap reporting
 
@@ -92,6 +111,8 @@ Do not silently invent a rule or guess when the wiki has no coverage.
 - Do not silently guess missing data.
 - Mark low-confidence extraction as `needs-review`.
 - Do not overwrite user-reviewed content without a clear reason.
-- Keep raw sources read-only unless explicitly asked.
+- Store new active raw artifacts under
+  `/home/admindebian/Agent-Platform/raw/projects/<project-id>/`; local `raw/` is
+  legacy-only. Keep captured raw sources read-only unless explicitly asked.
 - Do not push/sync/publish public GitHub output unless the user asks.
 - Do not publish local/private paths, `active.md`, raw local concepts, or validation reports without review.

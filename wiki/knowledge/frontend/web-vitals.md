@@ -11,7 +11,7 @@ source_urls:
   - https://web.dev/articles/inp
   - https://web.dev/articles/cls
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # web vitals
@@ -43,6 +43,11 @@ budgets:
 
 Field data wins when available. Lab data is acceptable for local diagnosis, but
 must be labeled as lab/browser evidence.
+
+Official web.dev guidance checked 2026-07-01 still lists LCP, INP, and CLS as
+the stable Core Web Vitals. INP replaced FID as the responsiveness metric; tools
+without real user input cannot directly measure INP, so lab-only runs should
+label Total Blocking Time as a proxy rather than proof of field INP.
 
 ## task checklist
 

@@ -1,6 +1,6 @@
 ---
 name: repo-code-rules
-description: Long-form rules for code, review, test, and docs work inside a real project repo. Part of the full Coding Pack loaded at the start of coding sessions.
+description: Long-form rules for code, review, test, and docs work inside a real project repo. Canonical Coding Pack content loaded directly by eligible P2 agents or through validated task-named P0/P1 projections.
 date_ingested: 2026-05-23
 status: active
 ---
@@ -53,23 +53,26 @@ Typical repo read order:
 1. Repo `AGENTS.md`
 2. Repo short rule file neu co, vi du `REPO_RULES.md`
 3. Repo quick AI/context file neu co, vi du `AI_CODEX.md`
-4. Classify session pack with `wiki/knowledge/project-docs/agent_session_packs.md`
-5. Full LLM-Wiki Coding Pack once when the session is code/review/refactor/test/validation work:
+4. Check capability fit and assigned projection with
+   `wiki/knowledge/project-docs/agent_capability_tiers.md`
+5. Classify session pack with `wiki/knowledge/project-docs/agent_session_packs.md`
+6. Canonical Coding Pack directly for eligible `P2` work, or the approved
+   task-named `P0/P1` projection for lower-tier code/review/test work:
    `wiki/knowledge/coding/agent-coding-workflow.md`,
    `karpathy-guidelines.md`, `repo-code-rules.md`, `code-quality.md`,
    `output-quality.md`, `implementation-quality-matrix.md`,
-   `security-baseline.md`, and `testing-strategy.md`
-6. Neu la delegated agent: `agents/<agent>/AGENT.md`
-7. Files trong task `Required read files`
+   `security-baseline.md`, `testing-strategy.md`, and `agent-coding-risks.md`
+7. Neu la delegated agent: `agents/<agent>/AGENT.md`
+8. Files trong task `Required read files`
 
 Repo-specific instructions luon thang file rule chung nay.
 
 ## coding-session bootstrap
 
-Delegated and Lead agents doing implementation work should not rely only on
-short capsules. When the session may write, review, refactor, test, validate,
-or accept repo code, read the full Coding Pack once at session/assignment
-start.
+Delegated and Lead agents doing implementation work must use the canonical
+Coding Pack. Eligible `P2` agents read it directly once; `P0/P1` agents use an
+approved task-named projection that preserves all mandatory constraints. If no
+validated projection exists, the lower-tier agent stops or hands off.
 
 The full Coding Pack is:
 
@@ -82,9 +85,15 @@ wiki/knowledge/coding/output-quality.md
 wiki/knowledge/coding/implementation-quality-matrix.md
 wiki/knowledge/coding/security-baseline.md
 wiki/knowledge/coding/testing-strategy.md
+wiki/knowledge/coding/agent-coding-risks.md
 ```
 
-Read the pack once, not once per micro-task. Re-read only after compaction,
+The canonical cross-repo projection for qualified `C2-C3` bounded coding work
+is `P1-BOUNDED-CODING` at
+`wiki/knowledge/coding/bounded-coding-core.md`. Repo capsules and maps compose
+with it but do not replace it or create a repo-specific projection.
+
+Read the assigned pack/projection once, not once per micro-task. Re-read only after compaction,
 handoff to a new agent, file changes, or exact-wording conflict.
 
 Narrow exceptions:
@@ -95,9 +104,11 @@ Narrow exceptions:
 - typo or copy fixes that do not touch behavior, contracts, UI layout, command
   semantics, or validation evidence.
 
-Repo `REPO_RULES.md` should contain mandatory short capsules for quick recall,
-but those capsules do not replace the full Coding Pack for real coding
-sessions.
+Repo `REPO_RULES.md` should contain mandatory short capsules for quick recall.
+They are repo coordinates and stricter local rules. They are not a lower-tier
+Coding Pack projection unless a separate canonical projection contract
+explicitly says so. For ordinary bounded `C2-C3` coding, the task names
+`P1-BOUNDED-CODING` and separately names the required repo capsules.
 
 Security baseline is always part of the Coding Pack. For every coding result,
 report security impact, areas touched, risk found, and whether human review is
@@ -279,7 +290,7 @@ docs/agent_status.md
 
 | Principle | Anti-pattern | Fix |
 | --- | --- | --- |
-| Coding-session bootstrap | Starting implementation from capsules only | Load the full Coding Pack once at session/assignment start |
+| Coding-session bootstrap | Agent self-selects either a tiny capsule or full pack without capability fit | Use the task-assigned validated projection; `P2` may load full pack, `P0/P1` stop if no valid projection exists |
 | Think before coding | Tu assume format, fields, scope | Hoi hoac ghi assumption khi rui ro |
 | Simplicity first | Them framework/strategy/plugin cho logic nho | Dung mot ham ro rang den khi phuc tap that |
 | Surgical changes | Sua style/refactor lan rong khi fix bug | Chi sua dong can cho task |

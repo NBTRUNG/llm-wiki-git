@@ -14,15 +14,28 @@ Tiny work can skip the full packet only when scope and evidence are obvious.
 ### Metadata
 
 - Type:
+- Workflow ID: WF-... | CROSS-CUTTING-...
+- Affected workflows: none | WF-..., WF-...
+- Workflow slice: contracts/maps | data-base | backend-code | ui | integration | validation | release-ops | other
+- User/business outcome:
 - Phase:
 - Workstream:
 - Lane:
+- Execution mode: standard | bounded change fast path
+- Repo Bounded Change Profile:
+- Fast-path entry decision and escalation triggers:
 - Complexity:
 - Delegation:
 - Suggested owner:
 - Fallback owner:
 - Assigned owner:
 - Review owner:
+- Claim status: unclaimed | claimed | released | blocked | stale
+- Claimed by:
+- Claim scope:
+- Claimed at:
+- Release reason:
+- Next eligible owner:
 - Parallelizable: yes | no
 - File ownership group:
 - Status:
@@ -32,9 +45,44 @@ Tiny work can skip the full packet only when scope and evidence are obvious.
 
 - 
 
+### Capability gate
+
+- Minimum capability tier: C0 | C1 | C2 | C3 | C4 | C5 | C6
+- Required capability dimensions/domains:
+- Assigned context projection: P0 Capsule | P1-BOUNDED-CODING | other approved P1 ID | P2 Map-First
+- Projection source path:
+- Required repo profile/capsules:
+- Maximum autonomy: read-only | proposal-only | sandbox action | bounded write | delegated implementation/review | Lead/integration
+- Required deterministic verifier:
+- Required human/Lead review:
+- Capability evidence/profile:
+- Fallback owner or higher-tier handoff:
+
+### Human-Agent Hybrid Control
+
+- Human sponsor:
+- Acceptance owner:
+- Agent principal/session:
+- Action-risk lane: R0 Observe | R1 Reversible | R2 Consequential | R3 Prohibited
+- Allowed permission grant:
+- Forbidden actions/resources:
+- Human approval events:
+- Grant start and expiry/review trigger:
+- Interrupt/stop route: manual | implemented path | unavailable
+- Rollback/recovery route: manual | verified path | unavailable
+- Human responsibility: intent | risk | permission | judgment | acceptance
+- Agent responsibility: bounded analysis | execution | verification support | evidence
+
 ### Contract references
 
 - 
+
+### Map references
+
+- UI:
+- Code:
+- Data:
+- Raw verification:
 
 ### Context
 
@@ -161,8 +209,26 @@ State which deviations from `Exact output` are pre-authorized (and which are not
 ## rules
 
 - Do not start implementation if acceptance criteria are missing.
+- `Bounded Change Fast Path` is a mode inside Real Repo Work, not permission to
+  omit the packet's exact output, boundaries, capability, or evidence. Apply the
+  repo profile and exit the mode when its shared/local escalation trigger fires.
 - Do not start implementation if exact input, exact output, or required read files are unclear.
 - Do not delegate a task until it is ACID-complete (see `harness/task-decomposition.md`).
+- Do not start or delegate until the capability gate is complete. Missing or
+  expired agent evidence is `C0`; if tier, a mandatory dimension, projection,
+  autonomy, verifier, or reviewer does not fit, shrink the packet or hand off.
+- Do not infer capability from vendor, product name, parameter count, fluent
+  output, or one successful run. Do not let an agent assign or upgrade itself.
+- Higher-tier agents may use lower projections. Lower-tier agents must not use
+  higher projections or synthesize their own capability projection.
+- Code-facing `C2-C3` bounded work should name the canonical cross-repo
+  `P1-BOUNDED-CODING` projection. Repo profiles/maps/capsules are coordinates,
+  not replacements or new Coding Pack projections. A partial full-pack read is
+  neither a complete projection nor a full Coding Pack load.
+- Do not start implementation until the task is claimed by the current session,
+  or the human/Lead/integration owner confirms no claim is required.
+- Release a claim immediately when the task is done, blocked, paused, or
+  reassigned.
 - Do not assign parallel agents to overlapping allowed write targets or the same file ownership group.
 - Do not invent shared function/API/component/CMS names; update `docs/contracts.md` first.
 - Do not let an agent write outside allowed targets.
@@ -180,8 +246,8 @@ State which deviations from `Exact output` are pre-authorized (and which are not
   the report threshold is met.
 - When multiple agents propose edits to the same file section/row, proposals
   must be staged in Markdown handoffs/reports or
-  `reports/integration/<task-id>-merge-plan.md`; do not use Hermes cache as the
-  draft source.
+  `reports/integration/<task-id>-merge-plan.md`; do not use retired cache/index
+  systems as the draft source.
 - Do not expand scope silently. Deviations from `Exact output` are counted as scope-creep (LWOE 6b) unless the packet's `Scope-creep exception policy` pre-authorizes them in writing.
 - Do not mark done without evidence or documented missing proof.
 - If source of truth changes, update the source file, not a compiled copy.

@@ -42,6 +42,7 @@ Choose the approach by the system's dominant uncertainty:
 | Product changes ship as end-to-end features | feature-first / vertical slice | Coupling should follow use cases, not technical layers. |
 | Many subsystems react to the same facts or high-volume streams | event-first | Producers and consumers need decoupling and independent scale. |
 | Many teams need shared self-service capabilities | platform-first | The product is an internal platform/golden path. |
+| Major runtime/framework/CMS upgrade can invalidate schema, package compatibility, routing, or deployment | platform/data/schema-first upgrade | The first risk is whether the new target can build, run, and carry the minimum schema/data workflow. |
 | Early product, small team, unclear boundaries | monolith-first / modular monolith | Operational simplicity is more valuable than premature distribution. |
 
 If two uncertainties are tied, choose the approach that reduces irreversible
@@ -265,6 +266,42 @@ Avoid when:
 - only one team/product needs the capability;
 - the platform would become gatekeeping instead of self-service.
 
+### platform/data/schema-first upgrade
+
+Use when:
+
+- a major runtime, framework, CMS, or package ecosystem upgrade can break build,
+  routing, schema, content, deployment, or data compatibility;
+- the current production system must stay available while the new target is
+  proven;
+- UI reuse is desired, but platform/schema bootstrapping can invalidate UI or
+  code changes.
+
+First artifacts:
+
+- platform/runtime/package inventory;
+- official vendor requirements and upgrade notes with source date;
+- copied or fresh target boundary;
+- schema/config import or recreation plan;
+- content/data classes marked `preserve`, `script-import`, `rebuild`, or
+  `defer`;
+- first workflow proof and rollback or compensation limit.
+
+Best practices:
+
+- Prove the copied/fresh target before broad code edits.
+- Treat schema/config migration as separate from content migration.
+- Build workflow-by-workflow, starting from the highest-value public or admin
+  workflow.
+- Preserve existing data only when cheaper and safer than clean rebuild.
+
+Avoid when:
+
+- the work is a small package bump with no runtime, schema, routing, or data
+  migration risk;
+- official upgrade notes require an in-place sequence that the project has
+  explicitly accepted and can roll back or compensate.
+
 ### monolith-first / modular monolith
 
 Use when:
@@ -307,6 +344,7 @@ Avoid when:
 | Mobile + web + admin clients over same domain | BFF or GraphQL/API gateway evaluation |
 | IoT, notifications, audit streams, async workflows | event-first |
 | Internal developer platform | platform-first |
+| Major CMS/runtime/framework upgrade or rebuild | platform/data/schema-first upgrade |
 | New small product with unclear boundaries | monolith-first with modular boundaries |
 
 ## required decision note
@@ -344,6 +382,7 @@ Review trigger:
 
 - Project orientation guide: [[project_orientation.md]]
 - Architecture skill guide: [[architecture_skill.md]]
+- Platform upgrade planning: [[platform_upgrade.md]]
 - Design-system guide: [[design_system.md]]
 - Task decomposition: [[../../../harness/task-decomposition.md]]
 - Task packet: [[../../../harness/task-packet.md]]

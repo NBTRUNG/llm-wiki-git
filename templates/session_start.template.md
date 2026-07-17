@@ -15,12 +15,20 @@ Consistency with LLM-Wiki:
 - Steps 1–3 mirror `<LLM-Wiki>/harness/read-workflow.md` universal start.
 - Roles and write boundaries mirror `<LLM-Wiki>/wiki/knowledge/project-docs/multi-agent-coordination.md`.
 - Working style mirrors `<LLM-Wiki>/wiki/knowledge/coding/karpathy-guidelines.md` 4 principles.
-- Coding sessions load `<LLM-Wiki>/wiki/knowledge/coding/agent-coding-workflow.md` and its full Coding Pack once.
+- Capability routing mirrors `<LLM-Wiki>/wiki/knowledge/project-docs/agent_capability_tiers.md`.
+- Coding sessions use the canonical Coding Pack directly or through the approved projection named by the task.
 - Checkpoint mirrors `<LLM-Wiki>/llm-wiki-constitution.md §15 checkpoint law`.
 
 ---
 
-## Step 0 — Identify your role
+## Step 0 — Capability and role gate
+
+1. Read the Lead-owned capability envelope in `agents/<agent>/AGENT.md`.
+2. Compare tier, required dimensions, projection, autonomy, verifier, and
+   reviewer with the task capability gate.
+3. Treat unrated/expired as `C0`. Stop for smaller packet/support/handoff on
+   mismatch. Do not self-upgrade.
+4. Then identify the assigned role:
 
 | Role | Agent(s) on this project | Branch below |
 |---|---|---|
@@ -34,9 +42,11 @@ If unsure which role you are, ask before reading further.
 
 ## Step 1 — Mandatory minimum reads (all roles)
 
-1. `AGENTS.md`
-2. `REPO_RULES.md` (if present)
-3. For code/review/refactor/test/validation work only: full LLM-Wiki Coding Pack once.
+1. The assigned `P0`, `P1`, or `P2` capability projection.
+2. `AGENTS.md` and `REPO_RULES.md` when included by that projection.
+3. For code/review/refactor/test/validation work: full Coding Pack only for an
+   eligible `P2` projection; qualified `C2-C3` bounded work uses the assigned
+   `P1-BOUNDED-CODING`; otherwise use another approved projection or hand off.
 
 ---
 
@@ -82,14 +92,15 @@ If cannot restate or classify, stop and ask. Karpathy principle 1.
 
 ## Step 4 — Pre-flight check
 
-Five questions before any edit:
+Six questions before any edit:
 
-1. Boundary: all needed files in `Allowed Write Targets`?
-2. Forbidden side effects: any item triggered?
-3. Pre-requisites: packet names a check? Run first.
-4. Parallel safety: write targets or shared-file section locks disjoint from
+1. Capability: tier/dimensions/projection/autonomy/verifier/reviewer fit?
+2. Boundary: all needed files in `Allowed Write Targets`?
+3. Forbidden side effects: any item triggered?
+4. Pre-requisites: packet names a check? Run first.
+5. Parallel safety: write targets or shared-file section locks disjoint from
    any active agent?
-5. Acceptance criteria: can describe evidence up front for each checkbox?
+6. Acceptance criteria: can describe evidence up front for each checkbox?
 
 Any "no" → stop and raise a blocker.
 
@@ -150,6 +161,8 @@ project are listed in `AGENTS.md`.
 Stop and raise a blocker when:
 
 - Source of truth is unclear.
+- Capability profile is missing/expired for work above `C0`, or the task exceeds
+  tier, a required dimension, projection ceiling, or autonomy.
 - Required Read Files are missing/empty.
 - Pre-requisite check fails.
 - Write targets overlap with another active agent.
@@ -198,8 +211,9 @@ The lead maintains `reports/daily/YYYY-MM-DD.md` per `<LLM-Wiki>/templates/daily
 ## Quick reference card
 
 ```
-1. Read AGENTS.md + REPO_RULES.md.                              [all roles]
-   Coding session -> load full Coding Pack once.
+1. Check capability envelope against task; stop on mismatch.    [all roles]
+   Read only assigned P0/P1/P2 projection.
+   Coding -> full pack only if eligible, else approved projection.
 2. Branch by role:
    Lead → handoff + agent_status + inbox.
    Delegated → AGENT.md.

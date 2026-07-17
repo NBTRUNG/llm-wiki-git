@@ -12,9 +12,40 @@ This file defines the canonical read path for LLM-Wiki so agents can:
 - decide when LLM-Wiki should be consulted for real repo work;
 - checkpoint work in the right place.
 
+## one-file session entry
+
+At the start of a new session, the user should only need to point the agent at
+one entry file. That file must contain a compact L1 cheatsheet and escalation
+pointers. Agents read only that file first, then open more files only when the
+current intent requires it.
+
+For recurring work, use `../workflows/catalog.md` as the short workflow audit
+layer after the start root is known. The catalog names the workflow card; this
+file keeps the detailed read/source-of-truth rules.
+
+Agents self-route and do not display the full catalog at each session start.
+For human explanation and manual navigation, use `../human/README.md`. The
+human folder is a linked projection, not execution authority; canonical
+workflow behavior remains here and in `../workflows/`.
+
+Default entry files:
+
+| Work target | One file to read first |
+| --- | --- |
+| LLM-Wiki governance/knowledge/harness/templates | `index.md` |
+| Real repo implementation/status/task work | `<repo>/AGENTS.md` |
+| Agent Platform raw/gateway/WAP/audit work | `/home/admindebian/Agent-Platform/README.md` |
+
+The entry file must name the source of truth, live-state files, required packs,
+raw/platform namespace, and stop conditions. Do not ask the user to remember a
+long file list for ordinary session start.
+
 ## fast path (5-minute read)
 
-If you have only five minutes, read these three things in order — that is enough to know what you may write and where source of truth lives. Skip the rest of this file until an intent escalates.
+If you have only five minutes and no project-specific entry file exists, read
+these three things in order — that is enough to know what you may write and
+where source of truth lives. Skip the rest of this file until an intent
+escalates.
 
 1. **`index.md`** (you landed here from system entry; ~1 min) — what LLM-Wiki contains and which control file owns what.
 2. **`global-rules.md`** §work-rules + §safety + §active.md-boundary (~2 min) — daily-work rules, the `active.md` scope rule, and the safety/[WIKI-GAP] gates.
@@ -25,25 +56,128 @@ Then stop reading. Open the full read-paths-by-request-type tables, the per-file
 ## universal start
 
 1. Read the current user request.
-2. Read `index.md`.
-3. Classify the request with `harness/intake.md`.
-4. Identify source of truth before opening many files.
-5. Read only the files needed for that request.
+2. For capability-managed work, load the Lead-owned capability note before
+   broad reading. Compare assigned tier/dimensions/projection with the task
+   contract. Missing or expired evidence means `C0`. A mismatch is a stop or
+   handoff condition, not permission to attempt the higher-tier read flow.
+3. Identify the **start root** before reading broadly:
+   - LLM-Wiki governance, harness, template, or reusable knowledge work starts
+     at `/home/admindebian/LLM-Wiki`.
+   - Real repo implementation/status/task work starts at the real repo root,
+     not LLM-Wiki.
+   - Agent Platform runtime work starts at `/home/admindebian/Agent-Platform`.
+4. Read the start root's entrypoint or the lower-tier capsule assigned by the
+   task:
+   - LLM-Wiki: `index.md`, then `TICK.md` when present.
+   - Real repo: `AGENTS.md`, `REPO_RULES.md`, `TICK.md` when present, and the
+     Lead/current-state file named by that repo.
+   - Agent Platform: `/home/admindebian/Agent-Platform/README.md`, then the
+     relevant gateway/map/agent file.
+5. For LLM-Wiki `P2 Map-First` work, read `index.md`. `P0/P1` agents use only
+   their assigned capsule/packet and exact files.
+6. Read `TICK.md` when present and allowed by the projection to understand current task, intent, context,
+   knowledge route, and active claims.
+7. Classify the request with `harness/intake.md` when the projection permits
+   dynamic classification; otherwise follow the packet's fixed classification.
+8. Identify source of truth before opening many files.
+9. Read only the files allowed and needed for that request.
 
 This is **minimal-reads-by-intent** — the universal Token Economy principle. Never read by default; each file must trace to a current intent. For project-Lead bootstrap, the concrete pattern is the entry-file cheatsheet hoist documented in [[../wiki/knowledge/project-docs/token-economy-bootstrap.md]].
 
-## optional Hermes read planner
+Minimal reads still require base literacy. Agents must load the entry/source of
+truth/safety/evidence rules needed to understand the map before opening
+specialist knowledge. For goal changes, release stale task knowledge and load
+the next triggered set; see
+[[../wiki/knowledge/project-docs/knowledge_cache_discipline.md]].
 
-Some projects may enable Hermes as a read-only context indexer and read planner.
-Hermes is optional and advisory. It may suggest source files, anchors, and line
-ranges to read, but it does not change the source-of-truth decision below.
+Capability and context projection rules live in
+[[../wiki/knowledge/project-docs/agent_capability_tiers.md]]. Higher-tier agents
+may choose a smaller projection; lower-tier agents must not choose a larger one.
 
-Use [[hermes-read-planning.md]] only after identifying the request type and
-source-of-truth class. If Hermes conflicts with a source file, the source file
-wins and Hermes must be treated as stale until re-indexed.
+## ROI gate before workflow changes
 
-LLM-Wiki itself should not depend on Hermes until real-project pilots produce
-measurement evidence.
+Before changing workflow structure, templates, task layout, archive strategy,
+source-of-truth rules, or session-start procedure, compare:
+
+```text
+ROI: benefit vs edit surface
+Simplicity: can a new agent understand it in under 5 minutes?
+Effectiveness: does it reduce real confusion or only make docs prettier?
+Blast radius: how many templates, harness files, reports, and project docs must change?
+Decision:
+- If options produce the same operational behavior, choose the smaller change.
+- If a larger change produces materially better effectiveness, present the
+  options, ROI, and blast radius to the user or integration owner before
+  choosing.
+```
+
+ROI is not a rule to always choose the cheapest edit. It is a decision gate:
+smallest-equivalent-change by default; user/integration-owner choice when a
+higher-cost option may be worth the better outcome. Record the ROI note in the
+validation report for durable workflow changes.
+
+## file line-budget guidance
+
+Use line budgets to keep files readable by agents. These are guidance thresholds
+unless a project has stricter rules.
+
+| File type | Target lines | Warn above | Notes |
+| --- | ---: | ---: | --- |
+| One-file session entry: `AGENTS.md`, `index.md`, Agent Platform `README.md` | 80-150 | 200 | Enough L1 context, no long history. |
+| `TICK.md`, Lead state, current focus | 50-120 | 180 | Current task, claim, next action only. |
+| `tasks.md` ledger | 100-300 | 500 | Canonical work-item list; use `rg`/task id, do not read end to end when large. |
+| `test_matrix.md` | 100-300 | 500 | Evidence table; read by task id. |
+| `source_inventory.md`, `data_map.md`, `workflow_map.md` | 80-250 | 400 | Split by domain/project if longer. |
+| Knowledge pack `README.md` | 80-200 | 300 | Router only; details live in child files. |
+| Detailed knowledge file | 150-400 | 600 | Split sections when over budget. |
+| Validation report | 50-180 | 300 | Evidence summary, not pasted logs. |
+| Raw/extracted JSONL | n/a | n/a | Not read as docs; use tools, filters, or targeted queries. |
+
+If an entry/current-state file exceeds its warning threshold, prefer trimming or
+moving history to `tasks.md` / reports. If a ledger or matrix exceeds its
+warning threshold, keep it canonical but require task-id search and consider
+phase/year split only when ROI justifies it.
+
+## navigation maps
+
+Root `index.md` is the only workspace-level index. Directory-local maps should
+use `README.md`; project-specific maps should use explicit names such as
+`docs/project_index.md`; registers may use explicit names such as
+`wiki/decisions/_index.md`.
+
+Do not create `index.md` at every nested level. For a nested path such as
+`A/B/C`, route by parent maps:
+
+```text
+index.md
+  -> A/README.md
+  -> A/B/README.md
+  -> A/B/C/README.md
+```
+
+Detailed rules live in
+`wiki/knowledge/project-docs/navigation_maps.md`.
+
+## TICK and claim/release
+
+For git-backed project work, prefer a short `TICK.md` entrypoint over derived
+read-planning caches.
+
+`TICK.md` should state:
+
+- Task;
+- Intent;
+- Context;
+- Knowledge/read order;
+- Claims.
+
+Before implementation, confirm the task is unclaimed or claimed by the current
+session. If another active session owns the claim, stop and ask the human, Lead,
+or integration owner to reassign, split, or release it.
+
+Hermes read planning is retired from the active LLM-Wiki workflow. Historical
+Hermes reports remain evidence, but active agents should use Markdown source
+files, `TICK.md`, task packets, session packs, and project maps.
 
 ## source-of-truth decision
 
@@ -56,6 +190,51 @@ measurement evidence.
 | Migrated project history | Real repo docs | Historical archive/link map |
 
 If sources conflict, use the hierarchy in `llm-wiki-constitution.md`.
+
+## active-state update rule
+
+Reports are evidence, not the live task board. Any durable change must update
+the active state in the same turn before the agent reports completion.
+
+Use this matrix:
+
+| Work target | Must update before done | Report role |
+| --- | --- | --- |
+| LLM-Wiki governance, templates, harness, knowledge, project docs | `TICK.md` when current focus changed; `wiki/projects/llm-wiki/docs/tasks.md`; `wiki/projects/llm-wiki/docs/test_matrix.md`; `reports/validation/README.md`; relevant project docs | Evidence and audit |
+| Real repo implementation/status/task work | The real repo's `TICK.md` / Lead state; repo `docs/tasks.md`; repo `docs/test_matrix.md` or equivalent; repo validation/report index | Evidence for repo rollup |
+| Agent Platform runtime/raw/gateway/WAP/audit work | `/home/admindebian/Agent-Platform` runtime files; LLM-Wiki pointer/source maps only when boundary changes | Evidence for platform boundary |
+| Research-to-knowledge promotion | WAP proposal first unless user explicitly approves publish; after publish update LLM-Wiki tasks/test matrix and validation index | Evidence for promoted knowledge |
+
+Do not finish with only `reports/validation/*.md` updated when the task changes
+live coordination state. A report without the matching task/status/test-matrix
+rollup is incomplete.
+
+## pause and closeout trigger
+
+When the user says "dừng tại đây", "dung tai day", "stop here", or asks to
+pause/save, run `../workflows/session-closeout.workflow.md` before ending the
+turn.
+
+Minimum closeout:
+
+- update the current work target's live state file (`TICK.md`, `LEAD_STATE.md`,
+  or equivalent);
+- update the task ledger and test/evidence matrix when work changed;
+- index any validation report created in the turn;
+- archive completed task history when the live ledger would otherwise remain
+  over its warning threshold;
+- tell the user which single file to start from next time.
+
+At every substantive handoff, include the selected `Workflow used`. If the
+execution diverged from the canonical workflow, state the deviation and its
+reason separately from the final-result evidence.
+
+## manual recovery trigger
+
+When agent/automation availability fails or a human must take over, start at
+`../RECOVERY.md`, then use `../workflows/manual-recovery.workflow.md` and the
+owning system's runbook. Mutations fail closed when ownership, rollback, or
+authority is unclear; preserve safe read-only access and original evidence.
 
 ## read paths by request type
 
@@ -105,22 +284,30 @@ Create or update `wiki/projects/<project>/` only when no real repo exists.
 
 Read:
 
-1. `projects/<ProjectName>/<ProjectName>.md`
-2. active repo entry files, such as `AGENTS.md` and `REPO_RULES.md`
-3. active repo Lead state file (e.g., `AI_CODEX.md`) — Lead role only; this is the L1 default bootstrap target
-4. active repo task/status files — only when an action escalates beyond L1 default
-5. task-specific active repo docs
-6. LLM-Wiki knowledge only if the Knowledge Lookup Metric says it is needed
+1. Real repo root entry files, especially `AGENTS.md` and `REPO_RULES.md`.
+2. `TICK.md` when present.
+3. Active repo Lead state file (e.g., `LEAD_STATE.md`, `AI_CODEX.md`) — Lead
+   role only; this is the L1 default bootstrap target.
+4. Active repo task/status files — only when an action escalates beyond L1
+   default.
+5. Task-specific active repo docs.
+6. LLM-Wiki project pointer `projects/<ProjectName>/<ProjectName>.md` only when
+   the repo path, knowledge route, or history pointer is unclear.
+7. LLM-Wiki knowledge only if the Knowledge Lookup Metric says it is needed.
 
 The active repo wins over LLM-Wiki.
 
+For a real repo such as UniversityWeb-17, do not start from the LLM-Wiki root
+unless the user asks to change LLM-Wiki itself. Start in the repo, then consult
+LLM-Wiki only through the repo's knowledge gate.
+
 #### Coding Pack exception
 
-For repo coding sessions, the LLM-Wiki Coding Pack is mandatory preparation,
-not optional lookup. When an agent is assigned to write, review, refactor, test,
-validate, or accept repo code, read
-`../wiki/knowledge/coding/agent-coding-workflow.md` and the full Coding Pack it
-names once at session/assignment start.
+For repo coding sessions, the canonical LLM-Wiki Coding Pack is mandatory
+preparation, not optional lookup. Eligible `P2` agents read it directly once.
+`P0/P1` agents use only an approved task-named projection that preserves its
+mandatory security/output/test/boundary/stop rules. Without one, they are not
+eligible for the task.
 
 This is a bounded exception to minimal reads. It does not authorize reading
 unrelated LLM-Wiki knowledge or full repo history. Use the Knowledge Lookup
@@ -133,7 +320,8 @@ Use `../wiki/knowledge/project-docs/agent_session_packs.md` to classify the
 current session and load only the packs required by the work type:
 
 - Repo Base Pack for every real-repo session.
-- Coding Pack for code, review, refactor, test, validation, or acceptance work.
+- Coding Pack directly or via the validated capability projection for code,
+  review, refactor, test, validation, or acceptance work.
 - Security Baseline always inside Coding Pack.
 - Security Deep Pack only when security triggers apply.
 - Web/UI, Architecture, Contracts, and Operations packs only when the session

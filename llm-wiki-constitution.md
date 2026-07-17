@@ -63,7 +63,8 @@ Conflict rules:
 | `global-rules.md` | Practical rules for working in LLM-Wiki. |
 | `llm-wiki-constitution.md` | This stable law file. |
 | `program.md` | Operating procedures for wiki operations. |
-| `raw/` | Raw sources, read-only by default. |
+| `raw/` | Legacy imported/reference holdings only; do not add active raw artifacts. |
+| `/home/admindebian/Agent-Platform/raw/projects/<project-id>/` | Active raw source records, snapshots, manifests, and extracted artifacts; read-only after capture unless a governed correction is required. |
 | `wiki/knowledge/` | Reusable knowledge and guides. |
 | `wiki/knowledge/project-docs/` | Canonical standards for repo docs. |
 | `wiki/knowledge/coding/repo-code-rules.md` | General repo coding/review/test rules. |
@@ -401,3 +402,4 @@ Constitution amendments and major structural revisions to this document.
 | 2026-05-23 | Single-canonical consolidation; risk lanes pointer (§12); §19 changelog added | [[reports/validation/2026-05-23-canonical-consolidation.md]] |
 | 2026-05-23 | Knowledge layer expansion: architecture concepts + patterns library, security concepts (OWASP 2025, STRIDE, DiD, ZT), Karpathy skill format adoption, multi-agent coordination infrastructure; §15 file-back trigger added | [[reports/validation/2026-05-23-external-knowledge-ingest.md]] |
 | 2026-05-23 | §18 amendment procedure linkage to harness/feedback-loop.md (DEC-0001 accepted) | [[reports/validation/2026-05-23-feedback-loop-introduction.md]] + [[wiki/decisions/DEC-0001-constitution-amendment-feedback-loop-linkage.md]] |
+| 2026-07-10 | Active raw ownership moved to project namespaces in Agent Platform; local `raw/` classified as legacy-only (DEC-0002 accepted) | [[reports/validation/2026-07-10-raw-boundary-recommendation-tradeoffs.md]] + [[wiki/decisions/DEC-0002-agent-platform-owns-active-raw.md]] |

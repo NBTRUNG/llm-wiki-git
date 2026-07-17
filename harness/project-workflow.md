@@ -53,22 +53,27 @@ If project repo docs exist, update those docs first. Do not update LLM-Wiki comp
 7. If no repo exists, read the pre-repo project docs under `wiki/projects/<project>/`.
 8. Classify the request using `intake.md`.
 9. Choose a risk lane using `risk-lanes.md`.
-10. For implementation work, check whether the task touches shared names in repo `docs/contracts.md`.
-11. For multi-agent or Human-orchestrated work, identify coordination mode,
+10. For implementation work, identify the business workflow ID or
+    `CROSS-CUTTING` affected workflows before technical work starts.
+11. Check whether the task touches shared names in repo `docs/contracts.md`.
+12. Check map references when relevant: UI map, code map, data map, and raw
+    verification anchor.
+13. For multi-agent or Human-orchestrated work, identify coordination mode,
     review target, integration owner, and any shared-file section/row locks
     before dispatch.
-12. If Hermes is enabled, use it only as advisory read/overlap planning. Hermes
-    may warn about stale sections or lock overlap; it does not grant write
-    permission and is not a draft store.
-13. For normal/high-risk work, create or mentally follow an ACID task packet with explicit input and output.
-14. If multiple agents propose edits to the same shared section/row, require
+14. Use `TICK.md`, task packets, repo maps, and session packs for read routing.
+    Hermes is retired from active LLM-Wiki workflow.
+15. For normal/high-risk work, create or mentally follow an ACID task packet
+    with workflow ID, workflow slice, user/business outcome, explicit input,
+    and explicit output.
+16. If multiple agents propose edits to the same shared section/row, require
     Markdown staging in `AGENT.md`, `reports/agent/`, or
     `reports/integration/<task-id>-merge-plan.md`.
-15. Make the smallest useful change.
-16. Verify with tests, checks, or documented manual review.
-17. Update the source-of-truth status/tasks/contracts/decisions/test matrix when the work changes project state.
-18. File reusable lessons back into LLM-Wiki knowledge only after they are general, not project-specific.
-19. Create a validation report when evidence matters for future sessions.
+17. Make the smallest useful change.
+18. Verify with tests, checks, or documented manual review.
+19. Update the source-of-truth status/tasks/contracts/decisions/test matrix when the work changes project state.
+20. File reusable lessons back into LLM-Wiki knowledge only after they are general, not project-specific.
+21. Create a validation report when evidence matters for future sessions.
 
 ## allowed write targets
 
@@ -127,13 +132,17 @@ Minimum project-task validation:
 - Allowed write targets respected.
 - Relevant tests/checks run or explicitly not run with reason.
 - Task input and output were explicit before implementation.
+- Implementation task names a workflow ID or `CROSS-CUTTING` affected workflows.
+- Implementation task names a workflow slice and user/business or enabling
+  outcome.
 - Code tasks that touch shared names reference `docs/contracts.md`.
+- Tasks that touch mapped UI/code/data reference the relevant map anchors.
 - Delegated tasks pass Atomic, Clear input/output, Idempotent, and Decidable checks.
 - Human-orchestrated tasks name review target and integration owner when
   multiple agents contribute to one outcome.
 - Shared-file writes name file, section/rows, operation, lock owner, review
   target, and rollback note.
-- Hermes, when used, is advisory only and not the draft content store.
+- Retired cache/index systems are not draft content stores.
 - Status/task docs updated when project state changed.
 - Repo `docs/agent_status.md` updated when assignments changed.
 - Validation evidence linked when proof matters.
@@ -146,6 +155,8 @@ Stop and ask or mark `unknown` when:
 - the project path does not exist;
 - repo docs and LLM-Wiki summaries conflict;
 - task input or output is unclear;
+- implementation task has no business workflow ID, no affected workflow, and no
+  explicit reason it is cross-cutting;
 - a code task needs a shared function/API/component/CMS alias but no contract row exists;
 - a delegated task is not ACID-complete;
 - requested scope would touch multiple projects;

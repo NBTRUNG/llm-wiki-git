@@ -2,7 +2,7 @@
 name: architecture-skill-guide
 description: Source-backed operating guide for architecture work in LLM-Wiki projects. Covers C4 views, arc42 documentation scope, ADR decision capture, platform engineering, and observability gates.
 date_ingested: 2026-06-11
-date_updated: 2026-06-24
+date_updated: 2026-07-06
 status: active
 source_type: web-research
 source_urls:
@@ -11,10 +11,13 @@ source_urls:
   - https://adr.github.io/
   - https://tag-app-delivery.cncf.io/whitepapers/platforms/
   - https://opentelemetry.io/docs/what-is-opentelemetry/
+  - https://opentelemetry.io/docs/specs/semconv/gen-ai/
+  - https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html
+  - https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview
   - https://csrc.nist.gov/pubs/sp/800/207/final
   - https://owasp.org/www-project-threat-modeling/
 confidence: medium
-confidence_reviewed: 2026-06-24
+confidence_reviewed: 2026-07-06
 ---
 
 # architecture skill guide
@@ -129,6 +132,17 @@ up front:
 OpenTelemetry is a framework/toolkit for generating, collecting, and exporting
 telemetry data. It is not the storage or dashboard backend.
 
+For AI, RAG, MCP, and agentic systems, observability must also cover:
+
+- retrieval query, corpus, source version, citation support, and reranker output;
+- model/tool invocation, token/cost budget, latency, retry, and denial path;
+- gateway policy decision, WAP proposal, human approval, and published action;
+- trace correlation across user request, retrieval, model call, tool call, and
+  write path.
+
+The GenAI semantic-convention area is still moving; use it as a naming
+reference, but pin the version/repository checked in validation reports.
+
 ### Security architecture is cross-cutting
 
 Do not treat security as only a coding checklist. When architecture touches
@@ -150,6 +164,11 @@ Security architecture output should identify protected resources, trust
 boundaries, policy decision/enforcement points, data classification, service
 identity, audit events, failure mode, and validation evidence.
 
+For agentic knowledge systems, security architecture output must also identify
+the corpus/source-of-truth boundary, retrieval permission model, gateway/tool
+contract owner, model credential boundary, write-approval path, and audit log
+location. Do not rely on the model prompt as the policy enforcement point.
+
 ## architecture review checklist
 
 - Source of truth identified before design starts.
@@ -162,6 +181,8 @@ identity, audit events, failure mode, and validation evidence.
 - Security, privacy, observability, and operability are not deferred silently.
 - Trust boundaries, identity model, authorization model, and audit evidence are
   visible for security-relevant systems.
+- AI/RAG/agent systems name corpus owner, retrieval boundary, gateway policy
+  point, write-approval path, observability fields, and evaluation evidence.
 - Platform work has a user path and self-service boundary.
 - ADR exists for architecturally significant decisions.
 - Implementation tasks can be derived without inventing names or contracts.

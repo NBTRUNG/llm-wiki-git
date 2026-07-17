@@ -7,7 +7,7 @@ source_type: web-research + project-file-back
 source_urls:
   - https://spec.openapis.org/oas/latest.html
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # api design
@@ -31,6 +31,18 @@ consumer contract.
 - Document new or changed routes in repo contracts.
 - Add tests for success, invalid input, forbidden access, and missing resource
   paths based on task risk.
+
+## current-source notes checked 2026-07-01
+
+- The latest published OpenAPI Specification is 3.2.0 dated 2025-09-19.
+  Contract docs should record the OpenAPI version they target when tooling,
+  generated clients, validation, callbacks, links, streaming, or multipart
+  behavior matters.
+- OpenAPI 3.2.0 has explicit sections for sequential/streaming media,
+  Server-Sent Events, file uploads, security schemes, security filtering,
+  external resources, reference cycles, and Markdown/HTML sanitization. Do not
+  model these as ordinary JSON request/response routes when they have different
+  runtime or security behavior.
 
 ## anti-patterns
 

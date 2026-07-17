@@ -60,9 +60,9 @@ Required content in the entry file:
 
 - **Lead bootstrap cheatsheet** — 3 file names + line counts + an L1-L6 sub-branch table. Total ≤30 lines.
 - **Delegated bootstrap cheatsheet** — role-card + packet + status + Required Read Files. Total ≤15 lines.
-- **Coding-session note** — load the full LLM-Wiki Coding Pack once when the
-  assignment is code/review/refactor/test/validation work. Keep this as a
-  pointer, not a pasted copy of the pack.
+- **Coding-session note** — use the canonical LLM-Wiki Coding Pack directly for
+  eligible `P2`, or the validated task-named `P0/P1` projection. Keep this as a
+  capability-aware pointer, not a self-created summary.
 
 For new projects, start from [[../../../templates/agents.template.md]] and
 [[../../../templates/lead_state.template.md]] instead of copying a source
@@ -142,7 +142,9 @@ The pattern is correctly applied when:
 - [ ] An AI without persistent memory completes Lead bootstrap reading ≤330 lines (entry file + repo rules + Lead state file).
 - [ ] An AI without persistent memory completes Delegated bootstrap reading ≤300 lines.
 - [ ] Token Economy Law is declared in both entry file Non-Negotiables and repo-rules Working Style.
-- [ ] Coding-session bootstrap note points to the full Coding Pack without copying it into repo state docs.
+- [ ] Coding-session bootstrap note points to full `P2` or the validated
+  task-named `P0/P1` projection without copying uncontrolled guidance into repo
+  state docs.
 - [ ] Lead sub-branch table (L1-L6) is in the entry file, not buried in the procedure file.
 - [ ] Role definitions are AI-agnostic; current assignment lives only in Lead state file + live board.
 - [ ] Lead handoff procedure is generic, not a one-off substitution note.
@@ -175,7 +177,7 @@ The pattern is correctly applied when:
 - [[multi-agent-coordination.md]]: AI-agnostic Lead role + rotation handoff.
 - [[delegated-packet-rotation.md]]: legacy split-file pattern for keeping `agents/<agent>/tasks.md` bounded after accepted packets accumulate.
 - [[../../../harness/read-workflow.md]]: universal minimal-reads-by-intent principle.
-- [[../coding/agent-coding-workflow.md]]: bounded full Coding Pack bootstrap for repo coding sessions.
+- [[../coding/agent-coding-workflow.md]]: capability-aware canonical Coding Pack bootstrap for repo coding sessions.
 - [[../coding/karpathy-guidelines.md]]: Karpathy principle 1 (Think Before Coding) — read should serve an articulated intent.
 
 ## sources

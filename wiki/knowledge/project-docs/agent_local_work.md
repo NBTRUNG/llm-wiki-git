@@ -22,7 +22,8 @@ reports/agent/<agent>/<task-id>-result.md  durable result/evidence when threshol
 
 `AGENT.md` is intentionally the only agent-local file a delegated agent reads by
 default. It carries the role boundary, current assignment, active packet, current
-write boundary, latest checkpoint, blocker, validation state, and result handoff.
+write boundary, Lead-owned capability envelope, latest checkpoint, blocker,
+validation state, and result handoff.
 
 Legacy projects may still have:
 
@@ -61,11 +62,13 @@ protocol), see [[multi-agent-coordination.md]].
 
 Default delegated agent read order:
 
-1. `AGENTS.md`
-2. `REPO_RULES.md`
-3. Full LLM-Wiki Coding Pack once, when the assignment is code/review/refactor/test/validation work
-4. `agents/<agent>/AGENT.md`
-5. Files listed in the active task `Required read files`
+1. `agents/<agent>/AGENT.md` capability envelope and task capability gate.
+2. Stop/handoff on mismatch; unrated/expired means `C0`.
+3. Read only the assigned `P0`, `P1`, or `P2` projection.
+4. Use full Coding Pack only when eligible; otherwise use the approved
+   task-named projection. Qualified `C2-C3` bounded code work uses the shared
+   `P1-BOUNDED-CODING`; repo summaries do not replace it.
+5. Read files listed in the active task `Required read files`.
 
 Do not read full repo docs, Lead state (`AI_CODEX.md` / `LEAD_STATE.md`),
 `docs/project_brief.md`, `docs/decisions.md`, per-agent task/status/archive
@@ -83,11 +86,14 @@ It should contain:
 
 - `## section ownership` — Lead-owned vs agent-owned sections.
 - `## role summary` — what the agent does and does not do.
+- `## capability envelope` — Lead-assigned tier, domain/dimension qualification,
+  projection ceiling, autonomy, evidence, expiry, and reviewer.
 - `## read order` — the one-file delegated bootstrap rule.
 - `## coordination mode` — whether the agent reports to Lead or directly to
   human for this task, and who owns integration.
-- `## current assignment` — current task id, state, Required Read Files,
-  allowed/forbidden write targets, result report path, and stop condition.
+- `## current assignment` — current task id, state, claim status, claim owner,
+  Required Read Files, allowed/forbidden write targets, result report path, and
+  stop condition.
 - `## active task packet` — the executable ACID packet for the current task.
 - `## write rules` and `## current write boundary`.
 - `## current checkpoint` and `## latest checkpoint`.
@@ -122,7 +128,13 @@ If two agents need the same file section/row, both agents stop short of editing
 the canonical file and submit proposals through `AGENT.md` handoff or
 `reports/agent/<agent>/<task-id>-result.md`. The integration owner may use
 `reports/integration/<task-id>-merge-plan.md` to combine proposals before
-updating the canonical file. Do not use Hermes as a temporary draft store.
+updating the canonical file. Do not use retired cache/index systems as a
+temporary draft store.
+
+Agents must claim the task before implementation when the control card, task
+packet, or `TICK.md` has claim fields. The claim is released when the task is
+done, blocked, paused, or reassigned. A stale or conflicting claim is resolved by
+the human, Lead, or integration owner.
 
 Do not keep historical packets or long checkpoint logs in `AGENT.md`. Accepted
 history belongs in shared repo-level archive files, usually
@@ -326,7 +338,8 @@ If the section is missing during a measured cycle, mark the affected LWOE metric
 - Delegated bootstrap reads Lead state by default.
 - Agent edits shared rollup/contract/status files without an explicit
   shared-file write delegation.
-- Agent relies on Hermes cache/SQLite as the only place a draft proposal exists.
+- Agent relies on a retired cache/index system as the only place a draft
+  proposal exists.
 - Executing agent writes directly to `tasks_archive.md` before Lead acceptance.
 - `agents/<agent>/AGENT.md` becomes an unbounded archive instead of a current control card.
 - Agents assume human-orchestrated parallel outputs are automatically integrated.

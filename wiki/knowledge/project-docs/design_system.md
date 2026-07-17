@@ -175,5 +175,5 @@ component source, and design files.
 - Project architecture doc guide: [[architecture.md]]
 - Contracts guide: [[contracts.md]]
 - Review checklist: [[review_checklist.md]]
-- UI-heavy Hermes/read-planning work should point agents to the canonical UI
-  contract paths declared by the repo.
+- UI-heavy read planning should point agents to the canonical UI contract paths
+  declared by the repo.

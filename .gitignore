@@ -3,7 +3,16 @@
 .codex/
 .agents/
 .claude/
+
 *.tmp
 *.bak
 *.swp
+
+Untitled.canvas
+agent-platform/*
+!agent-platform/README.md
+archive/*
+!archive/README.md
+!archive/imported-models/
+!archive/imported-models/**
 logs/test-output/*.log

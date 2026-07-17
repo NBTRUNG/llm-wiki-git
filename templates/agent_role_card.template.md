@@ -12,8 +12,10 @@ Availability: available | unavailable
 Lead-owned sections:
 
 - `role summary`
+- `capability envelope`
 - `read order`
 - `coordination mode`
+- `hybrid control grant`
 - `current assignment`
 - `active task packet`
 - `write rules`
@@ -33,15 +35,35 @@ Agent-owned sections:
 
 <One paragraph: what this agent does on this project, and what it does not do.>
 
+## capability envelope
+
+Guide: [[../wiki/knowledge/project-docs/agent_capability_tiers.md]]
+
+- Assigned capability tier: C0 | C1 | C2 | C3 | C4 | C5 | C6 | unrated
+- Assignment owner: human | Lead | integration owner
+- Frozen configuration: provider/model/checkpoint, quantization, harness, tools
+- Qualified domains and dimension bands:
+- Context projection ceiling: P0 | P1 | P2
+- Allowed task/risk/autonomy:
+- Explicitly forbidden:
+- Required verifier/reviewer:
+- Evidence report and suite version:
+- Evaluated date and expiry/review trigger:
+
+The agent may report a self-downgrade in its checkpoint. It must not edit this
+Lead-owned envelope to assign or upgrade itself. Unrated/expired means `C0`.
+
 ## read order
 
 Mandatory read files before any work:
 
-1. `AGENTS.md`
-2. `REPO_RULES.md`
-3. Full LLM-Wiki Coding Pack once when the session is code/review/refactor/test/validation work
-4. This file (`agents/<agent>/AGENT.md`)
-5. Files listed in this file's `Required read files`
+1. This file's `capability envelope` and the assigned task capability gate.
+2. Stop or hand off if tier/dimensions/projection/autonomy do not fit.
+3. Read only the assigned `P0`, `P1`, or `P2` projection.
+4. Use full Coding Pack only for an eligible projection; otherwise use the
+   approved task-named projection. Qualified `C2-C3` bounded coding normally
+   uses `P1-BOUNDED-CODING`.
+5. Read files listed in the task's `Required read files`.
 
 Do not read other repo docs, Lead state, per-agent task/status/archive files,
 or unrelated LLM-Wiki knowledge unless the active task explicitly lists them or
@@ -67,10 +89,41 @@ using `result handoff`. Do not assume other agents have seen your work. If
 integration owner is `not assigned yet`, stop after handoff and do not merge or
 roll up shared state.
 
+## hybrid control grant
+
+Canonical guide:
+[[../wiki/knowledge/project-docs/human_agent_hybrid_control.md]]
+
+- Human sponsor:
+- Acceptance owner:
+- Agent principal/session:
+- Action-risk lane: R0 Observe | R1 Reversible | R2 Consequential | R3 Prohibited
+- Allowed permission grant:
+- Forbidden actions/resources:
+- Human approval events:
+- Grant start and expiry/review trigger:
+- Interrupt/stop route: manual | implemented path | unavailable
+- Rollback/recovery route: manual | verified path | unavailable
+
+Capability, autonomy, permission, impact, and reversibility are independent.
+The agent may self-downgrade or stop but may not expand this grant, self-upgrade,
+or infer approval. The human/Lead/integration owner reviews actual outcome and
+evidence rather than approving the report narrative alone.
+
 ## current assignment
 
 - Current task id: TASK-XXX
+- Task minimum capability tier:
+- Required capability dimensions/domains:
+- Assigned context projection:
+- Capability fit: eligible | downgrade packet needed | handoff required | unrated
 - State: idle | assigned | in_progress | blocked | needs-review | accepted
+- Claim status: unclaimed | claimed | released | blocked | stale
+- Claimed by:
+- Claim scope:
+- Claimed at:
+- Release reason:
+- Next eligible owner:
 - Required read files:
   -
 - Allowed write targets:
@@ -83,6 +136,9 @@ roll up shared state.
   - docs/agent_status.md
 - Result report path: `reports/agent/<agent>/TASK-XXX-result.md`
 - Stop condition: if state is `idle`, `blocked`, or `accepted`, stop unless Lead assigned new work.
+- Claim rule: do not implement until this task is claimed by the current
+  session. Release the claim before stopping if work is done, blocked, paused,
+  or reassigned.
 
 ## active task packet
 
@@ -108,6 +164,17 @@ roll up shared state.
 #### Dependencies
 
 -
+
+#### Capability gate
+
+- Minimum capability tier:
+- Required capability dimensions/domains:
+- Assigned context projection:
+- Maximum autonomy:
+- Required deterministic verifier:
+- Required human/Lead review:
+- Capability evidence/profile:
+- Fallback owner or higher-tier handoff:
 
 #### Contract references
 

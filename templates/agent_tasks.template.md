@@ -26,6 +26,9 @@ file at all; use `agents/<agent>/AGENT.md`.
 ## Current assignment
 
 - Current task id: TASK-XXX
+- Task minimum capability tier:
+- Assigned context projection:
+- Capability fit: eligible | downgrade packet needed | handoff required | unrated
 - State: idle | assigned | in_progress | blocked | needs-review | accepted
 - Active packet anchor: `#task-xxx---task-title`
 - Required read files:
@@ -75,6 +78,17 @@ the archive during normal work.
 ### Dependencies
 
 - 
+
+### Capability gate
+
+- Minimum capability tier:
+- Required capability dimensions/domains:
+- Assigned context projection:
+- Maximum autonomy:
+- Required deterministic verifier:
+- Required human/Lead review:
+- Capability evidence/profile:
+- Fallback owner or higher-tier handoff:
 
 ### Contract references
 

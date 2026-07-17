@@ -3,6 +3,7 @@ name: testing-strategy
 description: Proof layers, test structure, error coverage, integration tests. Tests prove behavior, not exercise code. Use when creating or reviewing tests.
 date_ingested: 2026-05-23
 status: active
+confidence_reviewed: 2026-07-01
 ---
 
 # testing strategy guide
@@ -170,8 +171,22 @@ Record:
 - commands run;
 - result;
 - important paths checked;
+- framework/runtime/package versions when behavior depends on current release
+  behavior, security patch level, or official support lifecycle;
 - tests not run and why;
 - residual risk.
 
 For docs-only changes, use file existence, link/readback checks, and manual
 consistency review.
+
+## AI and tool-use test notes
+
+When a task exposes AI agents, tool calling, MCP servers, generated code,
+retrieval, or prompt-driven automation, include negative-path proof where
+practical:
+
+- unauthorized tool call denied;
+- out-of-scope filesystem/network/data access denied;
+- malformed or adversarial model output validated before downstream use;
+- sensitive prompts/context not logged by default;
+- human approval required for destructive or production-affecting actions.

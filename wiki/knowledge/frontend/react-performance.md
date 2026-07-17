@@ -5,12 +5,13 @@ date_ingested: 2026-06-27
 status: active
 source_type: web-research + skill-file-back
 source_urls:
+  - https://react.dev/blog
   - https://react.dev/learn/render-and-commit
   - https://react.dev/reference/react/memo
   - https://react.dev/reference/react/useMemo
   - https://react.dev/reference/react/useCallback
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # react performance
@@ -37,6 +38,20 @@ Repo-specific framework rules and component patterns win.
 - If the repo has React Compiler enabled and validated, expect less manual
   `memo`/`useMemo`/`useCallback` code. Confirm the repo version and compiler
   configuration before removing existing memoization.
+
+## current-source notes checked 2026-07-01
+
+- React official docs show React 19.2 as current and React Compiler v1.0 as a
+  stable release from 2025. Treat compiler-enabled automatic memoization as
+  repo-version-specific: verify the repo's React/compiler setup before removing
+  manual memoization.
+- React Server Components had critical/high security advisories in late 2025.
+  Any task touching RSC, framework server rendering, or server/client payload
+  boundaries should check the active repo's framework patch level before
+  performance tuning.
+- Create React App is deprecated for new apps. For new React projects, prefer
+  the repo's accepted framework or modern build-tool path rather than starting
+  from CRA.
 
 ## review checklist
 

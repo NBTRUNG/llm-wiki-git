@@ -23,6 +23,19 @@ Status: draft | reviewed | promoted | rejected
 | --- | --- | --- | --- | --- |
 | | high / medium / low | no-change / watch / candidate-update / urgent-update / project-specific-only | | |
 
+## claim-support checks
+
+| Claim | Importance | Source | Accessible | Relevant | Supports stated strength | Conflict/freshness | Decision |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| | high / medium / low | | yes / no | yes / partial / no | yes / partial / no | | promote / qualify / defer / reject |
+
+## stop record
+
+- Unresolved decision/claims before the final probe:
+- What the final probe could have changed:
+- Why research stopped:
+- Remaining conflicts or unsupported claims:
+
 ## impact on LLM-Wiki
 
 - Canonical docs to update:

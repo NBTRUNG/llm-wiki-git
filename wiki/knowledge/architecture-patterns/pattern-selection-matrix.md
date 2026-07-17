@@ -4,7 +4,7 @@ description: Cross-pattern decision, validation, security, observability, and te
 source_type: web-research
 date_ingested: 2026-06-24
 confidence: medium
-confidence_reviewed: 2026-06-24
+confidence_reviewed: 2026-07-06
 status: active
 sources:
   - https://martinfowler.com/articles/microservices.html
@@ -15,6 +15,8 @@ sources:
   - https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html
   - https://opentelemetry.io/docs/what-is-opentelemetry/
   - https://c4model.com/
+  - https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html
+  - https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview
   - https://csrc.nist.gov/pubs/sp/800/207/final
   - https://owasp.org/www-project-threat-modeling/
 ---
@@ -70,6 +72,7 @@ Research checked on 2026-06-24:
 | Sensitive resources, admin functions, multi-tenancy, production service calls, or regulated data | [[zero-trust-security.md]] with defense in depth | Trusting VPN, network location, service mesh membership, or UI-only checks |
 | Legacy replacement where big-bang rewrite is risky | Strangler fig migration toward modular monolith or services | Rewriting the whole system behind one deadline |
 | Cross-service workflow needs data consistency without 2PC | Saga with compensation | Distributed transaction assumptions hidden in code |
+| Many agents or users need shared enterprise knowledge with citations, permissions, and audit | Governed RAG/agentic retrieval behind a gateway and WAP path | Model-only long context, personal wiki files, or prompt-level policy enforcement |
 
 ## decision matrix
 
@@ -83,6 +86,7 @@ Research checked on 2026-06-24:
 | Zero-trust security | Limits blast radius and removes implicit network trust | Policy, identity, telemetry, and migration overhead | Trust-boundary diagram, authn/authz tests, policy enforcement proof, audit evidence. |
 | Strangler fig | Incremental modernization | Temporary routing/compatibility complexity | Cutover boundary, traffic routing, rollback path, old/new behavior comparison. |
 | Saga | Cross-service workflow consistency | Compensation complexity and partial-failure reasoning | Local transaction list, compensation per step, timeout/retry policy, audit trail. |
+| Governed RAG / agentic retrieval | Shared source-backed knowledge for many agents with citations and permission-aware retrieval | Corpus ownership, evaluation, latency/cost, policy, and audit complexity | Source inventory, corpus owner, permission filters, citation-support eval, gateway policy, audit trace, WAP/write boundary. |
 
 ## architecture validation matrix
 

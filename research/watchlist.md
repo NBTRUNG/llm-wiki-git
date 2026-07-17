@@ -21,6 +21,7 @@ validation evidence.
 | CMS/headless/content architecture | monthly | Content-first projects can be overbuilt or under-modeled | project orientation, contracts, UI map, architecture selection |
 | Security/privacy/auth/upload/payment | weekly | High-stakes and fast-changing attack surface | `wiki/knowledge/coding/security-baseline.md`, `output-quality.md`, repo rules |
 | AI agents/RAG/evaluation/tool use | weekly | Agent behavior, eval methods, MCP/tooling, and safety patterns change quickly | project orientation, agent workflow, output quality |
+| Deep research / autonomous research agents | weekly, and before broad auto-research runs | Research agents can speed up source collection and synthesis but can also amplify unsupported claims, stale sources, and overconfident reports | `harness/auto-research.md`, `wiki/knowledge/ai-agent-rag-mcp/autonomous-research-agents.md`, `templates/research_brief.template.md` |
 | Testing/proof strategy | monthly | Agents need proof that catches regressions, not just passing commands | `wiki/knowledge/coding/testing-strategy.md`, `test_matrix.md`, output quality |
 | Observability/operability/platform engineering | monthly | Deployment success depends on logs, traces, health checks, rollback, golden paths | architecture skill, project bootstrap, output quality |
 | Code quality and architecture fitness | quarterly | Large-file, boundary, duplicate-logic, and static-analysis rules need refinement | repo rules, task packet, output quality |

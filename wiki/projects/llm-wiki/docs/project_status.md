@@ -1,14 +1,180 @@
 # project status
 
-Last updated: 2026-06-27
+Last updated: 2026-07-17
 
 ## overall status
 
-stable/manual-complete; Hermes optional read-planning standard, single subagent control-card standard, source-backed architecture/design-system guidance, workload-based architecture approach selection, human-orchestrated multi-agent mode, current LLM-Wiki architecture snapshot, active Markdown link/entrypoint lint, full Coding Pack bootstrap, agent session packs with frontend/UI/contracts/operations taxonomy, local agent skill hygiene refactor, post-task/project closeout distillation, human-controlled research-on-request, and official-source knowledge pack refresh implemented
+stable/manual-complete; project-local human operator workflow required for every new project and applied to TAO; current GitHub CI/CD privileged-PR safety and deployment-evidence retention guidance implemented; Human-Agent Hybrid Control is the default operating model; compact formal-logic/inference and verifier-routing guidance implemented in Math Pack; canonical cross-repo `P1-BOUNDED-CODING` projection implemented; stable panel-anchor/navigation standard implemented with U17 Homepage packet under review; codebase semantic-map/derived-index management guidance implemented; work-unit context budget/checkpoint measurement pilot active; canonical LLM-Wiki Agent Delivery Workflow active; human-readable workflow/knowledge projection and manual-recovery route active; OKF/TICK git-backed Markdown coordination and claim-release standard active; Hermes retired to archive/history; single subagent control-card standard, source-backed architecture/design-system guidance, workload-based architecture approach selection, human-orchestrated multi-agent mode, current LLM-Wiki architecture snapshot, active Markdown link/entrypoint lint, capability-aware Coding Pack projection, agent session packs with frontend/UI/contracts/operations taxonomy, local agent skill hygiene refactor, post-task/project closeout distillation, human-controlled research-on-request, official-source knowledge pack refresh, Data and Algorithms knowledge packs, workflow-first data maps, workflow-first task planning, recent Obsidian graph orphan repair, report-first completion workflow, platform/CMS rebuild migration knowledge file-back, 2026-07-01 current-source knowledge refresh, five big trigger-based knowledge packs, role-pack composition guidance, Math/Formal Analysis Knowledge Pack, Karpathy/deep-research auto-research guidance, 2026-07-03 auto-research source controls, 2026-07-04 migration/sharding/load-balancing/agent-coding-risk refresh, Agent Platform boundary hardening, Phase 1 workflow audit catalog, MCP operations lab brief, MCP Server Knowledge Pack, tool-using agent evaluation guidance, Math-Coding companion reasoning/measurement guidance, Agent Platform research-source ownership, mathematical recommendation trade-off rules, and agent capability-tier/context-projection routing implemented
 
 ## summary
 
 LLM-Wiki foundation is complete at the manual/local-first level. It has a constitution, program, global rules, harness, templates, raw evidence, source-of-truth project docs, validation reports, lint report, manual bootstrap workflow for new pre-repo projects, ACID task decomposition, and shared contracts for multi-agent code work.
+
+The 2026-07-17 LLMWIKI-094 pass makes one project-local human operator
+entrypoint mandatory for every new project. Repo-backed projects default to
+`HUMAN.md`; pre-repo projects use `docs/human_workflow.md`; established names
+remain valid only when README declares the single entrypoint. The TAO projection
+at `/home/admindebian/TAO-CE-Evaluation/human.md` now records exact browser,
+bootstrap rotation, lifecycle, volume, test, and recovery guidance without
+changing compose or Docker data. Natural human use remains `needs-review`.
+
+The 2026-07-17 LLMWIKI-091 continuation creates the real
+`/home/admindebian/TAO-CE-Evaluation/` runtime boundary and installs the official
+TAO CE Compose stack. Release `2025.10-v1.5-rc`, source ref, image digests,
+host resources, six services, health states, and portal smoke evidence are
+recorded there. Human hostname/password actions and TAO-01..10 remain pending;
+ILIAS is not installed and no product or architecture decision is implied.
+
+The 2026-07-16 LLMWIKI-093 refresh adds the missing GitHub CI/CD trust
+boundary: privileged pull-request workflows do not execute untrusted fork code,
+checkout hardening is only partial defense, and unsafe opt-out requires an
+explicit security exception. It also requires durable project/audit evidence
+when deployment history must outlive GitHub's new 90-day status retention.
+Three official snapshots and checksums live in Agent Platform raw. No live
+workflow or real repository was changed.
+
+The 2026-07-16 LLMWIKI-092 pass filed `FLQ-006` as one compact
+`math/formal-logic-and-inference.md` guide. It separates syntax, model
+semantics, semantic consequence, and derivation; adds classical propositional
+and first-order inference/quantifier guards; makes `Gamma and not phi` the
+countermodel query; and routes truth tables, SAT, SMT, proof assistants,
+bounded state exploration, tests, and human semantic review by evidence
+boundary. Five primary/official snapshots with checksums live in Agent Platform
+raw. No specialized logic folder, solver ranking, or runtime integration was
+added; empirical usability remains `needs-review` for 3-5 real tasks.
+
+The 2026-07-16 LLMWIKI-091 pass created edition-aware TAO Community Edition
+and ILIAS 11 concepts plus a shared Docker evaluation frame. TAO is tested as a
+specialist examination engine; ILIAS as LMS and operational training-management
+layer, without assuming either is the institutional source of truth. ILIAS-only,
+ILIAS+TAO, and an external training/SIS owner remain unaccepted options pending
+hands-on evidence. The later LLMWIKI-092 pass resolved the Math Pack logic
+follow-up as one bounded file rather than a new folder.
+
+The 2026-07-16 LLMWIKI-090 pass makes Human-Agent Hybrid Control the default
+for all agentic work. Humans retain purpose, consequential permission,
+accountability, and substantive acceptance; agents retain bounded analysis,
+execution, uncertainty disclosure, and evidence. Capability, autonomy,
+permission, impact, and reversibility are separate. The static contract is
+implemented, while effectiveness and reporting cost remain `needs-review` for
+3-5 natural hybrid work units. No runtime identity, authorization service,
+kill switch, immutable log, or real-repo mass backfill is claimed.
+
+The 2026-07-16 LLMWIKI-089 auto-research pass now separates citation
+accessibility, relevance, support strength, freshness/conflict, and coverage.
+Research-agent evaluation separately checks plan, acquisition, claim support,
+synthesis, control/abstention, and efficiency. Search expansion must name the
+unresolved claim and expected evidence value; no universal tool-call cap or
+vendor ranking was promoted. Static promotion is complete, while empirical
+effectiveness and reporting cost remain `needs-review` for 3-5 natural runs.
+
+The 2026-07-12 LLMWIKI-088 pass added execution-time reasoning navigation to
+Math Pack. It routes complex work through problem classification, bounded
+candidate search, predicted evidence, verifier feedback, explicit backtracking,
+and stop/escalation. Probability/statistics guidance now covers qualitative and
+numeric evidence updates, dependence, calibration, causal guards, sequential
+stopping, and value of information. This stands on official DeepMind, OpenAI,
+Meta, and Microsoft research without adding their training infrastructure.
+Empirical effectiveness remains `needs-review` until 3-5 reasoning-heavy tasks
+exercise the controller.
+
+The 2026-07-12 auto-research pass refreshed coding-agent evaluation validity.
+Canonical guidance now controls repository/task/model cutoffs, future and
+search-time leakage, prompt construction, matched context comparisons,
+fixed-budget exploration diagnostics, and task-difficulty/reliability strata.
+Four source PDFs with checksums are retained in Agent Platform raw. No local
+agent suite was run, so empirical validation remains a future MCP/coding-agent
+project task.
+
+The 2026-07-11 LLMWIKI-087 pass created the canonical cross-repo
+`P1-BOUNDED-CODING` projection for qualified C2-C3 bounded code work. Fast Path
+now reduces repo/source exploration but cannot replace the coding safety floor.
+Repo profiles remain local coordinates, partial full-pack reads cannot be
+reported as a complete projection/full load, and specialist/P2 escalation stays
+mandatory when risk or task shape exceeds the bounded contract.
+
+The 2026-07-11 LLMWIKI-085 pass added codebase-navigation guidance backed by
+official Google, Meta, Microsoft, GitHub, and Backstage sources plus U17 tiny
+task evidence. It separates authoritative code, stable semantic maps,
+rebuildable derived indexes, and session context; ordinary internal line edits
+do not fan out into mandatory map updates. No U17 map schema, generator, file
+watcher, or shared indexing service was implemented.
+
+The 2026-07-11 LLMWIKI-086 pass finalized the human-approved stable panel
+anchor standard. Manual offsets are forbidden in semantic maps; new projects
+create searchable identities at panel creation; deployed repos use minimal
+comment-only bounded/touched backfill. U17 received policy/task/validation
+rollout and ready Homepage packet `U17-PANEL-INDEX-B-016`; no U17 runtime View
+was changed. Specialized indexing now has an explicit multi-work-unit failure,
+ownership, freshness, rebuild, security, cost, and smaller-alternative gate.
+
+The 2026-07-11 LLMWIKI-084 pass opened a measured work-unit context/checkpoint
+pilot. One canonical guide now owns provider-counter semantics, file-backed
+checkpoint rules, the provisional `150k/300k` signals, emergency continuity,
+and the multi-session revision gate. Session workflows and result/LWOE
+templates contain only linked opt-in projections. Static validation passed;
+threshold effectiveness remains `needs-review` until at least 5 sessions, 10
+work units across 2 task types, and a natural `150k` crossing are observed.
+No runtime/API enforcement or real-repo rollout occurred.
+The 2026-07-12 cumulative observation crossed `300k` naturally and is recorded
+without combining cached or reasoning counters into total; per-work-unit deltas
+remain unavailable, so the promotion gate is still unmet.
+
+The 2026-07-11 bounded-change pass accepted `DEC-0005`. Bounded Change Fast
+Path is now a shared execution mode inside Real Repo Work, paired with a thin
+repo-owned profile template. It standardizes targeted reads, escalation, actual
+measurement, and direct/indirect/repo-local knowledge reporting without adding
+a workflow-menu entry or hard-coding one global line budget.
+The explicitly approved UniversityWeb-U17 rollout is stored in that repo at
+`docs/bounded_change_profile.md`; U17 remains the source of truth for its local
+routes, thresholds, task/test/projection state, and validation evidence.
+
+The 2026-07-11 human-continuity pass accepted `DEC-0004`. `human/` now gives
+humans a Vietnamese-first linked map of workflows, knowledge, and manual mode;
+it is not a second source of truth. Root `RECOVERY.md` and the Manual Recovery
+workflow preserve evidence, fail unclear mutations closed, and route recovery
+to the owning system. Session and report contracts disclose `Workflow used`
+and actual deviations. Off-host recovery, Git-based workspace recovery, and
+runtime emergency-stop/safe-mode mechanisms remain unverified or future work.
+
+The 2026-07-11 Agent Delivery Workflow pass accepted `DEC-0003` and created one
+canonical six-layer model: Evidence, Approval, Knowledge, Guidance,
+Orchestration, and Execution. It fixes shared workflows in LLM-Wiki,
+project-specific workflows in real repos, Agent Platform raw/WAP/gateway/audit
+ownership, and MCP as a runtime adapter. API Gateway, persistent workers,
+database-backed raw storage, and Agent Platform MCP runtime remain unbuilt.
+
+The 2026-07-10 MCP operations pass captured the local AI/MCP operations lab as
+a bounded concept and project brief, then added a dedicated MCP Server
+Knowledge Pack from current official sources. The result is planning and
+knowledge only: no Agent Platform MCP runtime, API gateway, or prototype has
+been built.
+
+The 2026-07-10 tool-agent evaluation pass added a vendor-neutral guide for
+grading external outcomes, policy/safety invariants, tool trajectories, final
+responses, repeated-run reliability, and efficiency. The MCP lab brief now
+routes its future local-model comparison through project fixtures and hard
+permission/state gates; no evaluation harness or baseline run was created.
+
+The 2026-07-10 Math-Coding companion pass expanded proof writing from a short
+pattern list into a claim/quantifier/method/counterexample/program-correctness
+guide and added functions, finite differences/derivatives, sensitivity,
+measurement contracts, and fair efficiency comparison. Coding/session/role
+routers now load Math Pack by formal or measurement trigger regardless of
+developer seniority; routine code remains excluded.
+
+The 2026-07-10 raw-boundary correction moved the three active research source
+records into `/home/admindebian/Agent-Platform/raw/projects/llm-wiki/research/`
+and classified local `raw/` as legacy-only. The same pass added an agent output
+contract: substantive recommendations must compare a baseline or alternative
+and state mathematical pros, cons, uncertainty, and revision sensitivity.
+
+The 2026-07-10 agent capability-routing pass added a component-wise capability
+vector, `C0-C6` autonomy envelopes, and `P0-Capsule`/`P1-Bounded`/`P2-Map-First`
+knowledge projections. Task packets and agent/session/result templates now stop
+unrated, expired, or under-qualified configurations before higher-tier
+reads/tools and forbid self-upgrade. Existing real repos are not automatically
+backfilled; the first same-task cross-tier pilot remains pending.
 
 `LLMWIKI-020` is implemented locally. The vault now has a canonical read workflow, Knowledge Lookup Metric guidance/template, generalized coding/security/testing guides, generalized DoD/review guides, API scaffold examples, refreshed visual flows, and a clear non-canonical status note for the imported `llm-wiki/` bundle.
 
@@ -107,13 +273,132 @@ kept concise and behavior-oriented: React memo/compiler caveats, Next.js
 2.2 watchpoints, OpenAPI 3.2.0 contract framing, CloudEvents envelope fields,
 OpenTelemetry backend distinction, and ASVS/SSDF security routing.
 
+The 2026-06-29 workflow-first data-map pass added `docs/data_map.md` and
+`docs/database_inventory.md` standards/templates for new projects. Project maps
+now trace workflow -> UI/code -> logical data -> raw schema/query by stable IDs,
+while `AGENTS.md` carries a non-secret Data Quickstart. Session packs include a
+Data / Database Map Pack; repo rules include a Data Capsule; LLM-Wiki knowledge
+links are conditional triggers for data contracts, rollback, security, or
+architecture decisions rather than default reads.
+
+The 2026-06-29 workflow-first task-planning pass made business workflow/outcome
+the mandatory planning axis before technical tasks. Implementation plans now
+start with workflow IDs, cross-cutting affected workflows, first proof, and
+workflow task sequences. Executable tasks now carry workflow ID, workflow slice,
+user/business outcome, map references, input/output, and specialist ownership;
+technical workstreams are execution slices, not the primary product breakdown.
+
+The 2026-06-29 knowledge-pack pass added Data and Algorithms packs. Data work
+now has trigger-based reusable guidance for database/storage selection, data
+modeling, ownership/governance, migration operations, and performance/scale.
+Algorithmic work now has trigger-based reusable guidance for correctness,
+complexity, search/ranking/matching, optimization/scheduling,
+parsing/deduplication, numerical/statistical reasoning, and ML-evaluation
+metrics. Pack routing remains trigger-based rather than default-read.
+
+The 2026-06-30 graph orphan repair pass connected recent validation, Data,
+Algorithms, and Hermes/Umbraco17 concept nodes to their nearest parent indexes
+with real Markdown/wiki links for Obsidian discovery.
+
+The 2026-06-30 report-first completion workflow pass standardized the current
+non-Hermes closeout flow: completed durable LLM-Wiki work creates a validation
+report, indexes it in `reports/validation/README.md`, links concise evidence
+from `active.md`, and updates project status when LLM-Wiki state changes. No
+`active_archive.md` is introduced. Hermes remains deferred until the
+UniversityWeb Umbraco 13 to 17 pilot can measure whether it adds value.
+
+The 2026-06-30 Hermes/Umbraco17 planning pass recorded the pilot shape for
+UniversityWeb: split impact into platform/packages, UI, database/CMS
+schema/content, code, and validation; reuse the public UI where possible;
+create a copied/fresh Umbraco 17 target; import uSync schema and content before
+code repair; and keep Hermes advisory/read-planning only until measured.
+
+The 2026-06-30 OKF/TICK pass retired Hermes from active workflows, archived its
+guides/templates/concepts, added `TICK.md`, added OKF/TICK guidance, made
+claim/release explicit for multi-agent coordination, and added
+`wiki/projects/llm-wiki/docs/project_index.md` so root `index.md` can remain the
+workspace map. UniversityWeb-U17 was updated to remove Hermes from the upgrade
+read path.
+
+The 2026-06-30 directory/navigation cleanup pass made the map convention
+explicit: root `index.md` is the only workspace-level index, directory-local
+maps use `README.md`, project maps use `docs/project_index.md`, and registers
+use explicit names such as `_index.md`. Missing node maps were added, and the
+detailed `projects/pdf_tool/pdf_tool.md` pointer was archived because the real
+repo owns active status and tasks.
+
+The 2026-06-30 Knowledge Pack Gate backfill made new AI-enabled projects expose
+mandatory LLM-Wiki pack routing in `AGENTS.md` and `REPO_RULES.md`: Repo Base is
+required for every session, Coding Pack for code-facing work, specialist packs
+are trigger-based, and result reports must evaluate knowledge effectiveness.
+The rule was backfilled into UniversityWeb and UniversityWeb-U17.
+
+The 2026-07-01 platform upgrade knowledge file-back added
+`wiki/knowledge/project-docs/platform_upgrade.md` and cross-linked Data,
+Architecture, and Operations guidance. Major runtime/framework/CMS rebuild work
+now has reusable guidance for platform/data/schema-first proof, copied/fresh
+target boundaries, ROI-based migration classification, CMS content migration
+risk, workflow-by-workflow rebuilding, and rollback/compensation evidence.
+
+The 2026-07-01 current-source knowledge refresh ran the human-requested
+research-on-request loop across official/current sources and promoted concise
+updates into Coding Pack plus frontend, UI, contracts, operations, and data
+knowledge. Promoted areas include ASVS 5.0.0, OWASP GenAI/LLM and MCP tool-use
+security, React/Next.js version-gated guidance, Web Vitals, WCAG 2.2, OpenAPI
+3.2.0, CloudEvents, OpenTelemetry, runtime support checks, and PostgreSQL
+versioning.
+
+The 2026-07-01 big knowledge pack pass added five trigger-based packs:
+AI/Agent/RAG/MCP, Security Deep + Privacy, Platform/Infrastructure,
+Reliability/SRE, and Content/CMS/SEO/i18n. `agent_session_packs.md` now routes
+agents to those packs only when the session intent triggers them. Stack-specific
+overlays such as SQL Server, Linux, Windows Server, AWS, Azure, GCP, Docker,
+and Kubernetes remain deferred until a real project needs them.
+
+The 2026-07-01 role-pack composition pass added `role_packs.md`, defining role
+packs as the layer that composes skills, delivery knowledge packs, domain
+knowledge, security/privacy boundaries, freshness rules, and human expert
+escalation. It records math/formal knowledge as useful support for coding,
+algorithms, data, AI/RAG evaluation, optimization, statistics, numerical
+precision, and domain calculations, while deferring a dedicated `math/` pack
+until a concrete trigger appears.
+
+The 2026-07-01 Math Pack pass added `wiki/knowledge/math/` as the canonical
+Formal / Analytical Knowledge Pack. It separates math concepts, assumptions,
+formulas, proof patterns, and numerical caveats from `algorithms/`, which
+continues to own implementation choices, libraries, complexity, benchmarks, and
+proof evidence.
+
+The 2026-07-01 Karpathy/deep-research pass found no stable official term named
+"Karpathy auto research". It filed the useful pattern as bounded deep research:
+research agents may plan, search, compare, and draft candidate updates, but
+canonical LLM-Wiki promotion remains human/task-authorized, source-prioritized,
+conflict-aware, freshness-aware, and validation-gated.
+
+The 2026-07-03 auto-research source-controls pass tightened that guidance after
+a human-requested current-source check. Auto-research runs now define
+search/tool bounds, source family and domain constraints, max search/tool budget
+when available, complete consulted-source logs when exposed by the tool, and a
+claim-level citation-support check before candidate promotion.
+
+The 2026-07-04 migration/sharding/load-balancing/agent-coding-risk refresh used
+human-requested current-source checks to strengthen reusable knowledge. Data
+migration guidance now requires dry-run, reconciliation, business invariants,
+cutover, and rollback/compensation evidence; data scale guidance now covers
+sharding/partition keys, routing maps, hot-key analysis, and distribution
+proof; reliability/platform guidance now covers load-balancer selection,
+health checks, session state, drain/failover, and capacity limits; Math Pack
+routing now covers migration/shard/capacity estimates; Coding Pack now includes
+`agent-coding-risks.md` and result reports require agent-specific risk fields.
+
 Constitution §18 was amended 2026-05-23 (DEC-0001 accepted) to link amendment procedure to `harness/feedback-loop.md`; AI is now formally barred from self-applying constitutional amendments.
 
 
 
 ## in progress
 
-- No active LLM-Wiki standardization task is in progress.
+- LLMWIKI-084 empirical threshold validation is in progress; instrumentation
+  is ready, but the multi-session sample gate is not yet met.
 
 ## blockers
 
@@ -121,11 +406,264 @@ Constitution §18 was amended 2026-05-23 (DEC-0001 accepted) to link amendment p
 
 ## next steps
 
-1. Wait for a fresh UniversityWeb post-cutoff Lead session or another project adopting LWOE, then open the next measured cycle.
-2. When GitHub work resumes, review/sync latest local harness/templates into `/home/admindebian/LLM-Wiki-GitHub`, then add remote and push `main` when desired.
-3. Optional: add a generated-index compile script for `wiki/index.md` and related summaries.
+1. Collect opt-in LLMWIKI-084 work-unit/session measurements until the stated
+   review gate is met; do not manufacture token use.
+2. Decide whether the MCP operations lab becomes a separate real repo/prototype.
+3. If approved, define its synthetic fixtures, hard outcome/policy gates,
+   isolated trial protocol, and baseline model-plus-harness configuration.
+4. Exercise the new Math/Coding proof or measurement packet in a real
+   correctness/performance task and file back any missing field.
+5. Wait for a fresh UniversityWeb post-cutoff Lead session or another project adopting LWOE, then open the next measured cycle.
+6. When GitHub work resumes, review/sync latest local harness/templates into `/home/admindebian/LLM-Wiki-GitHub`, then add remote and push `main` when desired.
+7. Optional: add a generated-index compile script for `wiki/index.md` and related summaries.
 
 ## latest validation
+
+- Date: 2026-07-11
+- Prior checkpoint: LLMWIKI-085 codebase-navigation knowledge.
+- Scope: LLMWIKI-086 stable panel comments, no-offset maps, deployed/new-project
+  split, indexing recommendation gate, and U17 Homepage packet rollout.
+- What was checked: canonical/template consistency, U17 policy/task boundaries,
+  no runtime View changes, indexing evidence gate, active links, and feedback
+  loop bookkeeping.
+- Result: standard implemented and U17 task ready for DeepSeek Flash/OpenCode;
+  no runtime application or indexing system was changed.
+- Evidence:
+  - `wiki/knowledge/project-docs/codebase_navigation.md`
+  - `/home/admindebian/UniversityWeb-U17/docs/tasks.md#U17-PANEL-INDEX-B-016`
+  - `reports/validation/2026-07-11-panel-anchor-navigation-standard.md`
+
+### prior validation
+
+- Date: 2026-07-11
+- Scope: LLMWIKI-085 codebase-navigation and derived-index management.
+- Result: knowledge promoted; no indexing runtime built.
+- Evidence:
+  - `reports/validation/2026-07-11-codebase-navigation-management.md`
+
+### prior validation
+
+- Date: 2026-07-04
+- Prior checkpoint: 2026-07-03 auto-research source controls.
+- Scope: Migration, sharding, load balancing, Math Pack routing, and agent
+  coding risk knowledge refresh.
+- What was checked: official/current AWS DMS validation, Azure
+  partitioning/sharding, Google/Azure load-balancing choice guidance, AWS
+  reliability framing, OWASP GenAI/agentic risk, NIST SSDF, and current
+  LLM-Wiki pack routing.
+- Result: implemented locally; knowledge packs and result-report template now
+  route agents to dry-run/reconciliation/cutover, sharding distribution proof,
+  load-balancing/capacity checks, Math Pack estimates, and agent coding-risk
+  reporting.
+- Evidence:
+  - `wiki/knowledge/coding/agent-coding-risks.md`
+  - `wiki/knowledge/data/migrations-operations.md`
+  - `wiki/knowledge/data/performance-scale.md`
+  - `wiki/knowledge/reliability-sre/capacity-performance.md`
+  - `wiki/knowledge/platform-infrastructure/networking-edge.md`
+  - `reports/research/2026-07-04-migration-sharding-load-agent-risk.md`
+  - `reports/validation/2026-07-04-migration-sharding-load-agent-risk.md`
+
+### prior validation
+
+- Date: 2026-07-01
+- Prior checkpoint: 2026-07-01 role-pack composition guidance.
+- Scope: Math / Formal Analysis Knowledge Pack.
+- What was checked: algorithms pack boundary, role-pack math guidance, session
+  pack routing, knowledge catalogs, and validation report indexing.
+- Result: implemented locally; Math Pack is trigger-based and supports Coding,
+  Algorithms, Data, AI/RAG evaluation, optimization, statistics, numerical
+  precision, and domain calculations.
+- Evidence:
+  - `wiki/knowledge/math/README.md`
+  - `reports/validation/2026-07-01-math-knowledge-pack.md`
+
+### prior validation
+
+- Date: 2026-07-01
+- Prior checkpoint: 2026-07-01 big knowledge packs.
+- Scope: role-pack composition guidance.
+- What was checked: session pack routing, knowledge/project-doc catalogs, role
+  composition model, domain-boundary/freshness rules, and math/formal
+  knowledge support boundary.
+- Result: implemented locally; no customs/tax/math domain pack created yet.
+- Evidence:
+  - `wiki/knowledge/project-docs/role_packs.md`
+  - `reports/validation/2026-07-01-role-pack-composition-guidance.md`
+
+### prior validation
+
+- Date: 2026-07-01
+- Prior checkpoint: 2026-07-01 current-source knowledge refresh.
+- Scope: add five trigger-based big knowledge packs and route them through
+  session packs.
+- What was checked: official/current sources for RAG, MCP, A2A, AI security,
+  security/privacy, platform/infrastructure, SRE, SEO, structured data, and
+  i18n; knowledge folder maps; session pack routing; report-first evidence.
+- Result: implemented locally; vendor/technology overlays intentionally
+  deferred until project-specific need.
+- Evidence:
+  - `wiki/knowledge/ai-agent-rag-mcp/README.md`
+  - `wiki/knowledge/security-privacy/README.md`
+  - `wiki/knowledge/platform-infrastructure/README.md`
+  - `wiki/knowledge/reliability-sre/README.md`
+  - `wiki/knowledge/content-cms-seo-i18n/README.md`
+  - `reports/research/2026-07-01-big-knowledge-packs.md`
+  - `reports/validation/2026-07-01-big-knowledge-packs.md`
+
+### prior validation
+
+- Date: 2026-07-01
+- Prior checkpoint: 2026-07-01 platform upgrade knowledge file-back.
+- Scope: current-source research refresh for Coding Pack and selected
+  `wiki/knowledge/` folders.
+- What was checked: official/primary sources for security, AI tool use,
+  frontend frameworks, web performance, accessibility, API/event contracts,
+  observability, deployment runtime support, and PostgreSQL versioning.
+- Result: implemented locally; concise candidate updates promoted and research
+  plus validation evidence recorded.
+- Evidence:
+  - `reports/research/2026-07-01-current-source-knowledge-refresh.md`
+  - `reports/validation/2026-07-01-current-source-knowledge-refresh.md`
+
+### prior validation
+
+- Date: 2026-07-01
+- Prior checkpoint: 2026-06-30 Knowledge Pack Gate backfill.
+- Scope: reusable knowledge file-back for major platform/CMS rebuild and
+  migration planning.
+- What was checked: Umbraco 13 to 17 planning evidence, archived concept note,
+  knowledge catalog reachability, Data migration guidance, Architecture
+  approach selection, and Operations rollback guidance.
+- Result: implemented locally; major platform/CMS upgrades now route through a
+  canonical platform-upgrade guide with related knowledge pointers.
+- Evidence:
+  - `wiki/knowledge/project-docs/platform_upgrade.md`
+  - `wiki/knowledge/data/migrations-operations.md`
+  - `wiki/knowledge/operations/rollback.md`
+  - `reports/validation/2026-07-01-platform-upgrade-knowledge-file-back.md`
+
+### prior validation
+
+- Date: 2026-06-30
+- Prior checkpoint: 2026-06-30 directory/navigation cleanup.
+- Scope: project bootstrap/template Knowledge Pack Gate and backfill into
+  UniversityWeb plus UniversityWeb-U17.
+- What was checked: `AGENTS.md`/`REPO_RULES.md` templates, result report
+  template, project bootstrap validation rules, session pack report fields, and
+  both repo entry docs.
+- Result: implemented locally; new projects must expose required LLM-Wiki packs
+  and trigger rules, result reports evaluate knowledge effectiveness, and both
+  UniversityWeb repos now point agents to `agent_session_packs.md` plus
+  `knowledge_effectiveness.md`.
+- Evidence:
+  - `TICK.md`
+  - `wiki/knowledge/project-docs/knowledge_effectiveness.md`
+  - `templates/agents.template.md`
+  - `templates/repo_rules.template.md`
+  - `templates/agent_result_report.template.md`
+  - `reports/validation/2026-06-30-knowledge-pack-gate-backfill.md`
+
+### prior validation
+
+- Date: 2026-06-30
+- Prior checkpoint: 2026-06-30 Hermes/Umbraco17 pilot planning.
+- Scope: Human decision checkpoint before Hermes installation and
+  UniversityWeb implementation.
+- What was checked: fresh rebuild boundary, old database boundary, ROI-based
+  migration rule, content export risk, workflow-by-workflow build order, and
+  Hermes measurement requirement.
+- Result: decisions recorded locally; no UniversityWeb source code or repo docs
+  were changed.
+- Evidence:
+  - `archive/retired-hermes/2026-06-30/2026-06-29-hermes-umbraco17-pilot-concept.md`
+  - `reports/validation/2026-06-30-hermes-umbraco17-decision-checkpoint.md`
+
+### prior validation
+
+- Date: 2026-06-30
+- Prior checkpoint: 2026-06-30 Report-first completion workflow.
+- Scope: Hermes pilot planning for UniversityWeb Umbraco 13 to 17 upgrade.
+- What was checked: LLM-Wiki Hermes guidance, Data Pack, architecture approach
+  guide, UniversityWeb Hermes config/read-plan template, repo project/code/data
+  maps, package files, uSync schema layout, and official Umbraco/uSync sources.
+- Result: planning recorded locally; no UniversityWeb source code or repo docs
+  were changed.
+- Evidence:
+  - `archive/retired-hermes/2026-06-30/2026-06-29-hermes-umbraco17-pilot-concept.md`
+  - `reports/validation/2026-06-30-hermes-umbraco17-pilot-planning.md`
+
+### prior validation
+
+- Date: 2026-06-30
+- Prior checkpoint: 2026-06-30 Graph orphan repair.
+- Scope: Report-first completion workflow for LLM-Wiki work.
+- What was checked: program operation rules, validation report guide, agent
+  operating finish steps, validation report catalog rule, Hermes/Umbraco pilot
+  concept note, active checkpoint, and feedback-loop lint.
+- Result: implemented locally; validation report created.
+- Evidence:
+  - `program.md`
+  - `harness/validation-report.md`
+  - `harness/agent-operating-guide.md`
+  - `reports/validation/README.md`
+  - `archive/retired-hermes/2026-06-30/2026-06-29-hermes-umbraco17-pilot-concept.md`
+  - `reports/validation/2026-06-30-report-first-completion-workflow.md`
+
+### prior validation
+
+- Date: 2026-06-30
+- Prior checkpoint: 2026-06-29 Workflow-first task planning and knowledge-pack
+  updates.
+- Scope: Obsidian graph orphan repair for recent pack, validation, and
+  Hermes/Umbraco17 concept nodes.
+- What was checked: validation catalog coverage, Data/Algorithms pack child
+  links, LLM-Wiki concept draft links, feedback-loop lint, and active Markdown
+  backlink scan.
+- Result: implemented locally; lint passed with 0 failures and 0 warnings;
+  active backlink scan found 0 non-template/non-validation-report orphan nodes.
+- Evidence:
+  - `reports/validation/README.md`
+  - `wiki/knowledge/data/README.md`
+  - `wiki/knowledge/algorithms/README.md`
+  - `wiki/concepts/llm-wiki/README.md`
+  - `reports/validation/2026-06-30-graph-orphan-repair.md`
+
+### prior validation
+
+- Date: 2026-06-29
+- Prior checkpoint: 2026-06-29 Workflow-first data maps.
+- Scope: Workflow-first task planning for project decomposition and executable
+  task packets.
+- What was checked: task decomposition, task packet, implementation-plan
+  template/guide, task template/guide, project bootstrap, project workflow,
+  task/test matrix rollup, and feedback-loop lint.
+- Result: implemented locally; validation report created.
+- Evidence:
+  - `harness/task-decomposition.md`
+  - `harness/task-packet.md`
+  - `templates/implementation_plan.template.md`
+  - `templates/tasks.template.md`
+  - `reports/validation/2026-06-29-workflow-first-task-planning.md`
+
+### prior validation (LLMWIKI-039)
+
+- Date: 2026-06-29
+- Prior checkpoint: 2026-06-27 Knowledge pack internet refresh.
+- Scope: Workflow-first data maps for project bootstrap and agent sessions.
+- What was checked: new data-map guide/templates, template indexes, project
+  bootstrap, project orientation, session packs, repo rules, agent result
+  report fields, task/test matrix rollup, and feedback-loop lint.
+- Result: implemented locally; validation report created.
+- Evidence:
+  - `wiki/knowledge/project-docs/data_map.md`
+  - `templates/data_map.template.md`
+  - `templates/database_inventory.template.md`
+  - `harness/project-bootstrap.md`
+  - `wiki/knowledge/project-docs/agent_session_packs.md`
+  - `reports/validation/2026-06-29-workflow-first-data-maps.md`
+
+### prior validation (LLMWIKI-038)
 
 - Date: 2026-06-27
 - Prior checkpoint: 2026-06-27 Post-task/project closeout distillation and
@@ -305,7 +843,7 @@ Constitution §18 was amended 2026-05-23 (DEC-0001 accepted) to link amendment p
   - `templates/agent_role_card.template.md`
   - `templates/agents.template.md`
   - `templates/repo_rules.template.md`
-  - `templates/hermes_config.template.md`
+  - `archive/retired-hermes/2026-06-30/templates-hermes_config.template.md`
   - `reports/validation/2026-06-11-single-agent-control-card.md`
 
 ### prior validation (LLMWIKI-027)

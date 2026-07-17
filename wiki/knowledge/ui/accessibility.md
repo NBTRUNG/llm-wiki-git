@@ -8,7 +8,7 @@ source_urls:
   - https://www.w3.org/TR/WCAG22/
   - https://www.w3.org/WAI/ARIA/apg/
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # accessibility
@@ -19,6 +19,11 @@ Use this guide when creating, changing, or reviewing user-facing UI.
 
 Project accessibility requirements and legal/compliance rules win. When absent,
 use WCAG 2.2 and WAI-ARIA Authoring Practices as the baseline.
+
+Current-source check 2026-07-01: WCAG 2.2 is a W3C Recommendation dated
+2024-12-12. WCAG 2.2 extends WCAG 2.1 and does not deprecate WCAG 2.0/2.1, so
+new UI work should use WCAG 2.2 as the default baseline while honoring any
+stricter project/legal requirement.
 
 ## baseline checks
 

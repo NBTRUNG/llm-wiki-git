@@ -20,6 +20,10 @@ when is the work done?
 what may ai edit?
 ```
 
+For a short auditable workflow selector, start with
+[[../workflows/catalog.md]]. Workflow cards route the session; harness files
+hold the detailed procedure.
+
 ## read order
 
 See [[read-workflow.md]].
@@ -33,9 +37,10 @@ See [[read-workflow.md]].
 - [auto-research.md](auto-research.md): human-controlled research-on-request protocol for checking current internet sources before advisory briefs or canonical promotion.
 - [graph-hygiene.md](graph-hygiene.md): keep Obsidian graph discoverability useful by linking canonical guidance while allowing intentional template/report/archive orphans.
 - [knowledge-lookup-metric.md](knowledge-lookup-metric.md): score when real repo work should consult LLM-Wiki.
-- [hermes-read-planning.md](hermes-read-planning.md): optional workflow for projects that enable Hermes as a read-only context indexer/read planner.
+- [../TICK.md](../TICK.md): current Task, Intent, Context, Knowledge, and Claims entrypoint for LLM-Wiki work.
 - [risk-lanes.md](risk-lanes.md): choose tiny/normal/high-risk lane.
 - [task-packet.md](task-packet.md): structure work before implementation.
+- [../wiki/knowledge/project-docs/agent_capability_tiers.md](../wiki/knowledge/project-docs/agent_capability_tiers.md): evidence-backed agent tiers, context projections, autonomy ceilings, and task-fit stop/handoff rules.
 - [test-matrix.md](test-matrix.md): map behavior to proof.
 - [validation-report.md](validation-report.md): record validation evidence.
 - [done-criteria.md](done-criteria.md): decide whether work is done.
@@ -43,6 +48,11 @@ See [[read-workflow.md]].
 - [project-bootstrap.md](project-bootstrap.md): create pre-repo project source-of-truth docs from templates.
 - [project-workflow.md](project-workflow.md): enter and work on existing projects without losing source-of-truth boundaries.
 - [task-decomposition.md](task-decomposition.md): split broad project goals into phases, workstreams, tasks, complexity, delegation, ACID checks, and shared contracts.
+
+## workflow cards
+
+- [../workflows/catalog.md](../workflows/catalog.md): choose a workflow before reading broadly.
+- [../workflows/session-closeout.workflow.md](../workflows/session-closeout.workflow.md): save state when the user says "dừng tại đây" or asks to pause.
 
 ## local helpers
 
@@ -57,13 +67,15 @@ See [[read-workflow.md]].
 | Wiki cleanup | `../program.md` operation `lint` |
 | Compile project docs | `../program.md` operation `compile` |
 | Choosing what to read | `read-workflow.md` |
+| Choosing the high-level workflow | `../workflows/catalog.md` |
 | Filing observation back into wiki/harness/constitution | `feedback-loop.md` |
 | Refreshing volatile guidance such as deployment, frontend, CMS, security, AI agents, or project orientation | `research-intake-loop.md` + `../research/watchlist.md` |
 | Human-requested current-source research | `auto-research.md` + `../research/watchlist.md` |
 | Checking Obsidian graph orphan policy | `graph-hygiene.md` |
 | Deciding whether repo work should consult LLM-Wiki | `knowledge-lookup-metric.md` |
 | Choosing required agent knowledge packs for a session | `../wiki/knowledge/project-docs/agent_session_packs.md` |
-| Optional Hermes read planning in a project | `hermes-read-planning.md` |
+| Assigning agent tier/projection or checking task capability fit | `../wiki/knowledge/project-docs/agent_capability_tiers.md` + `../workflows/agent-capability-calibration.workflow.md` |
+| Current task/context/claim routing | `../TICK.md` |
 | Harness/process improvement | `intake.md`, `risk-lanes.md`, `task-packet.md` |
 | Broad project planning | `task-decomposition.md` + `../templates/implementation_plan.template.md` |
 | New pre-repo project | `project-bootstrap.md` |
@@ -77,6 +89,6 @@ See [[read-workflow.md]].
 - Delegate only tasks that are Atomic, have Clear input/output, are Idempotent, and Decidable (ACID).
 - Use [[knowledge-lookup-metric.md]] before opening LLM-Wiki during real repo work when architecture, scope, contracts, security, production, or reusable-blueprint context may matter.
 - Use [[../wiki/knowledge/project-docs/agent_session_packs.md]] to classify session type and load only the required packs. Coding sessions always include the Security Baseline; use the Security Deep Pack only on trigger.
-- Use [[hermes-read-planning.md]] only for projects that explicitly enable Hermes. Hermes is advisory and never overrides repo or LLM-Wiki source-of-truth rules.
+- Use `TICK.md` and task claim/release rules before implementation in multi-agent work.
 
 For general working rules see [[../global-rules.md]]. For stable laws see [[../llm-wiki-constitution.md]].

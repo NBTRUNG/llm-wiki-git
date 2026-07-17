@@ -1,0 +1,66 @@
+{
+  "workflow_id": "bug-fix-investigation",
+  "canonical_markdown": "workflows/bug-fix-investigation.workflow.md",
+  "trigger": [
+    "bug, failing test, build error, deploy error, or runtime symptom",
+    "previous agent got stuck in repeated grep, log, or tool loops",
+    "decision needed on local investigation versus internet source check"
+  ],
+  "start_file": "active work target entry file",
+  "source_of_truth": "The active work target remains source of truth; official vendor sources explain external versioned behavior.",
+  "required_reads": [
+    "active work target entry file",
+    "workflows/bug-fix-investigation.workflow.md",
+    "failure anchor or exact symptom",
+    "repo source-of-truth files when the bug is in a real repo"
+  ],
+  "conditional_reads": [
+    "workflows/real-repo-work.workflow.md for real repo bugs",
+    "official docs, release notes, or official issue tracker for vendor/version behavior",
+    "agent error or operations knowledge packs when the symptom triggers them"
+  ],
+  "allowed_writes": [
+    "code, tests, docs, and status files allowed by the active work target",
+    "LLM-Wiki workflow or knowledge files only for LLM-Wiki governance or approved file-back",
+    "validation or agent result report required by the active workflow"
+  ],
+  "forbidden_writes": [
+    "broad grep or broad log reading without a stated hypothesis",
+    "fixes before the surviving hypothesis explains the failure anchor",
+    "boundary-changing fixes without a user, Lead, or integration-owner checkpoint"
+  ],
+  "approval_gates": [
+    "two probes fail without producing new information",
+    "current hypothesis cannot be stated in one sentence",
+    "next step requires broad grep, broad logs, production access, credentials, real user data, or repeated expensive validation",
+    "internet evidence and local evidence disagree",
+    "fix may change architecture, data contracts, deployment, permissions, source-of-truth boundaries, or workflow rules"
+  ],
+  "evidence_before_done": [
+    "original failure anchor",
+    "hypothesis that explained the fix",
+    "files changed",
+    "verification tied to the original failure",
+    "remaining uncertainty or follow-up"
+  ],
+  "closeout_rules": [
+    "summarize live evidence if context has become noisy",
+    "checkpoint instead of continuing when uncertainty cannot be narrowed"
+  ],
+  "drift_checks": [
+    {
+      "id": "repo-bug-routes-through-real-repo-first",
+      "description": "Repo bug guidance should route through real-repo source-of-truth and claim rules before the debugging funnel.",
+      "must_include": [
+        "<repo>/AGENTS.md",
+        "workflows/real-repo-work.workflow.md",
+        "workflows/bug-fix-investigation.workflow.md",
+        "failure anchor",
+        "hypotheses",
+        "verification against original failure"
+      ],
+      "remediation": "Update repo bug guidance so Real Repo Work establishes source-of-truth and claims, then Bug-Fix Investigation controls probes and escalation."
+    }
+  ]
+}
+

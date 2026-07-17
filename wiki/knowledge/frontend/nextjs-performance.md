@@ -5,13 +5,14 @@ date_ingested: 2026-06-27
 status: active
 source_type: web-research + skill-file-back
 source_urls:
+  - https://nextjs.org/blog
   - https://nextjs.org/docs
   - https://nextjs.org/docs/app/guides/lazy-loading
   - https://nextjs.org/docs/app/guides/package-bundling
   - https://nextjs.org/docs/app/api-reference/components/image
   - https://nextjs.org/docs/app/getting-started/fonts
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # nextjs performance
@@ -42,6 +43,23 @@ Repo-specific Next.js version and conventions win.
 - For Next.js 16+, prefer `preload` or `fetchPriority`/`loading` decisions for
   LCP images. Do not cargo-cult older `priority` guidance without checking the
   repo's Next.js version.
+
+## current-source notes checked 2026-07-01
+
+- Next.js 16.x is the current major line in official release notes. Version
+  matters: confirm the repo's exact Next.js version before applying guidance
+  about cache components, Turbopack defaults, build adapters, image defaults,
+  async params, or React Compiler integration.
+- Next.js 16.3 preview notes include Instant Navigations and Partial
+  Prefetching. Treat those as version-gated features, not default architecture
+  guidance for every project.
+- Next.js official release notes now include agent-oriented workflow support
+  such as bundled docs through `AGENTS.md`, browser log forwarding, and
+  diagnostics. For AI-assisted Next.js repos, keep repo entry docs
+  version-matched and expose browser/runtime errors to the agent workflow.
+- React Server Components security advisories affected Next.js 13.x through
+  16.x in late 2025. Before optimizing RSC/server-rendered paths, verify the
+  active repo is on a patched framework version.
 
 ## review checklist
 

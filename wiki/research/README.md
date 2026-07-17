@@ -2,7 +2,8 @@
 
 Synthesized research notes live here.
 
-Raw research files belong in `../../raw/research/`.
+Raw research records belong in
+`/home/admindebian/Agent-Platform/raw/projects/<project-id>/research/`.
 
 ## rules
 

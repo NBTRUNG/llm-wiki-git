@@ -1,6 +1,7 @@
 # task decomposition
 
-Use this workflow when turning a broad project request into phases, workstreams, and executable tasks.
+Use this workflow when turning a broad project request into business workflows,
+phases, workstreams, and executable tasks.
 
 > **Canonical source:** This document is the authoritative definition for ACID rules, complexity levels, delegation guidance, and task input/output contracts. Other files (`harness/task-packet.md`, `wiki/knowledge/project-docs/tasks.md`) reference these definitions — update here first.
 
@@ -10,13 +11,16 @@ Example broad request:
 Build a web project using .NET, Umbraco CMS, and frontend design similar to major universities.
 ```
 
-The output should not be one giant task. It should become a plan with workstreams, dependencies, complexity levels, delegation guidance, and validation.
+The output should not be one giant task or a list of technical workstreams. It
+should become a plan rooted in business workflows, then split into technical
+tasks with dependencies, complexity levels, delegation guidance, and validation.
 
 ## purpose
 
 Task decomposition helps AI agents:
 
 - split ambiguous project goals into implementable slices;
+- start from the business/user workflow before technical workstreams;
 - distinguish architecture decisions from coding tasks;
 - assign simple work to other agents safely;
 - reserve hard/expert work for the main agent or human decision;
@@ -30,13 +34,84 @@ Use the files this way:
 | --- | --- |
 | `docs/project_brief.md` | Project contract: problem, goals, users, scope, requirements, constraints, acceptance criteria |
 | `docs/contracts.md` | Shared implementation contracts: names, APIs, CMS aliases, components, types, routes, permissions |
-| `docs/implementation_plan.md` | Phases, workstreams, dependency order, task breakdown strategy |
+| `docs/implementation_plan.md` | Business workflow plan, phases, workstreams, dependency order, task breakdown strategy |
 | `docs/tasks.md` | Executable tasks with owner/delegation, complexity, acceptance criteria, validation |
 | `wiki/architecture.md` | System decomposition: components, data model, flows, integrations, deployment/security |
 | `docs/decisions.md` | Decisions that affect architecture, scope, data, security, or migration |
 | `docs/test_matrix.md` | Proof obligations mapped to unit/integration/e2e/platform/release/manual review |
 
 Do not overload `project_brief.md` with the full execution plan. Keep the brief stable, put shared names/contracts in `contracts.md`, decomposition in `implementation_plan.md`, and executable work in `tasks.md`.
+
+## workflow-first rule
+
+Plan from the business problem first.
+
+The required order is:
+
+```text
+Business problem / user workflow
+  -> workflow ID and outcome
+  -> required maps and contracts
+  -> vertical slice or workflow sequence
+  -> technical tasks by specialist workstream
+  -> file/team ownership groups
+```
+
+Workstreams such as `frontend`, `backend`, `data`, `cms`, `security`, and
+`release` are execution specialties. They should not be the primary product
+breakdown when a user/business workflow exists.
+
+Use stable workflow IDs:
+
+```text
+WF-PROGRAM-DETAIL
+WF-NEWS-LISTING
+WF-ADMISSION-ENQUIRY
+CROSS-CUTTING-UPGRADE
+```
+
+Every executable task should name one of:
+
+- `Workflow ID: WF-...` for a business/user workflow slice;
+- `Workflow ID: CROSS-CUTTING` plus `Affected workflows` for platform,
+  security, deployment, migration, upgrade, design-system, or observability
+  work that supports several workflows.
+
+Tasks that cannot name a workflow or affected workflow are usually not ready for
+implementation. Create a discovery/definition task first.
+
+## workflow task sequence
+
+For each business workflow, decompose into the smallest useful sequence that can
+prove the outcome:
+
+```text
+workflow definition / acceptance
+  -> contracts and map coordinates
+  -> data/base/schema work
+  -> backend/code/service work
+  -> UI/workflow surface
+  -> integration
+  -> validation/proof
+  -> release/operations notes when needed
+```
+
+Not every workflow needs every slice. Keep simple workflows simple.
+
+Technical task groups should carry clear input and output:
+
+| Slice | Typical input | Typical output |
+| --- | --- | --- |
+| contracts/maps | business workflow, accepted names, existing maps | contract rows, UI/code/data map IDs, raw verification pointer |
+| data/base | data-map ID, schema/content model, migration constraints | table/content type/schema/seed/import behavior and verification query |
+| backend/code | contract rows, data IDs, service/controller boundary | service/controller/adapter/read-write behavior with tests |
+| UI | UI map, route, view model/API contract | page/component/template states and accessibility proof |
+| integration | prior slice outputs | end-to-end connected workflow |
+| validation | acceptance criteria and proof layer | test/smoke/manual evidence |
+| release/ops | deploy target, rollback, config | deployment/rollback/runbook proof |
+
+Parallel work is allowed only when dependencies and write targets are disjoint.
+If UI and backend run in parallel, contract/map rows must be accepted first.
 
 ## ACID task rule
 
@@ -58,6 +133,11 @@ Every executable task must define its input and output before implementation.
 Minimum task input:
 
 - trigger or user request;
+- business workflow ID or `CROSS-CUTTING` with affected workflows;
+- user/business outcome for the task;
+- workflow slice: contracts/maps, data/base, backend/code, UI, integration,
+  validation, release/ops, or other project-specific slice;
+- map references when relevant: UI map, code map, data map, raw inventory/query;
 - source-of-truth file or repo path;
 - required read files the agent must read before editing;
 - dependencies or prerequisite tasks;
@@ -72,6 +152,8 @@ Minimum task output:
 
 - files/directories to create, update, or leave untouched;
 - behavior, document, UI, API, CMS config, test, or decision that must exist after the task;
+- workflow outcome advanced or proven;
+- map/contract rows updated, or `none`;
 - shared names/contracts changed, or `none`;
 - status/task/decision/test-matrix updates required;
 - validation evidence required;
@@ -145,6 +227,10 @@ When multiple agents work in parallel on the same project, create per-group cont
 
 A group contract defines:
 
+- **Workflow scope**: which workflow IDs or cross-cutting outcome the group
+  supports.
+- **Specialty slice**: UI, code/backend, data/base, CMS, security, validation,
+  release, or another agreed workstream.
 - **Scope**: which folders and files the group may touch.
 - **Allowed write targets**: exact paths the group may create or edit.
 - **Shared-file write delegation**: exact shared file section/rows the group may
@@ -161,6 +247,9 @@ A group contract defines:
 
 ## Scope
 
+- Workflow ID:
+- Affected workflows:
+- Specialty slice:
 - Workstream: <workstream>
 - Complexity: <simple | normal | hard>
 
@@ -237,22 +326,29 @@ Choose workstreams that match the project. Common web/CMS workstreams:
 - `release`: deployment, rollback, smoke tests, release checklist.
 - `operations`: monitoring, backup, content workflow, maintenance.
 
+Workstreams are secondary to workflow IDs. Use them to assign specialist teams
+or agents after the business workflow and outcome are clear.
+
 ## decomposition workflow
 
 1. Capture the project contract in `project_brief.md`.
 2. Identify known stack, constraints, non-goals, and unknowns.
-3. Create or update `contracts.md` for shared names that multiple tasks or agents may touch.
-4. Draft an implementation plan with phases and workstreams.
-5. Split each workstream into tasks that have one clear output.
-6. Add dependency order before coding.
-7. Assign risk lane and complexity independently.
-8. Assign delegation guidance.
-9. Add contract references for code tasks.
-10. Check every task against the ACID task rule.
-11. Add acceptance criteria for each task.
-12. Add validation/proof for each task.
-13. Move only the next actionable item into `current task`.
-14. Keep larger future work in backlog grouped by phase/workstream.
+3. Identify business workflows and assign stable workflow IDs.
+4. For each workflow, define the user/business outcome and first proof.
+5. Create or update map coordinates: UI map, code map, data map, raw inventory
+   pointer, as relevant.
+6. Create or update `contracts.md` for shared names that multiple tasks or agents may touch.
+7. Draft an implementation plan with workflow plan, phases, and workstreams.
+8. Split each workflow into technical slices with one clear input and output.
+9. Add dependency order before coding.
+10. Assign risk lane and complexity independently.
+11. Assign delegation guidance and specialist group/team.
+12. Add contract/map references for implementation tasks.
+13. Check every task against the ACID task rule.
+14. Add acceptance criteria for each task.
+15. Add validation/proof for each task.
+16. Move only the next actionable item into `current task`.
+17. Keep larger future work in backlog grouped by workflow first, then phase/workstream.
 
 ## task slicing rules
 
@@ -260,6 +356,9 @@ A good task has:
 
 - one owner;
 - one review owner;
+- one workflow ID or `CROSS-CUTTING` affected-workflow list;
+- one user/business outcome;
+- one workflow slice;
 - one workstream;
 - one primary output;
 - required read files;
@@ -270,6 +369,7 @@ A good task has:
 - forbidden side effects;
 - file ownership group;
 - contract references when shared names are touched;
+- map references when UI/code/data/raw coordinates are relevant;
 - explicit non-goals;
 - an ACID check;
 - acceptance criteria;
@@ -281,6 +381,7 @@ A good task has:
 
 Split a task when:
 
+- it combines unrelated business workflows;
 - it touches unrelated workstreams;
 - its input or output is vague;
 - it requires both decision-making and implementation;
@@ -322,15 +423,27 @@ Possible phase/workstream breakdown:
 | 5 | testing | Smoke test public pages | simple | delegate-ok |
 | 5 | release | Create deployment and rollback checklist | hard | main-agent |
 
+Workflow-first breakdown:
+
+| Workflow ID | Business outcome | First proof | Technical sequence |
+| --- | --- | --- | --- |
+| WF-HOMEPAGE | Public visitor understands institution identity and next action | homepage route renders approved hero/navigation/content blocks | contracts/maps -> CMS/data -> backend/view model -> UI template -> smoke |
+| WF-PROGRAM-DETAIL | Visitor opens a program and sees trusted detail/class information | program detail route returns 200 and required fields render | contracts/maps -> content type/data fields -> service/controller -> Razor template -> data validation |
+| WF-NEWS-LISTING | Visitor browses news and opens an article | listing and detail routes return 200 with published content only | contracts/maps -> content query -> listing/detail views -> smoke |
+| CROSS-CUTTING-DEPLOY | Site can be deployed and rolled back safely | test server smoke + rollback note | config -> database/media copy -> deployment -> smoke -> rollback |
+
 ## output format
 
 When asked to plan a project, produce:
 
 1. Project assumptions and unknowns.
-2. Proposed phases.
-3. Workstream map.
-4. Task table with:
+2. Business workflow map.
+3. Proposed phases.
+4. Workstream/specialist map.
+5. Task table with:
    - id;
+   - workflow ID;
+   - workflow slice;
    - phase;
    - workstream;
    - title;
@@ -343,8 +456,8 @@ When asked to plan a project, produce:
    - delegation;
    - ACID status;
    - validation.
-5. First current task.
-6. Decisions needed before coding.
+6. First current task.
+7. Decisions needed before coding.
 
 ## stop conditions
 

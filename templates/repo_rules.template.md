@@ -15,6 +15,33 @@ This is the short mandatory rule file for agents working in this repo.
 7. Repo docs listed in the task `Required read files`.
 8. Existing code and config.
 
+## Capability Gate
+
+- Canonical rule:
+  `${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/project-docs/agent_capability_tiers.md`.
+- Use only the Lead-assigned tier, domain qualifications, autonomy, and context
+  projection. Unrated/expired configurations are `C0`.
+- The task minimum and every required capability dimension must fit before
+  broad reading, tool use, or implementation.
+- An agent may self-downgrade but may not self-upgrade or edit its capability
+  evidence. On mismatch, stop for a smaller packet, deterministic support, or
+  higher-tier/human handoff.
+
+## Human-Agent Hybrid Baseline
+
+- Canonical rule:
+  `${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/project-docs/human_agent_hybrid_control.md`.
+- Human/Lead/integration owner retains intent, risk appetite, consequential
+  permission, accountability, and acceptance.
+- Agent retains bounded analysis/execution, verification support, uncertainty
+  disclosure, and evidence; it must not push routine qualified work back to the
+  human merely to avoid ownership.
+- Keep capability, autonomy, permission, impact, and reversibility separate.
+- Consequential or hard-to-reverse actions require a human-owned gate at the
+  action boundary. Done still requires outcome evidence and substantive review.
+- Do not claim runtime interruption, identity, audit immutability, or rollback
+  unless the repo has implemented and verified those controls.
+
 ## Working Style
 
 - Think before coding: surface unclear scope and risky assumptions.
@@ -22,19 +49,34 @@ This is the short mandatory rule file for agents working in this repo.
 - Surgical changes: touch only allowed targets and match existing style.
 - Goal-driven execution: define success criteria and verify before reporting done.
 
+## Bounded Change Profile
+
+For small, clear, low-risk tasks, use the shared Bounded Change Fast Path only
+through this repo's profile. Do not invent separate Tiny UI/API/Data workflows.
+
+- Shared invariant:
+  `${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/project-docs/bounded_change_fast_path.md`
+- Repo profile: `<repo-path-to-bounded-change-profile.md>`
+- If no repo profile exists, use standard Real Repo Work unless the task packet
+  supplies an approved bounded projection.
+- A local profile may be stricter but may not weaken shared escalation,
+  security, source-of-truth, or evidence rules.
+
 ## Operating Capsules
 
 These capsules are mandatory short rules. They exist so agents do not need to
 read all of LLM-Wiki for every task, but also do not operate from vague memory.
 Task packets may require one or more capsules by name.
 
-For coding sessions, capsules are reminders, not the full rule load. Agents
-assigned to write, review, refactor, test, validate, or accept repo code must
-classify the session pack and read the full LLM-Wiki Coding Pack once at
-session/assignment start:
+For coding sessions, agents first check capability fit. Eligible `P2` agents
+read the canonical full Coding Pack once; `P0/P1` agents use only the approved
+task-named projection. Qualified bounded `C2-C3` tasks use the shared
+`P1-BOUNDED-CODING`; repo capsules remain local coordinates and stricter rules,
+not project-specific Coding Pack projections:
 
 ```text
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/project-docs/agent_session_packs.md
+${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/bounded-coding-core.md
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/agent-coding-workflow.md
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/karpathy-guidelines.md
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/repo-code-rules.md
@@ -44,7 +86,7 @@ ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/security-base
 ${LLM_WIKI_ROOT:-/home/admindebian/LLM-Wiki}/wiki/knowledge/coding/testing-strategy.md
 ```
 
-Do not re-read the pack per micro-task unless the session was interrupted,
+Do not re-read the assigned pack/projection per micro-task unless the session was interrupted,
 handed to a new agent, the pack changed, or exact wording is needed.
 
 Every coding result must report security impact. The Security Baseline is
@@ -79,6 +121,25 @@ external services, or performance/security trade-offs.
 - DTO/API routes are contracts; do not change them unless the task says so.
 - Keep cache keys explicit and debuggable.
 - Keep data/CMS fallback logic in services/adapters rather than views/templates.
+
+### Data Capsule
+
+- Start data/backend/migration/import/reporting work from `docs/data_map.md`,
+  not from broad database or repo grep.
+- Follow the map coordinates: workflow ID -> code-map ID -> data-map ID -> raw
+  inventory/query anchor.
+- Open `docs/database_inventory.md` only by the anchor named in the task or data
+  map; do not read a full schema dump by default.
+- Keep field mappings one-to-one where practical: logical field -> source
+  alias/column -> code property/DTO -> raw table/column -> type.
+- Use LLM-Wiki data/security/rollback knowledge only when the map trigger
+  applies; ordinary data reads should be solved from repo maps and code.
+- Load the Data Knowledge Pack from `wiki/knowledge/data/README.md` when
+  choosing storage/database, changing data ownership/model/schema, planning
+  migration/backfill/import, or reviewing data performance/scale.
+- Load the Algorithms Pack from `wiki/knowledge/algorithms/README.md` when
+  selecting algorithms, proving complexity/correctness, optimizing hot paths,
+  or implementing search/ranking/matching/scheduling/parsing/numerical logic.
 
 ### Architecture Capsule
 
@@ -147,12 +208,11 @@ API routes, DTOs, visual design, copy, and user-visible behavior unchanged.
 
 ## Delegated Agent Read Order
 
-1. `AGENTS.md`
-2. `REPO_RULES.md`
-3. `agent_session_packs.md` to classify required packs
-4. Full Coding Pack once when the session is code/review/refactor/test/validation work
-5. `agents/<agent>/AGENT.md`
-6. Files listed in the assigned task `Required read files`
+1. `agents/<agent>/AGENT.md` capability envelope and task capability gate
+2. Stop/handoff on mismatch; unrated/expired is `C0`
+3. Read only assigned `P0`, `P1`, or `P2` projection
+4. Full Coding Pack for eligible `P2`; approved task projection for `P0/P1`
+5. Files listed in the assigned task `Required read files`
 
 Delegated agents do not read Lead state, repo-wide rollups, or per-agent
 task/status/archive files by default.
@@ -167,8 +227,8 @@ owner, review target, and rollback note. Without that delegation, shared
 rollup/contract/status files remain forbidden.
 
 If agents propose edits to the same section/row, store proposals in Markdown
-handoffs/reports and let the integration owner merge. Hermes may warn about
-overlap but must not be used as the draft content store.
+handoffs/reports and let the integration owner merge. Retired cache/index
+systems must not be used as the draft content store.
 
 ## LLM-Wiki Lookup Rule
 
@@ -178,15 +238,58 @@ Before consulting LLM-Wiki, use `docs/knowledge_lookup_metric.md` if this repo h
 
 Agents must record the lookup score in their task result report when the task involves architecture, scope, contracts, security, production, deployment, dependencies, external services, or reusable blueprints.
 
-## Optional Hermes Read Planner
+## Knowledge Pack Gate
 
-If this repo enables Hermes, Hermes is a read-only context indexer and read
-planner. It may recommend source files, anchors, and line ranges to read, but it
-does not change the source-of-truth order above.
+Every session starts with Repo Base. Code-facing sessions load the full Coding
+Pack once. Other LLM-Wiki packs are trigger-based through:
 
-Hermes must not edit code, docs, rules, task state, or rollup files. If Hermes
-output conflicts with repo files, the repo files win and Hermes must be treated
-as stale until re-indexed.
+```text
+/home/admindebian/LLM-Wiki/wiki/knowledge/project-docs/agent_session_packs.md
+```
+
+Required trigger checks:
+
+- Web/UI Pack for UI, route, layout, accessibility, visual quality, or frontend
+  performance work.
+- Contracts Pack for APIs, DTOs, route contracts, CMS fields, events, external
+  integrations, permissions, or cross-module data behavior.
+- Data / Database Map Pack for database, CMS schema, imports/exports, raw SQL,
+  reporting, migration/backfill, or data correctness.
+- Data Knowledge Pack for storage/schema/migration/import architecture,
+  ownership, modeling, or scale posture.
+- Algorithms / Math Pack for search, ranking, matching, parsing, deduplication,
+  optimization, scheduling, hot paths, numerical, statistical, or ML-evaluation
+  behavior.
+- Architecture Decision Pack for module boundaries, major dependencies,
+  platform/deployment shape, ADRs, or architecture posture.
+- Operations / Release Pack for deployment, rollback, observability, runtime
+  config, incidents, release readiness, or test-server rollout.
+- Security Deep Pack for auth, authorization, private data, uploads, secrets,
+  cookies/sessions, CORS/CSP, raw SQL/HTML, external scripts, dependencies, or
+  new trust boundaries.
+
+Result reports must record packs loaded and LLM-Wiki knowledge effectiveness:
+
+```text
+/home/admindebian/LLM-Wiki/wiki/knowledge/project-docs/knowledge_effectiveness.md
+```
+
+If required knowledge is missing, stale, or unclear, report the gap and queue
+file-back through the post-task distillation gate instead of silently working
+from memory.
+
+## TICK / Claim Rule
+
+If this repo has `TICK.md`, read it before implementation to confirm current
+task, intent, context, knowledge route, and active claims.
+
+When `TICK.md`, `docs/tasks.md`, or the task packet has claim fields:
+
+- claim before implementation;
+- do not work on another active session's claim;
+- release when done, blocked, paused, or reassigned;
+- ask the human, Lead, or integration owner to resolve stale or conflicting
+  claims.
 
 ## Write Rules
 
@@ -218,8 +321,9 @@ docs/agent_status.md
 
 ## Coding Pack Rule
 
-Read the full LLM-Wiki Coding Pack at session/assignment start when the work is
-code-facing. Narrow exceptions:
+Use the canonical LLM-Wiki Coding Pack at session/assignment start when work is
+code-facing: directly for eligible `P2`, or through the approved task-named
+`P0/P1` projection. Narrow non-code exceptions:
 
 - status/report-only work;
 - catalog/index/link cleanup with no implementation guidance change;
@@ -228,8 +332,8 @@ code-facing. Narrow exceptions:
   semantics, or validation evidence.
 
 If an exception starts touching behavior, tests, runtime config, security,
-performance, contracts, or implementation acceptance, stop and load the pack
-before continuing.
+performance, contracts, or implementation acceptance, stop and load the
+capability-appropriate projection before continuing.
 
 Reference:
 

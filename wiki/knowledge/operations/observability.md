@@ -6,8 +6,9 @@ status: active
 source_type: web-research
 source_urls:
   - https://opentelemetry.io/docs/what-is-opentelemetry/
+  - https://opentelemetry.io/docs/concepts/signals/
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # observability
@@ -31,6 +32,19 @@ supportability.
 - For distributed work, confirm traces or equivalent correlation cross service,
   queue, and job boundaries.
 - Record sampling/redaction assumptions when relevant.
+
+## current-source notes checked 2026-07-01
+
+OpenTelemetry docs list traces, metrics, logs, and baggage as currently
+supported signals. Events and profiles are under development or proposal-stage
+areas. Use profiles only when the repo's runtime/tooling supports them and the
+task needs code-level resource evidence; do not require profiles for ordinary
+deployment proof.
+
+OpenTelemetry semantic conventions include emerging GenAI and MCP-related
+areas. Treat those as useful for AI/agent observability when the repo's
+instrumentation stack supports them, but keep sensitive prompt/context data
+redacted by default.
 
 ## anti-patterns
 

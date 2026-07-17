@@ -57,6 +57,14 @@ Source of truth:
 - In Human-orchestrated mode, shared-file writes require explicit section/row
   lock delegation.
 
+## Current direction / supervisor summary
+
+- Use `docs/current_direction.md` when present.
+- If this project does not need a separate file, summarize where we are, what is
+  already done, what is not done, and the next decision here.
+- Do not make a new contributor reconstruct direction from old reports or
+  `tasks_archive.md`.
+
 ## Change log
 
 | Date | Updated by | Summary |

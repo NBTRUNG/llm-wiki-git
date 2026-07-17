@@ -1,8 +1,16 @@
-# raw
+# raw (legacy holdings)
 
-Raw sources are read-only by default.
+This folder preserves imported/reference material that predates the external
+Agent Platform boundary. It is read-only by default and must not receive new
+active raw artifacts.
 
-Use this folder for source materials that llm-wiki may ingest:
+New source records, snapshots, manifests, and extracted artifacts belong under:
+
+```text
+/home/admindebian/Agent-Platform/raw/projects/<project-id>/
+```
+
+Legacy holdings may include:
 
 - articles;
 - copied markdown;
@@ -15,16 +23,18 @@ Use this folder for source materials that llm-wiki may ingest:
 
 ## rules
 
-- Do not edit or delete raw sources unless explicitly asked.
+- Do not add new active raw sources here.
+- Do not edit or delete legacy sources unless explicitly asked.
 - Cite raw source paths when deriving knowledge.
 - If sources conflict, mark `contradiction`; do not silently resolve.
 - If extraction is low confidence, mark `needs-review`.
 
 ## folders
 
-- `projects/`: project source materials before synthesis.
-- `research/`: papers, articles, general research.
-- `decisions/`: decision notes or meeting records.
-- `vendors/`: vendor/tool/cloud docs and comparisons.
-- `assets/`: images or attachments referenced by raw sources.
+- [projects/](projects/README.md): project source materials before synthesis.
+- [research/](research/README.md): migrated legacy pointer; active research
+  records live in Agent Platform.
+- [decisions/](decisions/README.md): decision notes or meeting records.
+- [vendors/](vendors/README.md): vendor/tool/cloud docs and comparisons.
+- [assets/](assets/README.md): images or attachments referenced by raw sources.
 - `andrej-karpathy-skills-main/`: raw copied Karpathy-inspired AI coding guidelines used by `global-rules.md`.

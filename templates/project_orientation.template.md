@@ -36,6 +36,7 @@ Status: draft | accepted | superseded
 - Domain rule risk:
 - System of record:
 - Data/migration/reporting risk:
+- Data map/database inventory needed:
 - Expensive-to-change data decisions:
 
 ### contracts and integrations

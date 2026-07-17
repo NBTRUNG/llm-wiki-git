@@ -9,9 +9,9 @@ source_evidence:
   - /home/admindebian/UniversityWeb/reports/validation/2026-05-23-bootstrap-token-audit.md
   - /home/admindebian/LLM-Wiki/reports/validation/2026-05-25-feedback-loop-operational-optimization.md
 date_ingested: 2026-05-23
-date_updated: 2026-05-25
+date_updated: 2026-07-10
 confidence: high
-confidence_reviewed: 2026-05-25
+confidence_reviewed: 2026-07-10
 applicable_contexts:
   - any multi-agent project repo with a Lead + ≥1 Delegated agent
   - any project that uses the LLM-Wiki multi-agent-coordination patterns
@@ -45,6 +45,9 @@ existing ones:
 - Checkpoint mirrors [[../../../llm-wiki-constitution.md#15. checkpoint law]].
 - Knowledge Lookup Metric mirrors [[../../../harness/knowledge-lookup-metric.md]].
 - Token Economy Law mirrors [[token-economy-bootstrap.md]] — minimal reads, escalate by intent.
+- Capability envelope/projection mirrors
+  [[agent_capability_tiers.md]] — agents use only evaluated tiers and assigned
+  context/autonomy flows.
 
 If any of these canonical files change in LLM-Wiki, project session-start files
 should be re-audited.
@@ -54,16 +57,69 @@ should be re-audited.
 Default to minimal reads for project state at session start. Each file read
 must trace to a current intent. Never re-read full project state at bootstrap.
 
-Coding sessions have one bounded exception: an agent assigned to write, review,
-refactor, test, validate, or accept repo code reads the full LLM-Wiki Coding
-Pack once at session/assignment start. This equips the agent consistently while
-still forbidding full repo-history reads and unrelated wiki reads.
+## one-file entry rule
+
+The user should only need to point a new agent at one file at session start:
+
+- LLM-Wiki work: `index.md`;
+- real repo work: repo `AGENTS.md`;
+- Agent Platform work: `/home/admindebian/Agent-Platform/README.md`.
+
+That entry file must contain enough L1 context for the agent to identify source
+of truth, live-state files, required packs, raw/platform namespace, and stop
+conditions. It may point to deeper files, but those files are read only when the
+current intent escalates. This prevents users from having to remember and paste
+long file lists for every session.
+
+## start-root rule
+
+Every session starts from the active work target:
+
+- Real repo work starts in the real repo root. Read `AGENTS.md`, `REPO_RULES.md`,
+  `TICK.md` when present, and the repo Lead/current-state file. LLM-Wiki is a
+  knowledge source only.
+- LLM-Wiki governance/knowledge/template/harness work starts in
+  `/home/admindebian/LLM-Wiki`.
+- Agent Platform raw/gateway/WAP/audit work starts in
+  `/home/admindebian/Agent-Platform`.
+
+Do not bootstrap a real repo session from LLM-Wiki unless the task is explicitly
+about LLM-Wiki pointers, reusable knowledge, or project bootstrap standards.
+
+## ROI gate before workflow changes
+
+Before changing workflow structure, task layout, archive strategy,
+source-of-truth rules, or session-start procedure, the agent must compare:
+
+```text
+ROI: benefit vs edit surface
+Simplicity: can a new agent understand it in under 5 minutes?
+Effectiveness: does it reduce real confusion or only make docs prettier?
+Blast radius: how many templates, harness files, reports, and project docs must change?
+Decision:
+- If options produce the same operational behavior, choose the smaller change.
+- If a larger change produces materially better effectiveness, present the
+  options, ROI, and blast radius to the user or integration owner before
+  choosing.
+```
+
+ROI is not a rule to always choose the cheapest edit. It is a decision gate:
+smallest-equivalent-change by default; user/integration-owner choice when a
+higher-cost option may be worth the better outcome. Record the ROI note in the
+validation report or result handoff.
+
+Coding sessions use the canonical Coding Pack directly only when their assigned
+capability projection permits it. Lower-tier code agents require an approved
+task-named projection that preserves source-of-truth, security baseline,
+output-quality, test/evidence, write-boundary, and stop/handoff rules. Without
+such a projection they are not eligible for the task.
 
 The session-start file is the project-level enforcement point for this law. To be compliant:
 
 1. The project's entry file (e.g., `AGENTS.md`) must contain Lead-bootstrap and Delegated-bootstrap **cheatsheets** that work standalone — so an AI without persistent memory can bootstrap without re-reading the full session_start.md every session. See [[token-economy-bootstrap.md]] for the hoist pattern.
 2. Lead bootstrap default = `AGENTS.md` + `REPO_RULES.md` + the Lead state file (e.g., `AI_CODEX.md`) for non-coding state checks. Target ≤330 lines total. Anything more requires an explicit sub-branch intent (L2-L6).
-3. Delegated bootstrap default = `AGENTS.md` + `REPO_RULES.md` + one agent control card + Required Read Files only for non-coding work; coding work also loads the Coding Pack once.
+3. Delegated bootstrap begins with capability fit, then uses the assigned `P0`,
+   `P1`, or `P2` projection. Coding uses the full pack only when eligible.
 4. `docs/session_start.md` is **escalation reference** (Lead sub-branches L2-L6, conflict protocol, anti-patterns). It is NOT read at every Lead bootstrap once the L1 cheatsheet is hoisted into the entry file.
 
 ### Lead sub-branches (L1-L6)
@@ -83,8 +139,10 @@ Source: file-back from UniversityWeb `docs/session_start.md` 2026-05-23, formali
 
 A good `docs/session_start.md` has six numbered steps. Order matters.
 
-1. **Identify role** — Lead, Delegated, Unavailable. Branch from here.
-2. **Mandatory minimum reads (all roles)** — `AGENTS.md` + `REPO_RULES.md`; add the full Coding Pack once for coding sessions.
+1. **Identify capability and role** — compare the Lead-owned envelope with the
+   task gate, then branch as Lead, Delegated, or Unavailable.
+2. **Mandatory projected reads** — use only the assigned `P0`, `P1`, or `P2`
+   projection; coding gets full pack only when eligible.
 3. **Branch by role** — different read additions for Lead vs Delegated vs Unavailable.
 4. **Pre-flight check** — boundary, side effects, pre-requisites, parallel safety, acceptance criteria.
 5. **Work with continuous checkpointing** — Karpathy 4 principles + `AGENT.md` checkpoint updates at named trigger points.
@@ -131,7 +189,8 @@ Delegated agents read additionally after Step 2:
   `Lead-orchestrated` mode; report directly to the named human review target in
   `Human-orchestrated` mode.
 - Files listed in the current task's `Required Read Files`.
-- Full LLM-Wiki Coding Pack once, when the assignment is code/review/refactor/test/validation work.
+- Canonical Coding Pack directly for eligible projections, or the approved
+  task-named lower-tier projection.
 
 Delegated agents do NOT read by default:
 
@@ -156,13 +215,14 @@ Unavailable agents (status: unavailable in `AGENT.md`):
 
 ## pre-flight check (Step 4)
 
-Five questions before any file edit:
+Six questions before any file edit:
 
-1. **Boundary**: All needed files inside my Allowed Write Targets?
-2. **Forbidden side effects**: Will my plan trigger any item under Forbidden Side Effects?
-3. **Pre-requisites**: Does the packet name a pre-requisite check? Run it first.
-4. **Parallel safety**: Another agent active? Write targets truly disjoint?
-5. **Acceptance criteria**: Can I describe up front the evidence I will deliver for each checkbox?
+1. **Capability**: Do tier, dimensions, projection, autonomy, verifier, and reviewer fit?
+2. **Boundary**: All needed files inside my Allowed Write Targets?
+3. **Forbidden side effects**: Will my plan trigger any item under Forbidden Side Effects?
+4. **Pre-requisites**: Does the packet name a pre-requisite check? Run it first.
+5. **Parallel safety**: Another agent active? Write targets truly disjoint?
+6. **Acceptance criteria**: Can I describe up front the evidence I will deliver for each checkbox?
 
 Any "no" answer is a stop condition. Raise a blocker; do not silently work around.
 
@@ -184,6 +244,12 @@ Delegated agents finish a session by:
 
 The lead's review path is independent and separate.
 
+Lead/integration owners finish a durable change by updating live state before
+the final response. A validation report is not enough. Update the repo's
+`TICK.md`/Lead state, task row, test/evidence row, and validation index when the
+work target is a real repo. Update LLM-Wiki's `TICK.md`, `tasks.md`,
+`test_matrix.md`, and validation index when the work target is LLM-Wiki.
+
 ## quality criteria
 
 A good `docs/session_start.md`:
@@ -198,6 +264,8 @@ A good `docs/session_start.md`:
 - **Names the L1-L6 Lead sub-branches** with extra-reads per sub-branch.
 - **States the Token Economy Law** explicitly and points to the entry-file cheatsheet.
 - **Hoists the L1 default cheatsheet into `AGENTS.md` (or equivalent entry file)** so AIs without persistent memory bootstrap without re-reading this file.
+- Treats `AGENTS.md` as the one-file session entry for real repo work.
+- Includes an ROI gate for workflow/layout/process changes.
 - Separates **agent-agnostic role definitions** (in this file) from **current AI assignment** (in the Lead state file like `AI_CODEX.md`). Never hard-code an AI's name into the role table.
 - Includes a **Lead handoff procedure (AI-agnostic)** — works for any AI rotation, not just one historical case.
 - Includes stop conditions and a conflict protocol.
@@ -214,6 +282,8 @@ A bad `docs/session_start.md`:
 - Omits the conflict protocol.
 - Omits the L1 cheatsheet hoist into the entry file (forces AIs without memory to re-read this file every session).
 - Treats "lead substitution" as a one-time event tied to a specific AI rather than a generic AI-agnostic rotation procedure.
+- Lets agents finish by writing only a report while leaving the live task,
+  status, TICK, or test-matrix rollups stale.
 
 ## anti-patterns
 

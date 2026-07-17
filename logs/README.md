@@ -4,7 +4,7 @@ Long command outputs and raw logs live here.
 
 ## folders
 
-- `test-output/`: long test, build, lint, audit, or validation logs.
+- [test-output/](test-output/README.md): long test, build, lint, audit, or validation logs.
 
 ## rules
 

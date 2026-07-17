@@ -3,6 +3,7 @@ name: output-quality
 description: Delivery quality gate for agent output. Use beside code-quality when planning, implementing, reviewing, or accepting repo changes.
 date_ingested: 2026-06-20
 status: active
+confidence_reviewed: 2026-07-10
 ---
 
 # output quality guide
@@ -69,6 +70,9 @@ reporting `ready-for-review`.
 
 - Public, user, API, CMS, file, dependency, and external-service inputs are
   treated as untrusted until validated, normalized, or safely encoded.
+- AI model input/output, retrieved context, MCP/tool descriptions, generated
+  code, and agent-proposed shell/file actions are treated as untrusted until
+  validated and authorized.
 - Existing authentication, authorization, validation, encoding, environment, and
   secret-handling guards are preserved.
 - New high-risk flows such as login, upload, payment, permission, external
@@ -80,6 +84,9 @@ reporting `ready-for-review`.
 
 - Hot paths, query count, payload size, bundle size, cache behavior, startup,
   and background work are considered when relevant.
+- Runtime/framework support status is checked when the output changes
+  deployment, dependencies, server rendering, security posture, or package
+  compatibility.
 - The change does not remove useful logging, diagnostics, health checks, or
   operational safeguards.
 - Any expected performance change is measured, smoke-tested, or documented as a
@@ -116,6 +123,22 @@ reporting `ready-for-review`.
 - Residual risks, assumptions, skipped checks, and follow-up work are written in
   the result report rather than hidden in chat.
 
+### 10. Recommendation and decision quality
+
+- Every substantive suggestion identifies the objective, constraints and
+  assumptions, status quo or alternative, pros, cons, evidence/uncertainty, and
+  sensitivity or revision trigger.
+- Quantitative advantages and disadvantages use the same baseline, workload,
+  domain, and units. Qualitative claims are labeled rather than converted into
+  invented scores.
+- Correctness, security, privacy, and required contracts remain hard constraints
+  unless the decision owner explicitly changes them.
+- When no option is best on every material dimension, the report exposes the
+  Pareto trade-off instead of silently selecting weights.
+- A single recommended option is still compared with the status quo. If no
+  disadvantage is known under stated assumptions, the report says so and keeps
+  a revision trigger.
+
 ## escalation triggers
 
 Stop and read deeper project docs, request specialist review, or raise a blocker
@@ -143,4 +166,6 @@ Every non-trivial result report should include concise evidence for:
 - tests/checks run;
 - reviewability/change size;
 - docs/handoff/rollback;
-- residual risks.
+- residual risks;
+- recommendation objective, baseline, pros/cons, uncertainty, and revision
+  trigger whenever an option is suggested.

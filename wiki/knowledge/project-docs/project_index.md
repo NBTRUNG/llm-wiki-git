@@ -11,6 +11,8 @@ It should help agents find the source of truth quickly without becoming a second
 - Project status and phase.
 - Current source of truth.
 - Direct links to manifest, brief, status, tasks, decisions, test matrix, architecture, and validation reports.
+- Direct link to `docs/current_direction.md` or the current-direction section
+  when the project is broad enough to need a librarian checkpoint.
 - Short current state summary.
 - Key decisions and known unknowns.
 - A rule for where updates belong.
@@ -22,6 +24,8 @@ It should help agents find the source of truth quickly without becoming a second
 - Pre-repo projects clearly point to `wiki/projects/<project>/`.
 - The summary is short enough to scan.
 - It does not compete with `docs/project_status.md`.
+- It helps a new contributor or supervisor find the current-direction
+  checkpoint without reading archives.
 
 ## anti-patterns
 
@@ -29,4 +33,3 @@ It should help agents find the source of truth quickly without becoming a second
 - Copying full docs into the index.
 - Keeping migrated project indexes in `wiki/projects/` after source-of-truth has moved.
 - Leaving stale links to deleted migrated docs.
-

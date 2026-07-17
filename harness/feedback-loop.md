@@ -82,8 +82,12 @@ without passing the evidence gate.
 | Generalization | The observation must apply to ≥1 context beyond its source project. Project-specific execution details stay in the project repo. |
 | Source tag | `source_project` must be named. `llm-wiki` is allowed for governance observations. |
 
-If any gate fails, move the observation to `raw/` with a `needs-review` marker.
-Do not file it into canonical locations.
+If any gate fails, record the observation with a `needs-review` marker under
+`/home/admindebian/Agent-Platform/raw/projects/<project-id>/research/`. If the
+Agent Platform root is unavailable or outside the approved write scope, put a
+pointer in the deferred candidate queue and request the required write access;
+do not fall back to active storage under local `raw/`. Do not file the
+observation into canonical locations.
 
 ---
 

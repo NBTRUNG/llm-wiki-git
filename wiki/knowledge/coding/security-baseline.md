@@ -6,9 +6,11 @@ status: active
 source_type: web-research + project-file-back
 source_urls:
   - https://owasp.org/www-project-application-security-verification-standard/
+  - https://owasp.org/www-project-top-10-for-large-language-model-applications/
+  - https://modelcontextprotocol.io/specification/2025-06-18
   - https://csrc.nist.gov/pubs/sp/800/218/final
 confidence: high
-confidence_reviewed: 2026-06-27
+confidence_reviewed: 2026-07-01
 ---
 
 # security baseline guide
@@ -28,7 +30,8 @@ audit posture, use
 [[../architecture-patterns/zero-trust-security.md]] before implementing code.
 
 For higher-risk application work, use OWASP ASVS as the verification checklist
-source and record the ASVS version when citing requirement identifiers. For
+source and record the ASVS version when citing requirement identifiers. As of
+the 2026-07-01 research run, the latest stable ASVS is 5.0.0. For
 secure-development process questions, use NIST SSDF as the broader SDLC
 reference.
 
@@ -230,6 +233,32 @@ When adding or upgrading dependencies:
 - for high-risk or externally exposed software, consider whether the change
   needs provenance, SBOM, signing, dependency review, or vulnerability response
   notes according to the repo's supply-chain policy.
+
+## AI, agent, and tool-use security
+
+Use this section when code exposes LLM features, AI agents, MCP servers/tools,
+retrieval, prompt templates, tool calling, generated code execution, or AI
+workflow automation.
+
+- Treat model input, retrieved context, tool descriptions, model output, and
+  generated code as untrusted.
+- Apply the same server-side authorization and ownership checks to AI-triggered
+  actions as to human-triggered actions.
+- Require explicit user or repo-owner consent before tools can read private
+  data, mutate files, call external systems, or execute code.
+- Keep tool scope narrow: named operations, bounded filesystem roots, bounded
+  network targets, and clear denial behavior.
+- Validate and encode LLM output before passing it to HTML, shell, SQL, code
+  execution, markdown renderers, file writes, or downstream APIs.
+- Log enough for audit and debugging without storing prompts, secrets, tokens,
+  customer data, or sensitive retrieved context by default.
+- For MCP-style integrations, do not trust tool annotations or descriptions
+  from an untrusted server as the proof of what a tool does; enforce host-side
+  approval, access control, and data sharing limits.
+- For LLM app risk reviews, check OWASP GenAI / LLM Top 10 categories such as
+  prompt injection, insecure output handling, supply-chain risk, sensitive
+  information disclosure, insecure plugin/tool design, excessive agency, and
+  overreliance.
 
 ## security and performance trade-offs
 

@@ -26,9 +26,10 @@ harness, evidence, and minimal pointer notes.
 | Global rules | `global-rules.md` | Daily working rules: active.md boundary, work rules, wiki-gap reporting, safety. Pointers to constitution for laws. |
 | Program | `program.md` | Operating procedures: ingest, query, file-back rubric (§6), lint, compile, bootstrap, migrate, validation, checkpoint. |
 | Active | `active.md` | Current LLM-Wiki focus only. Not a real-repo task tracker. |
-| Harness | `harness/` | Read workflow, intake, risk lanes, task packet, test matrix, validation, knowledge lookup metric, feedback-loop procedure, Hermes read-planning guidance. |
-| Templates | `templates/` | Reusable artifact skeletons including agent control cards, integration merge plans, LWOE measurement, Hermes config/read-plan, design system, and stage-4 file-back. |
+| Harness | `harness/` | Read workflow, intake, risk lanes, task packet, test matrix, validation, knowledge lookup metric, feedback-loop procedure, and TICK/claim-release routing. |
+| Templates | `templates/` | Reusable artifact skeletons including TICK, agent control cards, integration merge plans, LWOE measurement, design system, and stage-4 file-back. |
 | Knowledge | `wiki/knowledge/` | Reusable guides: project-doc standards, multi-agent coordination, architecture/design-system guidance, coding/security/testing, definition of done, review checklist. |
+| Capability router | `wiki/knowledge/project-docs/agent_capability_tiers.md`; `workflows/agent-capability-calibration.workflow.md` | Assigns evidence-backed `C0-C6` autonomy envelopes and `P0-P2` knowledge projections to frozen agent configurations; task mismatch stops or hands off. |
 | Concepts | `wiki/concepts/` | Reusable concepts, including diagrams under `wiki/concepts/llm-wiki/`. |
 | Decisions | `wiki/decisions/` | Cross-project ADR register. `_index.md` is the canonical table. |
 | Vendors | `wiki/vendors/` | Vendor/tool lessons (file-back target). |
@@ -36,7 +37,8 @@ harness, evidence, and minimal pointer notes.
 | Projects (pointers) | `projects/<Name>/<Name>.md` | Pointer notes to real repos outside the vault. |
 | Pre-repo source-of-truth | `wiki/projects/<project>/` | Active project docs only while no real repo exists. Removed after migration. |
 | LLM-Wiki self-project docs | `wiki/projects/llm-wiki/` | Source of truth for LLM-Wiki itself while it has no separate real repo. |
-| Raw sources | `raw/` | Read-only source material, cited but not edited. |
+| Active raw sources | `/home/admindebian/Agent-Platform/raw/projects/<project-id>/` | Project-namespaced source records, snapshots, manifests, and extracted artifacts. |
+| Legacy raw holdings | `raw/` | Read-only imported/reference material; no new active raw. |
 | Reports | `reports/validation/` | Validation evidence. `README.md` is the canonical catalog. |
 | Logs | `logs/test-output/` | Long command/test/build output. |
 | Archive | `archive/` | Non-canonical imported/reference material. |
@@ -47,11 +49,12 @@ harness, evidence, and minimal pointer notes.
 
 ```text
 user request
-  -> index.md (pointer map)
+  -> capability note + task gate (tier/vector/projection/autonomy fit)
+  -> P0 capsule, P1 packet, or index.md/P2 map as assigned
   -> harness/read-workflow.md (universal start + source-of-truth decision)
   -> harness/intake.md (classify request)
   -> Knowledge Lookup Metric when real-repo work may need LLM-Wiki
-  -> optional Hermes read plan if the project has adopted it
+  -> TICK.md / task packet / project maps for read routing
   -> read only the files required by intent
   -> perform allowed operation
   -> checkpoint to active.md + reports/validation/ (constitution §15)
@@ -74,13 +77,14 @@ concept (wiki/concepts/)
 
 ```text
 task packet defines owner, inputs, outputs, and write boundaries
+  -> capability gate proves tier/dimensions/projection/autonomy/verifier fit
   -> Lead-orchestrated mode: Lead assigns agent, reviews result handoff, rolls up accepted work
   -> Human-orchestrated mode: human may run multiple agents directly
   -> each delegated subagent uses agents/<agent>/AGENT.md as the default control card
   -> shared-file edits require explicit file/section or row delegation
   -> combining outputs requires an integration owner
   -> same-section proposals stage in reports/integration/<task-id>-merge-plan.md
-  -> Hermes may warn about stale plans or overlapping locks, but cannot grant permission
+  -> explicit claim/release and section locks prevent overlap
 ```
 
 ### file-back flow (stage 4)
@@ -115,8 +119,17 @@ reference via pointer. Violations are wiki rot and must be cleaned up.
 
 ### raw sources
 
-Read-only by default. Source path cited when deriving knowledge. Conflicts
-become `contradiction`.
+Active raw is project-namespaced under Agent Platform and read-only after
+capture by default. Local `raw/` is legacy-only. Source paths are cited when
+deriving knowledge; conflicts become `contradiction`.
+
+### capability and knowledge projection
+
+Capability is assigned to a frozen model+harness+tools+context+verifier
+configuration, not inferred from model brand or parameter count. `C0-C6` bound
+autonomy and `P0-P2` bound context. Unrated/expired configurations use `C0`.
+Agents may self-downgrade but cannot self-upgrade. Task assignment requires
+component-wise fit; a lower-tier agent never enters a higher-tier read/tool flow.
 
 ### compiled wiki
 
@@ -148,11 +161,16 @@ Agent-local files do not replace repo-wide rollups. Accepted result handoffs are
 rolled up by the Lead, human, or named integration owner depending on the
 orchestration mode.
 
-### Hermes
+### TICK / OKF
 
-Hermes is optional, read-only, and advisory. It may index context, suggest read
-plans, and detect stale or overlapping section locks. It must not grant write
-permission, override source-of-truth docs, or store draft content.
+LLM-Wiki now uses an OKF-aligned, git-backed Markdown coordination model.
+`TICK.md` records current Task, Intent, Context, Knowledge route, and active
+Claims. Task packets and repo maps provide the exact read slices. Explicit
+claim/release fields prevent two active agents from working the same task or
+section.
+
+Hermes is retired from active workflow. Historical reports remain evidence, but
+active agents should not depend on a derived read-planning cache.
 
 ### project docs
 
@@ -164,7 +182,7 @@ After migration LLM-Wiki keeps only the pointer note in `projects/<Name>/`.
 - Obsidian-style wiki-links are used for navigation.
 - No database, server, or required automation.
 - Optional tooling: `harness/feedback-loop-lint.sh`, future full link/compile
-  checkers, optional Hermes context indexer/read planner, optional MCP
+  checkers, TICK/claim-release coordination, optional MCP
   integration.
 
 ## major constraints
@@ -172,13 +190,14 @@ After migration LLM-Wiki keeps only the pointer note in `projects/<Name>/`.
 - Local-first Markdown.
 - Single-canonical content (no duplication across files).
 - Selective reading to control token cost.
+- Capability-aware knowledge projection and no-self-upgrade task routing.
 - Lowercase stable paths for canonical files.
 - Migration is move, not copy.
 - Evidence required before marking behavior implemented.
 - Human-orchestrated multi-agent output combination requires an integration
   owner before merge or rollup.
 - Shared-file writes require explicit file/section or row delegation.
-- Draft/proposal staging stays in Markdown, not in Hermes.
+- Draft/proposal staging stays in Markdown, not in retired cache/index systems.
 - Constitution amendments require a row in `§19 changelog`.
 
 ## links

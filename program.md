@@ -50,13 +50,16 @@ Use ingest when a source is added or identified.
 Inputs:
 
 ```text
-raw/
+/home/admindebian/Agent-Platform/raw/projects/<project-id>/
 wiki/concepts/
 project docs
 vendor docs
 research notes
 conversation-derived notes when explicitly filed
 ```
+
+`LLM-Wiki/raw/` contains legacy imported/reference holdings only. Do not place
+new active raw records there.
 
 Workflow:
 
@@ -72,7 +75,8 @@ Workflow:
 
 Rules:
 
-- Raw sources are read-only by default.
+- Active raw sources are project-namespaced in Agent Platform and read-only by
+  default after capture.
 - Do not cite model knowledge as source.
 - Do not overwrite conflicting synthesis without preserving the conflict.
 
@@ -276,8 +280,10 @@ Procedure:
 1. Read the LLM-Wiki link note in `projects/`.
 2. Read relevant knowledge guides:
    - `wiki/knowledge/project-docs/` for repo docs;
-   - `wiki/knowledge/coding/agent-coding-workflow.md` and its full Coding Pack
-     for code/review/refactor/test/validation sessions.
+   - `wiki/knowledge/project-docs/agent_capability_tiers.md` for capability fit;
+   - `wiki/knowledge/coding/agent-coding-workflow.md` and the canonical Coding
+     Pack directly for eligible `P2`, or the approved task-named projection for
+     lower-tier code/review/refactor/test/validation sessions.
 3. Enter the repo.
 4. Read repo `AGENTS.md` or equivalent.
 5. For delegated work, read `REPO_RULES.md`, `agents/<agent>/AGENT.md`, and task `Required read files`; do not read Lead state or legacy split task/status files unless the active control card or task requires them.
@@ -337,6 +343,20 @@ Validation reports should include:
 - residual risk;
 - decision.
 
+Completion workflow:
+
+1. Create one validation report for each meaningful completed LLM-Wiki work
+   unit.
+2. Add the report to `reports/validation/README.md`.
+3. Add a short evidence link in `active.md` when the completed work changes
+   durable LLM-Wiki rules, workflow, knowledge, templates, or indexes.
+4. Update `wiki/projects/llm-wiki/docs/project_status.md` when the completed
+   work changes LLM-Wiki project state.
+5. Run `bash harness/feedback-loop-lint.sh`.
+
+Do not create `active_archive.md`. Reports are the archive; `active.md` is the
+current working entrypoint plus concise evidence links.
+
 ## 14. operation: checkpoint
 
 Use checkpoint after every meaningful unit of work.
@@ -363,6 +383,8 @@ Rules:
 - Checkpoint after file moves.
 - Checkpoint after source-of-truth changes.
 - Checkpoint after agent assignment changes.
+- When a LLM-Wiki work unit is complete, prefer report-first completion:
+  report in `reports/validation/`, index it, then link it from `active.md`.
 - Do not wait for the final response.
 
 ## 15. stale, unknown, contradiction

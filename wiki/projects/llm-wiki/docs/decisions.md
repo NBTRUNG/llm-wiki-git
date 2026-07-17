@@ -11,6 +11,7 @@
 | 2026-05-17 | ADR-0005 | Use Karpathy-inspired coding style in global rules | accepted | `global-rules.md`, `raw/andrej-karpathy-skills-main/` |
 | 2026-05-17 | ADR-0006 | Split constitution, program, harness, templates | accepted | `llm-wiki-constitution.md`, `program.md`, `harness/`, `templates/` |
 | 2026-05-22 | ADR-0007 | Selectively ingest imported LLM-Wiki model and add Knowledge Lookup Metric | accepted | user direction; `LLMWIKI-020`; `llm_wiki_knowledge_lookup_blueprint.md` |
+| 2026-07-10 | ADR-0008 | Route agents by evaluated capability envelope and knowledge projection | accepted | user direction; `LLMWIKI-080`; `reports/research/2026-07-10-agent-capability-tier-routing.md` |
 
 ---
 
@@ -260,3 +261,74 @@ This preserves the strongest part of the current model: real repos remain source
 ## review condition
 
 Review if agents under-consult LLM-Wiki for architecture/history tasks, over-consult it for simple repo tasks, or silently apply stale LLM-Wiki guidance over active repo docs.
+
+---
+
+# ADR-0008 route agents by evaluated capability envelope and knowledge projection
+
+Date: 2026-07-10
+Project: llm-wiki
+Status: accepted
+Source: user direction; `LLMWIKI-080`;
+`reports/research/2026-07-10-agent-capability-tier-routing.md`
+
+## context
+
+Agents with different reasoning, context selection, tool use, verification, and
+long-horizon reliability can produce very different outcomes from the same
+LLM-Wiki. Giving every agent the frontier Map-First/full-pack workflow can
+overload lower-capability configurations and silently grant autonomy they have
+not demonstrated.
+
+Model provider and parameter count do not solve routing. Capability depends on
+the full model, inference, harness, tools, context, and verifier configuration,
+and can differ by domain.
+
+## options considered
+
+### option a: one full workflow for all agents
+
+- Pros: smallest projection surface and simplest documentation maintenance.
+- Cons: lower agents must solve routing/context/authority problems beyond their
+  evidence; failure compounds across long workflows.
+
+### option b: separate wikis per capability level
+
+- Pros: each tier can receive simplified material.
+- Cons: duplicates source of truth and multiplies drift, review, and migration.
+
+### option c: one canonical wiki with capability envelopes and projections
+
+- Pros: preserves one source of truth; agents receive bounded context and
+  autonomy; mismatch has a deterministic stop/handoff.
+- Cons: profiles, evidence, projections, and expiry introduce maintenance and
+  calibration cost.
+
+## decision
+
+Select option C.
+
+- Use `C0-C6` as evidence-backed autonomy envelopes.
+- Use a capability vector; do not average hard weaknesses into one score.
+- Use `P0 Capsule`, `P1 Bounded Packet`, and `P2 Map-First` context projections.
+- Unrated/expired configurations default to `C0`.
+- Agents may self-downgrade but cannot self-assign or self-upgrade.
+- Task packets declare minimum tier, required dimensions, projection, autonomy,
+  verifier, reviewer, and fallback owner.
+- Human/integration-owner approval is required for upgrades.
+- Higher tiers may use lower flows; lower tiers may not use higher flows.
+
+## consequences
+
+- Agent control cards gain a Lead-owned capability envelope.
+- Session start performs capability fit before broad reads or tools.
+- Coding Pack remains canonical but lower-tier coding requires a validated
+  projection that preserves mandatory safety/evidence rules.
+- Public benchmark/vendor claims remain orientation, not local authorization.
+- Existing repo projections are not automatically backfilled without rollout
+  approval; new/renewed packets and templates use the contract going forward.
+
+## review condition
+
+Review after the first same-task cross-tier pilot, any false-eligibility or
+projection-drift incident, or a material configuration change.

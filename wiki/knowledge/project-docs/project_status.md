@@ -22,6 +22,8 @@ It summarizes what is done, what is next, what is risky, and where evidence live
 - Risks and blockers.
 - Recent decisions.
 - Notes for next agent.
+- Current direction or link to `docs/current_direction.md` when the project is
+  broad enough that a new contributor or supervisor needs orientation.
 - Change log.
 - Done.
 ## canonical section order
@@ -42,8 +44,9 @@ Use this order:
 6. Risks and blockers.
 7. Recent decisions.
 8. Notes for next agent.
-9. Change log.
-10. Done.
+9. Current direction / supervisor summary, or link to `docs/current_direction.md`.
+10. Change log.
+11. Done.
 
 ## active tasks table
 
@@ -72,6 +75,8 @@ The change log should explain why the status changed, not repeat every task deta
 ## quality criteria
 
 - A new agent can resume without reading every report.
+- A supervisor can ask "where are we and what next?" and get an answer without
+  reading every report.
 - Status matches `docs/tasks.md` and `docs/test_matrix.md`.
 - Current next step is concrete.
 - Source of truth is explicit.
@@ -88,6 +93,8 @@ The change log should explain why the status changed, not repeat every task deta
 - Leaving stale "next task" entries after agent work completes.
 - Waiting until the end of a long session to update status.
 - Repeating every task detail instead of summarizing.
+- Making a new contributor reconstruct direction from `tasks_archive.md` or old
+  validation reports.
 - Hiding blockers in old reports.
 - Listing assigned tasks without matching task packets in `docs/tasks.md`.
 - Recording decisions here without adding or linking them in `docs/decisions.md` when they are durable decisions.

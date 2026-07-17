@@ -20,6 +20,28 @@ Formulas, units, and collection rules are NOT duplicated here. Open `efficacy_me
 - **source reports:** `<agent result report paths consumed for 1b/2a/2c/3a/5a/5c/6b>`
 - **instrumentation complete:** `<yes | no; if no, mark affected metrics needs-review below>`
 
+## Context budget pilot extension
+
+Fill only when the pilot in
+[[../wiki/knowledge/project-docs/work_unit_context_budget.md]] is enabled. These
+provider counters do not change the 11 LWOE formulas above/below.
+
+- **provider/model/tool version:** `<identity or unknown>`
+- **counter semantics:** `<state whether total=input+output; whether reasoning/cached are included or separate>`
+- **session start snapshot:** `<input | direct input | output | total | reasoning | cached | unavailable>`
+- **session end snapshot:** `<input | direct input | output | total | reasoning | cached | unavailable>`
+- **session delta:** `<input | direct input | output | total | reasoning | cached | not available>`
+- **completed work units:** `<count>`
+- **threshold crossings:** `<none | 150k warning details | 300k checkpoint details | provider-specific>`
+- **checkpoint path(s):** `<source-of-truth state/report paths>`
+- **continue/restart decision:** `<decision, safe-boundary status, and reason>`
+
+Per-work-unit observations:
+
+| work unit | token delta or not available | tool-read volume + unit | first-edit min | iterations/rework | accepted outcome + evidence | checkpoint complete |
+| --- | --- | --- | ---: | --- | --- | --- |
+| `<id>` | `<fields>` | `<value>` | `<min>` | `<value>` | `<value>` | `<yes/no>` |
+
 ---
 
 ## 1a — Bootstrap reads (lines/session)

@@ -17,6 +17,16 @@ Current assignments live in `docs/agent_status.md` and `agents/<agent>/AGENT.md`
 - Integration owner rule:
 - Shared-file write delegation rule:
 
+## capability routing policy
+
+- Canonical capability guide:
+- Default for unrated/expired configurations: C0
+- Profile/evidence owner:
+- Allowed projections: P0 Capsule | P1 Bounded Packet | P2 Map-First
+- No-self-upgrade rule:
+- Smaller-packet/deterministic-support/handoff route:
+- Re-evaluation and expiry trigger:
+
 ## file ownership groups
 
 | Group | Owner role/agent | Paths/sections | Parallel-safe with | Notes |

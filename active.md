@@ -1,229 +1,391 @@
-# Active Focus - 2026-06-22
+# Active Focus
 
-## Current Rule
+Last updated: 2026-07-17
 
-`active.md` tracks only LLM-Wiki work.
+## rule
 
-It does not track implementation status, sprint status, task status, or agent assignment for any real project repo. When a project has a repo, update that repo's docs instead.
+`active.md` tracks only current LLM-Wiki work. It does not track real project
+implementation state. Repo-backed projects update their own `AGENTS.md`,
+current-state file, `docs/tasks.md`, and `docs/test_matrix.md`.
 
-## Current User Request
+## current focus
 
-Hermes/agent workflow standard expanded 2026-06-12. LLM-Wiki now supports
-Lead-orchestrated and Human-orchestrated multi-agent modes. Subagents default to
-one `agents/<agent>/AGENT.md` control card and report through `result handoff`.
-Humans may directly orchestrate multiple agents; combining outputs requires an
-integration owner. Shared-file writes require explicit file/section delegation.
-Hermes remains optional, read-only, advisory, and not a source of truth; it may
-index section locks and warn about overlap/stale plans, but it must not grant
-write permission or store draft content. Draft/proposal staging lives in
-Markdown (`AGENT.md`, `reports/agent/`, or
-`reports/integration/<task-id>-merge-plan.md`).
+LLMWIKI-094 now requires every new project to expose one README-discoverable
+human operator workflow. The canonical guide, template, bootstrap rule, lint
+checks, and TAO `human.md` projection are implemented; older repos are not
+mass-backfilled. Evidence:
+`reports/validation/2026-07-17-project-human-workflow.md`.
 
-Previous focus: LLMWIKI-027 agent task/status read optimization implemented
-2026-05-25. Delegated agents now read current assignment/current state cards
-instead of scanning full task/status history, accepted packets rotate into
-`tasks_archive.md`, and stale delegated read orders no longer include Lead state
-by default.
+Phase 1 workflow audit layer is implemented for LLM-Wiki, UniversityWeb U17 has
+been standardized against it, the U17 deploy token-overuse audit has been filed
+back into Operations knowledge, agent error cases now have a dedicated
+knowledge folder, U17 deployment docs now point to the token/human checkpoint
+guidance, LLM-Wiki now has a current-direction map for librarian-style
+orientation, and bug-fix investigations now use a debugging funnel to avoid
+broad grep/log context pollution. The debug-funnel sources are now recorded in
+`/home/admindebian/Agent-Platform/raw/projects/llm-wiki/research/`, and Math
+Pack now includes classical mathematical thinking for agent reasoning.
+Knowledge loading now follows cache discipline: mandatory base
+literacy, map-first lookup, triggered depth packs, and release-on-goal-change.
+LLMWIKI-061 workflow contracts v0 has now run as a contained experiment; it
+detected the U17 read-order drift but is not promoted to canonical workflow
+obligations. The experiment now includes a repeatable empirical procedure, a
+report template, and a limitations/mitigation discussion base. LLM-Wiki now has
+a first-pass Change Impact Map for tracing canonical changes to projections,
+derived artifacts, and evidence. LLM-Wiki and U17 now have separate workflow
+projection registries: LLM-Wiki for wiki-owned projections, U17 for repo-local
+projection state. U17 deploy/token guidance now includes prior-fix lookup so
+agents check local reports and LLM-Wiki case notes before rediscovering known
+publish workarounds. LLMWIKI-075 captured the natural-language MCP operations
+lab as a bounded concept and brief. LLMWIKI-076 added a dedicated MCP Server
+knowledge pack from current official sources. LLMWIKI-077 added outcome-first,
+policy-gated, trajectory-aware, repeated-trial evaluation guidance for
+tool-using agents and MCP workflows. LLMWIKI-078 now pairs Math Pack with
+reasoning-heavy Coding work and adds stronger claim/proof plus
+functions/rates/measurement guidance.
+LLMWIKI-079 corrects the active raw boundary, migrates the three current
+research source records into Agent Platform, and requires every substantive
+agent recommendation to state a mathematical baseline, pros, cons, uncertainty,
+and revision trigger.
+LLMWIKI-080 adds evidence-backed `C0-C6` agent capability envelopes and `P0-P2`
+knowledge projections. Unrated/expired configurations default to `C0`; agents
+may self-downgrade but cannot self-upgrade, and task mismatch now stops or hands
+off before a lower agent enters a higher-tier flow.
+LLMWIKI-081 adopts **LLM-Wiki Agent Delivery Workflow** as the canonical name
+for the six-layer, human-governed path from Evidence and Approval through
+Knowledge, Guidance, Orchestration, and Execution. It fixes the shared versus
+repo-local workflow boundary, keeps MCP as a runtime capability adapter, and
+requires task-efficiency measurements during execution rather than retrospective
+reconstruction after acceptance.
+LLMWIKI-082 adds a Vietnamese-first `human/` projection, an independent
+`RECOVERY.md` router, and the Manual Recovery workflow. Agents self-route
+without showing a full menu, then disclose `Workflow used`, canonical route,
+and actual deviations at handoff. Human maps link to canonical content and do
+not become a second source of truth.
+LLMWIKI-083 adds **Bounded Change Fast Path** as a mode inside Real Repo Work,
+not a new workflow-menu item. LLM-Wiki owns the shared entry, targeted-read,
+escalation, and evidence invariant; real repos own thin local profiles for
+paths, commands, warnings, boundaries, and acceptance.
+LLMWIKI-084 now has an active measurement pilot for work-unit context budgets
+and file-backed checkpoints. Provider input/output/total/reasoning/cached
+counters remain semantically separate, `150k/300k` remain provisional signals,
+and the pilot cannot promote thresholds until its multi-session/work-unit gate
+is met. No runtime enforcement or real-repo backfill was added.
+Evidence: `reports/validation/2026-07-11-work-unit-context-budget-pilot.md`.
+The 2026-07-12 supplied cumulative snapshot (`658,130` total; `552,173` input;
+`105,957` output; `28,575` reasoning; `21,554,432` cached separately) is stored
+at `reports/validation/2026-07-12-work-unit-context-observation.md`. It crossed
+both pilot signals and produced a file-backed restart checkpoint; the empirical
+promotion gate remains unmet.
+LLMWIKI-085 adds reusable codebase-navigation guidance from official Google,
+Meta, Microsoft, GitHub, and Backstage sources plus U17 evidence. Code remains
+authoritative; semantic maps update only for semantic/topology changes; line
+spans and symbol indexes are derived; specialized indexing requires measured
+ROI. Evidence: `reports/validation/2026-07-11-codebase-navigation-management.md`.
+LLMWIKI-086 finalizes the approved stable panel-anchor standard and explicitly
+rolls it into U17 as comment-only policy plus ready Homepage task
+`U17-PANEL-INDEX-B-016`. Manual offsets are removed from the canonical/template
+contract; no runtime Views or indexing system were changed. Evidence:
+`reports/validation/2026-07-11-panel-anchor-navigation-standard.md`.
+LLMWIKI-087 adds one canonical cross-repo `P1-BOUNDED-CODING` projection for
+qualified C2-C3 bounded work. Fast Path may reduce repo/source reads but cannot
+replace the coding safety floor; repo profiles remain coordinates, and partial
+full-pack reads are reported as partial rather than a full/projection load.
+Evidence: `reports/validation/2026-07-11-p1-bounded-coding-projection.md`.
+The 2026-07-12 coding-agent evaluation refresh adds temporal/information
+cutoffs, prompt-construction controls, fixed-budget repository-exploration
+diagnostics, and task-difficulty/reliability stratification. Four original
+PDFs and two official HTML snapshots plus checksums live under Agent Platform raw; no model ranking or
+universal release threshold was promoted. Evidence:
+`reports/validation/2026-07-12-coding-agent-evaluation-validity.md`.
+LLMWIKI-088 now adds a bounded reasoning controller to Math Pack: problem-shape
+classification, a small candidate frontier, discriminating probes, verifier
+feedback, explicit backtracking, and stop/escalation rules. Probability and
+statistics guidance now separates evidence states, base rates, dependence,
+calibration, causal claims, sequential stopping, and value of information.
+Four official source snapshots are retained with checksums in Agent Platform
+raw. No training runtime, universal branch budget, hidden chain-of-thought
+requirement, or real-repo backfill was added. Evidence:
+`reports/validation/2026-07-12-math-reasoning-navigation.md`.
+LLMWIKI-089 refreshes bounded auto-research with claim-level source checks and
+evidence-value stopping. Working links, topical relevance, factual support,
+freshness/conflicts, and coverage are separate; cited and uncited substantive
+claims are reviewed. Research-agent evaluation now separates plan,
+acquisition, claim support, synthesis, control/abstention, and efficiency. No
+universal call cap, model ranking, background daemon, or automated citation
+judge was added. Evidence:
+`reports/validation/2026-07-16-deep-research-claim-verification.md`.
+LLMWIKI-090 makes Human-Agent Hybrid Control the default operating model.
+Human purpose, consequential permission, accountability, and acceptance stay
+coupled to bounded agent analysis, execution, uncertainty disclosure, and
+evidence. Human rubber-stamping and agent over-escalation are both contract
+failures; capability does not imply autonomy or permission. Evidence:
+`reports/validation/2026-07-16-human-agent-hybrid-control.md`.
+LLMWIKI-092 files `FLQ-006` as one compact classical formal-logic and inference
+guide inside Math Pack. It separates syntax, model semantics, semantic
+consequence, and derivation; adds propositional/first-order inference and
+quantifier guards; uses countermodels; and routes truth-table, SAT, SMT,
+proof-assistant, bounded-state, test, and human-semantic verification. Five
+primary/official snapshots with checksums live under Agent Platform raw. No
+specialized logic folder, solver ranking, or runtime integration was added.
+Evidence: `reports/validation/2026-07-16-formal-logic-and-inference.md`.
+LLMWIKI-093 refreshes GitHub CI/CD safety before the next implementation task.
+Privileged `pull_request_target`/`workflow_run` jobs must not execute untrusted
+fork code; checkout hardening is treated as partial defense, and histories
+needed beyond GitHub's 90-day deployment-status retention require a durable
+project or audit record. No live repo workflow or TAO/ILIAS artifact changed.
+Evidence: `reports/validation/2026-07-16-github-cicd-safety.md`.
+The 2026-07-17 LLMWIKI-091 continuation installs the official TAO CE Docker
+evaluation stack in `/home/admindebian/TAO-CE-Evaluation/`. Release
+`2025.10-v1.5-rc` is identified by immutable image digest; six containers run,
+dependency healthchecks pass, and the portal returns HTTP 200. Browser hostname
+setup and password rotation wait for the human's local sudo/UI actions;
+TAO-01..10 and all ILIAS work remain pending. Evidence:
+`reports/validation/2026-07-17-tao-ce-docker-installation.md`.
+TAO-01..10 are now projected into the real repo as a Vietnamese-first manual
+packet with synthetic data, safety/order prerequisites, required evidence, and
+a blank result ledger. No scenario result is pre-filled. Evidence:
+`reports/validation/2026-07-17-tao-ce-test-case-projection.md`.
 
-Current work:
+The new split is:
 
-- [x] `LLMWIKI-023` external knowledge ingest + Karpathy skill format + multi-agent infrastructure.
-- [x] `LLMWIKI-022` single-canonical consolidation + feedback-loop infrastructure.
-- [x] `LLMWIKI-024 Phase A+B` lead-efficiency experiment + AI-agnostic bootstrap + Token Economy Law file-back from UniversityWeb ADR-0023 (2026-05-23).
-- [x] Backward-pass formalization: `harness/feedback-loop.md` + `wiki/index.md#known-gaps` + anti-pattern sections in 4 harness files (2026-05-23). Evidence: `reports/validation/2026-05-23-feedback-loop-introduction.md`.
-- [x] Constitution §18 amendment via DEC-0001 (AI cannot self-apply amendments; procedure linked to feedback-loop.md). Accepted 2026-05-23.
-- [x] `LLMWIKI-025 Phase C — LWOE` measurement framework (cycle 1). T1-T6 all implemented. UniversityWeb cycle 1 verdict = NO-DATA overall (5 of 11 metrics lacked instrumentation; 6 measurable cells PASS). Evidence: `reports/validation/2026-05-24-llmwiki-025-lwoe-implementation.md`, `wiki/projects/llm-wiki/docs/efficacy_dashboard.md`.
-- [x] `LLMWIKI-026` feedback-loop operational support. Evidence: `reports/validation/2026-05-25-feedback-loop-operational-optimization.md`.
-- [x] `LLMWIKI-027` agent task/status read optimization. Evidence: `reports/validation/2026-05-25-agent-task-status-read-optimization.md`.
-- [x] Hermes context indexer/read planner standard for optional project adoption. Evidence: `reports/validation/2026-06-11-hermes-context-indexer-standard.md`.
-- [x] Draft checkpoint for continuing Hermes/agent workflow discussion. Draft: [2026-06-11-hermes-agent-workflow-draft.md](/home/admindebian/LLM-Wiki/wiki/concepts/llm-wiki/2026-06-11-hermes-agent-workflow-draft.md).
-- [x] Single subagent control-card standard: delegated agents now default to one local `agents/<agent>/AGENT.md` file; split `tasks.md`/`status.md`/`tasks_archive.md` are legacy compatibility. Evidence: `reports/validation/2026-06-11-single-agent-control-card.md`.
-- [x] Web-researched architecture-skill and design-system guidance added. Evidence: `reports/validation/2026-06-11-architecture-design-system-web-research.md`.
-- [x] Workload-based architecture approach selection guide added. Evidence: `reports/validation/2026-06-12-architecture-approach-selection.md`.
-- [x] Human-orchestrated multi-agent mode saved: agents may report directly to human when human is orchestrating multiple agents; integration owner required before combining outputs; shared-file write delegation, Markdown merge-plan staging, and Hermes section-lock risk detection added. Evidence: `reports/validation/2026-06-12-human-orchestrated-agent-mode.md`.
-- [x] Karpathy guidelines expanded from UniversityWeb APG file-back, translated/generalized to English for reusable agent guidance. Evidence: `reports/validation/2026-06-20-karpathy-guidelines-apg-file-back.md`.
-- [x] Large fused UI/code surface policy added after UniversityWeb `_FusedClassDiscovery.cshtml` review; limits new large mixed-concern files, allows stable security/performance-good large files to remain, and requires payoff before no-behavior-change extraction. Evidence: `reports/validation/2026-06-20-large-surface-guard.md`.
-- [x] Project bootstrap and agent coding workflow expanded with short operating capsules plus repo/UI-heavy tier files (`REPO_RULES`, `session_start`, `knowledge_lookup_metric`, `code_map`, `agent_work_plan`, `ui_map/*`). Evidence: `reports/validation/2026-06-20-agent-capsules-bootstrap-tiering.md`.
-- [x] Output quality gate added beside code-quality after checking Google Engineering Practices, Microsoft SDL, AWS Well-Architected, and Meta code-improvement research. Evidence: `reports/validation/2026-06-20-output-quality-gate.md`.
-- [x] Project Orientation and research intake loop added: new projects must answer design-driver questions, select guide packs, record first proof, and check volatile research topics before implementation planning. Evidence: `reports/validation/2026-06-20-project-orientation-research-loop.md`.
-- [x] Obsidian graph hygiene added: canonical guides/workflows must be indexed with real links, while templates/reports/archive/raw can be intentional orphans when parent catalogs explain them. Evidence: `reports/validation/2026-06-20-graph-hygiene.md`.
-- [x] Agent Coding Pack bootstrap added: coding agents now load the full coding rule pack once at session/assignment start, with narrow non-code exceptions and result-report evidence. Evidence: `reports/validation/2026-06-22-agent-coding-pack-bootstrap.md`.
-- [x] Agent session packs + frontend/UI/contracts/operations taxonomy added: agents classify required packs by session type, Coding Pack always carries Security Baseline, Security Deep Pack is trigger-based, and result reports now record packs loaded plus security impact. Evidence: `reports/validation/2026-06-27-agent-session-packs-frontend-ui-security.md`.
-- [x] Agent skill hygiene refactor completed: backed up and refactored local `architecture-skill` and `vercel-react-best-practices` so active skills route to LLM-Wiki knowledge instead of carrying duplicate architecture/frontend rule catalogs; scaffold now requires confirmed architecture decision. Evidence: `reports/validation/2026-06-27-agent-skill-hygiene-refactor.md`.
-- [x] Post-task/project closeout distillation and human-controlled research-on-request added: agents must run a distillation gate after review and before Done, project closeout transfers reusable knowledge only, and internet research is advisory/on-request rather than autonomous. Evidence: `reports/validation/2026-06-27-distillation-closeout-research-on-request.md`.
-- [x] Knowledge pack internet refresh completed on explicit human request: frontend, UI accessibility, contracts, operations, and security packs updated from official sources only. Evidence: `reports/research/2026-06-27-knowledge-pack-refresh.md`, `reports/validation/2026-06-27-knowledge-pack-internet-refresh.md`.
+- `workflows/` - short auditable workflow cards and catalog.
+- `harness/` - detailed operating procedures.
+- `templates/` - scaffold skeletons.
+- `wiki/knowledge/` - reusable durable knowledge.
+- `projects/` - pointers to real repos.
+- `/home/admindebian/Agent-Platform` - raw/evidence/WAP/gateway/audit runtime.
 
-Pause checkpoint - 2026-06-20:
+## latest completed work
 
-- [x] Work saved and paused after Project Orientation, research intake loop, Output Quality Gate, and Graph Hygiene updates. Validation: `bash harness/feedback-loop-lint.sh` passed with 0 failures / 0 warnings.
+LLMWIKI-091 reached its TAO installation checkpoint: the official compose stack
+is running and the portal smoke test passes. Runtime state and detailed
+evidence now live in `/home/admindebian/TAO-CE-Evaluation/`; LLM-Wiki retains
+the reusable evaluation contract and pointer. No product-fit scenario,
+production readiness, ILIAS installation, or architecture decision is claimed.
 
-Next session work:
+LLMWIKI-093 promoted current official GitHub guidance into
+`wiki/knowledge/platform-infrastructure/cicd-iac.md`. It records the corrected
+2026-07-20 supported-version enforcement date, v1/pinned-version boundaries,
+uncovered `git`/`gh` and trigger paths, explicit unsafe-checkout exception
+controls, and durable evidence beyond the 90-day deployment-status window.
+Repository-specific application remains `needs-review`.
 
-- [ ] Continue Hermes work: review the existing Hermes context indexer/read planner standard, the Hermes/agent workflow draft, and decide the remaining canonical workflow updates for Hermes before touching project repos.
+LLMWIKI-092 added `wiki/knowledge/math/formal-logic-and-inference.md` and closed
+`FLQ-006` as filed. The single-file scope covers classical propositional/FOL
+semantics and inference, invalid-pattern checks, countermodels, and verifier
+routing while leaving specialized logic families consumer-gated. Static
+validation is complete; empirical usability remains `needs-review` for 3-5
+real formalization or correctness tasks.
 
-- [ ] User plans to deploy the completed Web project to a test server on
-  2026-06-15. This is real-repo work, not LLM-Wiki state. When the user resumes
-  it, switch to the Web repo, read that repo's source-of-truth docs first, and
-  update deployment status in the repo docs instead of `active.md`.
-- [ ] Review `wiki/projects/llm-wiki/docs/feedback_loop_queue.md` at the start of the next feedback-loop session.
-- [ ] When applying this model to a real project, verify the repo has updated
-  `AGENTS.md`, `REPO_RULES.md`, `agents/<agent>/AGENT.md`, and, if needed,
-  `docs/hermes.md` / `docs/hermes_read_plan.md` using the new shared-file
-  delegation and integration merge-plan rules.
-- [ ] **After** a UniversityWeb post-cutoff Lead session runs (live 1a measurement + result-report Measurement fields + `Knowledge lookup` section adoption): open the next LWOE cycle. Update UW row in `wiki/projects/llm-wiki/docs/efficacy_dashboard.md`; classify any regressing metric as `contradiction` via `harness/feedback-loop.md`; classify new reusable patterns as `lesson` filed into `wiki/knowledge/`.
-- [ ] When ≥3 projects have run LWOE cycles, re-run T5 (threshold refinement) per `wiki/knowledge/project-docs/efficacy_metrics.md#when-to-re-run-t5`.
+LLMWIKI-091 created separate TAO CE examination and ILIAS LMS/training-
+management concepts plus a shared evidence ledger for Docker evaluation. No
+product, integration, source-of-truth, or production deployment decision has
+been made. The later LLMWIKI-092 pass resolved the Math Pack logic follow-up as
+one bounded guide rather than a new folder.
 
-Optional follow-ups (low-priority):
+LLMWIKI-090 accepted `DEC-0007` and added one canonical Human-Agent Hybrid
+Control guide with thin projections into workflow, capability, coordination,
+trust, protocol, session, task, result, role, repo, WAP, and review contracts.
+The human-confirm gate passed. Static validation is complete; exercise 3-5
+natural hybrid work units before changing the fields or adding automation.
 
-- [x] Refresh `wiki/projects/llm-wiki/wiki/architecture.md` to remove the stale architecture snapshot gap and reflect Hermes/LWOE/human-orchestrated workflow updates. Evidence: `reports/validation/2026-06-14-llmwiki-architecture-snapshot-refresh.md`.
-- [x] Expand `harness/feedback-loop-lint.sh` into a broader wiki link/compile checker. Evidence: `reports/validation/2026-06-14-wiki-link-compile-lint.md`.
-- [ ] When GitHub sync resumes: review/sync latest local harness/templates into `/home/admindebian/LLM-Wiki-GitHub`.
+LLMWIKI-089 updated bounded auto-research knowledge, workflow, and the research
+brief skeleton. Its claim ledger and stop record are statically validated;
+empirical value and reporting cost remain `needs-review` pending 3-5 natural
+research runs.
 
-Previous completed work:
+LLMWIKI-088 added `wiki/knowledge/math/reasoning-navigation.md` and expanded
+probability/statistics guidance. It operationalizes Big Tech research as a
+bounded propose/search/verify/backtrack/stop loop, retains four checksummed
+official sources in Agent Platform raw, and leaves empirical effectiveness at
+`needs-review` pending 3-5 natural reasoning-heavy tasks.
 
-- [x] Open `LLMWIKI-020` roadmap/task packet.
-- [x] Add `harness/read-workflow.md` to systematize the full LLM-Wiki read process.
-- [x] Add canonical Knowledge Lookup Metric guidance/template.
-- [x] Selectively ingest imported coding/security/testing guides.
-- [x] Selectively ingest DoD/review checklist guidance.
-- [x] Preserve imported API scaffold files as examples only.
-- [x] Refresh visual flows for the current canonical model.
-- [x] Archive or mark imported `llm-wiki/` bundle as non-canonical after ingest.
-- [x] Remove migrated real-repo concept/archive/report/diary payloads.
-- [x] Keep only a minimal pointer note for the migrated real repo.
-- [x] Update control rules to use pointer notes only after repo migration.
+LLMWIKI-083 accepted `DEC-0005`, added the shared fast-path guidance and repo
+profile template, and projected execution-mode/escalation/measurement fields
+into task and result templates. The explicitly approved UniversityWeb-U17
+rollout now lives at `docs/bounded_change_profile.md` in that repo with task,
+test-matrix, projection-registry, TICK, project-status, and validation evidence.
 
-Previous completed organization work:
+LLMWIKI-082 implemented the human workflow/knowledge/manual-mode maps and
+accepted `DEC-0004`. It also added manual recovery boundaries, workflow
+disclosure fields, and projection-registry coverage. Off-host recovery storage,
+Git-based workspace recovery, and runtime emergency-stop mechanisms remain
+unverified/future work rather than implied capabilities.
 
-- [x] Split LLM-Wiki workflow rules from repo coding rules.
-- [x] Move repo coding rules to `wiki/knowledge/coding/repo-code-rules.md`.
-- [x] Create reusable repo-doc standards in `wiki/knowledge/project-docs/`.
-- [x] Remove migrated real-repo payloads from LLM-Wiki source-of-truth folders.
-- [x] Keep migrated real projects as minimal pointer notes only.
-- [x] Separate `templates/` from `wiki/knowledge/project-docs/`.
-- [x] Add missing templates and project-doc knowledge guides.
-- [x] Update `harness/project-bootstrap.md` for new templates.
-- [x] Rewrite `active.md`, `global-rules.md`, `llm-wiki-constitution.md`, and `program.md` to match the final organization model.
-- [x] Align `tasks.template.md`, `harness/task-packet.md`, and task decomposition guidance with rich delegated task packet format.
-- [x] Align `project_status.template.md`, `wiki/knowledge/project-docs/project_status.md`, and bootstrap validation with expanded project status format.
-- [x] Adopt delegated-agent local task/status/result-report model with audit trail.
-- [x] Add short repo rule template `templates/repo_rules.template.md` and long-rule escalation triggers.
+LLMWIKI-081 created the canonical Agent Delivery Workflow guide and accepted
+`DEC-0003`. Root and knowledge indexes now expose one stable name and pointer;
+the current-direction map and projection registry record the same model without
+backfilling real repos. API Gateway, Agent Platform MCP runtime, database-backed
+raw storage, and persistent workers remain future decisions.
 
-## Canonical Model
+LLMWIKI-061 completed the workflow-contract v0 experiment. Verdict: the small
+JSON contracts can detect the U17 read-order drift and name the remediation,
+but should be revised before any promotion. Canonical workflow Markdown remains
+the source of truth; the contracts are experiment evidence and possible future
+auditor input. Follow-up docs now define how to run future empirical checks and
+how to account for update burden, false positives, false negatives, and stale
+contract risk. LLMWIKI-070 added `change_impact_map.md` and a U17 read-order
+impact test case; the map caught the downstream artifact class that drifted
+(`agents/OPERATING_GUIDE.md`). LLMWIKI-071 added
+`workflow_projection_registry.md` so impact analysis has a named projection
+instance list without putting real repo state into LLM-Wiki.
+LLMWIKI-072 filed back the later U17 deploy/token incident: the user had to
+stop the deploy session to remind the agent that the publish failure had been
+fixed before. Deployment diagnostics now requires a narrow prior-fix lookup
+before expensive publish variants.
+LLMWIKI-073 filed back the U17 no-drift taxonomy issue: `unchecked but aligned`
+is stale registry metadata, not a false-positive drift.
+LLMWIKI-074 completed the maintenance-cost test: U17 registry metadata was
+cleaned up, the simulated workflow-route change was evaluated, and no checker
+is justified yet. LLMWIKI-075 added the MCP operations lab concept/brief, and
+LLMWIKI-076 added `wiki/knowledge/mcp-server/` for MCP server design,
+transport/auth, security, permissions, testing, and operations. LLMWIKI-077
+added `wiki/knowledge/ai-agent-rag-mcp/agent-evaluation.md` so future agent/MCP
+work measures real outcomes, policy gates, tool trajectories, repeated-run
+consistency, and efficiency instead of relying on final prose or one demo.
+LLMWIKI-078 expanded `proof-techniques.md`, added
+`functions-rates-and-measurement.md`, and updated Coding/session/role routing so
+formal reasoning and performance comparisons load Math Pack by problem trigger,
+regardless of developer seniority.
 
-- `global-rules.md`: practical workflow rules for working inside LLM-Wiki.
-- `llm-wiki-constitution.md`: stable source-of-truth and lifecycle laws.
-- `program.md`: operating procedures for ingest, query, lint, compile, file-back, and validation.
-- `active.md`: current LLM-Wiki focus and immediate next step only.
-- `wiki/knowledge/`: reusable guidance and durable knowledge.
-- `wiki/knowledge/project-docs/`: canonical guidance for repo documentation.
-- `wiki/knowledge/coding/agent-coding-workflow.md`: coding-session bootstrap entrypoint.
-- `wiki/knowledge/coding/repo-code-rules.md`: general repo coding/review/test rules, loaded as part of the full Coding Pack.
-- `templates/`: copyable artifact skeletons only.
-- `harness/`: workflows and task/validation operating guides.
-- `projects/`: project link notes, one project per folder.
-- `wiki/projects/`: source-of-truth only for projects that do not yet have a real repo.
-- `archive/`: non-canonical imported/reference material only.
-- `reports/validation/`: evidence and review reports.
-- `logs/test-output/`: long command/test logs.
+Evidence:
 
-## Source Of Truth Reminders
+- `reports/validation/2026-07-11-bounded-change-fast-path.md`
+- `reports/validation/2026-07-11-human-workflow-manual-recovery.md`
+- `/home/admindebian/UniversityWeb-U17/reports/agent/session-20260707-2217/U17-phase-1-effectiveness-evaluation-result.md`
+- `/home/admindebian/UniversityWeb-U17/reports/agent/session-20260707-2217/U17-WORKFLOW-DRIFT-013-result.md`
+- `wiki/projects/llm-wiki/experiments/workflow-contracts-v0/reports/workflow-contracts-v0-result.md`
+- `wiki/projects/llm-wiki/experiments/workflow-contracts-v0/experimental-procedure.md`
+- `wiki/projects/llm-wiki/experiments/workflow-contracts-v0/templates/empirical-evaluation-report.template.md`
+- `wiki/projects/llm-wiki/experiments/workflow-contracts-v0/limitations-and-mitigations.md`
+- `wiki/projects/llm-wiki/docs/change_impact_map.md`
+- `wiki/projects/llm-wiki/docs/workflow_projection_registry.md`
+- `wiki/projects/llm-wiki/docs/impact-tests/2026-07-09-read-order-route-impact.md`
+- `/home/admindebian/UniversityWeb-U17/docs/workflow_projection_registry.md`
+- `/home/admindebian/UniversityWeb-U17/reports/agent/session-20260708-2257/U17-DEPLOY-SERVER-014-result.md`
+- `/home/admindebian/UniversityWeb-U17/reports/agent/session-20260709-impact/U17-read-order-no-drift-result.md`
+- `wiki/knowledge/operations/deployment-diagnostics.md`
+- `wiki/knowledge/agent-errors/universityweb-u17-publish-token-overuse.md`
+- `reports/validation/2026-07-09-workflow-contract-pilot.md`
+- `reports/validation/2026-07-09-workflow-contract-experimental-procedure.md`
+- `reports/validation/2026-07-09-change-impact-map.md`
+- `reports/validation/2026-07-09-workflow-projection-registry.md`
+- `reports/validation/2026-07-09-u17-deploy-token-fileback.md`
+- `reports/validation/2026-07-09-u17-no-drift-taxonomy-fileback.md`
+- `wiki/projects/llm-wiki/docs/impact-tests/2026-07-09-workflow-route-maintenance-cost.md`
+- `/home/admindebian/UniversityWeb-U17/reports/agent/session-20260709-impact/U17-workflow-projection-registry-metadata-cleanup-result.md`
+- `reports/validation/2026-07-09-workflow-route-maintenance-cost.md`
+- `wiki/concepts/ai-agent-rag-mcp/natural-language-mcp-operations-lab.md`
+- `wiki/projects/llm-wiki/docs/mcp_operations_lab_brief.md`
+- `wiki/knowledge/mcp-server/README.md`
+- `reports/research/2026-07-10-mcp-server-knowledge-refresh.md`
+- `reports/validation/2026-07-10-mcp-operations-lab-brief.md`
+- `reports/validation/2026-07-10-mcp-server-knowledge-pack.md`
+- `wiki/knowledge/ai-agent-rag-mcp/agent-evaluation.md`
+- `reports/research/2026-07-10-tool-agent-evaluation.md`
+- `reports/validation/2026-07-10-tool-agent-evaluation-knowledge.md`
+- `wiki/knowledge/math/proof-techniques.md`
+- `wiki/knowledge/math/functions-rates-and-measurement.md`
+- `reports/research/2026-07-10-math-coding-reasoning-measurement.md`
+- `reports/validation/2026-07-10-math-coding-companion-reasoning.md`
+- `reports/validation/2026-07-10-raw-boundary-recommendation-tradeoffs.md`
+- `reports/validation/2026-07-10-agent-capability-tier-routing.md`
+- `wiki/knowledge/project-docs/agent_session_packs.md`
+- `reports/validation/2026-07-08-u17-phase1-effectiveness-evaluation.md`
+- `TICK.md`
+- `wiki/projects/llm-wiki/docs/tasks.md`
+- `wiki/projects/llm-wiki/docs/test_matrix.md`
 
-- Current user request wins over this file.
-- For LLM-Wiki organization work, update `active.md` and validation evidence immediately after meaningful work.
-- For real repo work, update repo `docs/project_status.md`, `docs/tasks.md`, `docs/test_matrix.md`, and `docs/agent_status.md` immediately when state changes.
-- Do not keep duplicate editable project docs in LLM-Wiki after repo migration.
-- Do not use agent report folders as the active assignment board.
+Full pre-trim snapshots:
 
-## Evidence
+- `archive/task-ledgers/2026-07-06-active-before-workflow-catalog.md`
+- `archive/task-ledgers/2026-07-06-llm-wiki-tasks-before-workflow-catalog.md`
 
-- External knowledge ingest: `reports/validation/2026-05-23-external-knowledge-ingest.md`
-- Hermes context indexer standard: `reports/validation/2026-06-11-hermes-context-indexer-standard.md`
-- Single-canonical consolidation: `reports/validation/2026-05-23-canonical-consolidation.md`
-- Organization validation: `reports/validation/2026-05-21-llm-wiki-organization.md`
-- Template/knowledge validation: `reports/validation/2026-05-21-template-knowledge-boundary.md`
-- Control files validation: `reports/validation/2026-05-21-control-files-rewrite.md`
-- Task packet validation: `reports/validation/2026-05-21-task-packet-format.md`
-- Project status validation: `reports/validation/2026-05-21-project-status-format.md`
-- Delegated agent model validation: `reports/validation/2026-05-21-delegated-agent-local-state.md`
-- LLMWIKI-020 planning/read workflow validation: `reports/validation/2026-05-22-llmwiki-020-roadmap-task-packet.md`
-- LLMWIKI-020 standardization validation: `reports/validation/2026-05-22-llmwiki-020-standardization.md`
-- LLMWIKI-021 migrated real-repo cleanup validation: `reports/validation/2026-05-22-real-repo-payload-cleanup.md`
+## next expected work
 
-## Next Step
+Continue the LLMWIKI-091 Docker evaluation from the installed, digest-recorded
+TAO CE runtime. Complete hostname/password/checkpoint actions, execute
+TAO-01..10, and resume ILIAS-01..12 only when the user requests it. Fill the
+shared ownership table before discussing ILIAS-only, ILIAS+TAO, or a separate
+training/SIS source-of-truth architecture.
 
-1. Do not store active real-repo state in LLM-Wiki; keep only minimal pointer notes and reusable knowledge.
-2. Treat Hermes as optional project read-planning infrastructure until project pilots produce evidence.
-3. Next Hermes/agent workflow session should focus on applying the new model to
-   a real repo pilot: one `AGENT.md` control card, result handoff first,
-   Human-orchestrated mode when human directly runs multiple agents,
-   integration owner before merge/rollup, shared-file section locks, Markdown
-   merge-plan staging, and Hermes advisory overlap detection only.
-4. Skill hygiene baseline is now in place for architecture and Vercel React
-   skills. Future skill updates should preserve the same rule: behavior and
-   pointers in skills, knowledge in LLM-Wiki.
+Exercise LLMWIKI-092 on 3-5 real formalization or correctness tasks. Record
+invalid inference caught, countermodel value, verifier mismatch, and reporting
+cost; keep specialized logic families out until a named consumer and verifier
+contract justify them.
 
-## Latest Checkpoint
+Exercise LLMWIKI-090 on 3-5 natural hybrid work units. Record whether it catches
+human rubber-stamping, prevents agents from escalating routine bounded work,
+keeps permission and capability separate, and makes interrupt/rollback routes
+usable without excessive reporting cost.
 
-- Rewrote the four control files:
-  - `active.md`
-  - `global-rules.md`
-  - `llm-wiki-constitution.md`
-  - `program.md`
-- New control-file model:
-  - `global-rules.md` = practical LLM-Wiki work rules.
-  - `llm-wiki-constitution.md` = stable law/source-of-truth/lifecycle boundaries.
-  - `program.md` = operating procedures.
-  - `active.md` = current LLM-Wiki focus only.
-- Stale post-migration guidance in `harness/project-bootstrap.md` was corrected to use minimal `projects/<ProjectName>/` pointer notes.
-- Validation evidence created: `reports/validation/2026-05-21-control-files-rewrite.md`.
-- LLM-Wiki control-file cleanup is complete for this pass.
-- Task packet cleanup checkpoint:
-  - `wiki/knowledge/project-docs/tasks.md` now defines canonical section order and write-boundary rules.
-  - `templates/tasks.template.md` now matches the delegated task packet style.
-  - `harness/task-packet.md` now uses Metadata, Required read files, Exact input/output, write boundaries, report path, and evidence path.
-  - `harness/task-decomposition.md`, `templates/implementation_plan.template.md`, and `harness/project-bootstrap.md` were aligned with the same task shape.
-  - Validation evidence created: `reports/validation/2026-05-21-task-packet-format.md`.
-- Project status cleanup checkpoint:
-  - `templates/project_status.template.md` now includes project metadata, Done, Current state, Active tasks, Next steps, Latest validation, Risks and blockers, Recent decisions, Notes for next agent, and Change log.
-  - `wiki/knowledge/project-docs/project_status.md` now defines canonical section order, table shapes, change log rule, and consistency checks.
-  - `harness/project-bootstrap.md` validation now expects the expanded project status shape.
-  - Validation evidence created: `reports/validation/2026-05-21-project-status-format.md`.
-- Delegated-agent model checkpoint:
-  - Original 2026-05-21 model used split `agents/<agent>/tasks.md` + `status.md`; as of 2026-06-11 the preferred model is one `agents/<agent>/AGENT.md` control card, with split files retained only as legacy compatibility.
-  - Added templates: `agent_tasks.template.md`, `agent_status.template.md`, `agent_result_report.template.md`, `repo_rules.template.md`.
-  - `repo-code-rules.md` is now part of the full Coding Pack loaded at coding-session start.
-  - `docs/agent_status.md` is repo-wide assignment board; `agents/<agent>/status.md` is execution trace.
-  - Validation evidence created: `reports/validation/2026-05-21-delegated-agent-local-state.md`.
-- `LLMWIKI-020` roadmap/read-workflow checkpoint:
-  - Added `LLMWIKI-020` as the current in-progress standardization task.
-  - Added `harness/read-workflow.md` as the canonical read path guide.
-  - Included `llm_wiki_knowledge_lookup_blueprint.md` as an input source.
-  - Planned selective ingest of imported coding/security/testing, DoD/review, API scaffold examples, and refreshed visual flows.
-  - Validation evidence created: `reports/validation/2026-05-22-llmwiki-020-roadmap-task-packet.md`.
-- `LLMWIKI-020` implementation checkpoint:
-  - Added `harness/knowledge-lookup-metric.md`, project-doc guide, and repo template for lookup scoring.
-  - Added Knowledge Lookup section to agent result report template and lookup rule to repo rules template.
-  - Generalized coding/security/testing guidance into `wiki/knowledge/coding/`.
-  - Generalized DoD/review guidance into `wiki/knowledge/project-docs/`.
-  - Added API scaffold examples under `templates/examples/api-service-scaffold/`.
-  - Added refreshed Mermaid/SVG flows under `wiki/concepts/llm-wiki/`.
-  - Marked imported bundle non-canonical under `archive/imported-models/`.
-  - Removed empty accidental brace directory under `llm-wiki/`.
-  - Validation evidence created: `reports/validation/2026-05-22-llmwiki-020-standardization.md`.
-- `LLMWIKI-026` feedback-loop operational checkpoint:
-  - Added `wiki/projects/llm-wiki/docs/feedback_loop_queue.md`.
-  - Added `harness/feedback-loop.md#deferred-candidate-queue`.
-  - Added LWOE Measurement fields to `templates/agent_result_report.template.md`.
-  - Added source-report instrumentation to `templates/lwoe_session_measurement.template.md`.
-  - Added `templates/agents.template.md` and `templates/lead_state.template.md`.
-  - Added `harness/feedback-loop-lint.sh`.
-  - Validation evidence created: `reports/validation/2026-05-25-feedback-loop-operational-optimization.md`.
-- `LLMWIKI-027` agent task/status read optimization checkpoint:
-  - Added Current assignment card and archive pointer table to `templates/agent_tasks.template.md`.
-  - Added Current state card and Latest checkpoint to `templates/agent_status.template.md`.
-  - Added `templates/agent_tasks_archive.template.md`.
-  - Removed delegated Lead-state default reads from repo/agent templates.
-  - Updated `agent_local_work.md`, `multi-agent-coordination.md`, `session_start.md`, `agent_status.md`, `tasks.md`, and `delegated-packet-rotation.md`.
-  - Extended `harness/feedback-loop-lint.sh` checks.
-  - Validation evidence created: `reports/validation/2026-05-25-agent-task-status-read-optimization.md`.
+Collect LLMWIKI-084 observations with
+`wiki/knowledge/project-docs/work_unit_context_budget.md` and the opt-in LWOE
+extension. Review only after at least 5 measured sessions, 10 completed work
+units across 2 task types, and one natural `150k` crossing. Keep cached and
+reasoning counters separate unless provider semantics prove inclusion; do not
+manufacture a `300k` crossing.
+
+Exercise the LLMWIKI-085 semantic-map/derived-index split on 3-5 comparable
+U17 tiny tasks. Measure navigation reads, first-edit time, stale anchors, map
+maintenance, and acceptance before changing U17's map schema or building a
+file-watching/index service.
+
+Next U17 action: the human starts DeepSeek Flash/OpenCode on
+`U17-PANEL-INDEX-B-016`; review its comments, CODE-HOME relationships, actual
+reads, build, and unknowns before opening A/C/D packets.
+
+Exercise the UniversityWeb-U17 Bounded Change Profile with three to five
+comparable small tasks; compare accepted outcome, first-edit time, reads,
+rework, scope violations, validation strength, and report cost before revising
+its pilot thresholds.
+
+Exercise the Agent Delivery Workflow with small UniversityWeb-U17 UI tasks.
+Agents should capture timing/read/validation evidence at handoff; the human
+adds visual acceptance afterward. Do not ask the agent to reconstruct missing
+efficiency measurements only after the UI is accepted.
+
+Use `change_impact_map.md` before durable workflow/source-of-truth/template
+changes and `workflow_projection_registry.md` for known LLM-Wiki-owned
+projection instances. For deploy/publish work, use the prior-fix lookup before
+broad diagnostics. The latest maintenance-cost test says the manual map plus
+registries are enough for now; do not build a checker yet. Do not promote
+workflow contracts broadly unless a real Agent Platform/auditor consumer is
+identified. MCP operations lab planning is now ready; before implementation,
+choose whether it becomes a separate real repo/prototype and load
+`wiki/knowledge/mcp-server/README.md`. Before accepting model/tool behavior,
+also define project fixtures, hard outcome/policy gates, isolated repeated
+trials, and the baseline required by
+`wiki/knowledge/ai-agent-rag-mcp/agent-evaluation.md`.
+For the next non-trivial correctness or performance task, exercise the Math
+Pack proof/measurement output contract and file back any usability gap.
+
+When the user asks "what should we continue", "where are we", "what did we
+already decide", or asks a supervisor-style status question, read
+`wiki/projects/llm-wiki/docs/current_direction.md` before opening archives.
+
+U17 minor cleanup is complete: `agents/OPERATING_GUIDE.md` Standard Read Order
+now includes the workflow catalog and real-repo workflow step.
+
+Next session start file depends on target:
+
+| Target | Start file |
+| --- | --- |
+| U17 Phase 1 effectiveness evaluation | completed; report at `/home/admindebian/UniversityWeb-U17/reports/agent/session-20260707-2217/U17-phase-1-effectiveness-evaluation-result.md` |
+| UniversityWeb U17 implementation work | repo `AGENTS.md` |
+| Agent Platform audit/runtime | `/home/admindebian/Agent-Platform/README.md` |
+| MCP operations lab prototype | `wiki/projects/llm-wiki/docs/mcp_operations_lab_brief.md` |
+
+Closeout checkpoint: LLMWIKI-061 workflow-contract pilot completed as a
+contained experiment, LLMWIKI-070 added the Change Impact Map, and LLMWIKI-074
+completed the maintenance-cost test. Current decision: manual map plus
+projection registries are enough; no checker yet. MCP lab planning and MCP
+server/agent-evaluation knowledge are filed; runtime implementation and a
+project-specific evaluation suite are not started. Math/Coding companion
+reasoning is filed but has not yet been exercised in a real repo task.
+
+## closeout trigger
+
+When the user says "dừng tại đây", "dung tai day", "stop here", or asks to
+pause, run `workflows/session-closeout.workflow.md` before ending the turn.

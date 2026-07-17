@@ -17,6 +17,7 @@ Short compiled summary.
 | manifest |  |
 | brief |  |
 | status |  |
+| current direction |  |
 | tasks |  |
 | decisions |  |
 | test matrix |  |
